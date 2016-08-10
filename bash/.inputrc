@@ -33,23 +33,23 @@
 
 # the following line is actually
 # equivalent to "\C-?": delete-char
-"\e[3~": delete-char
+#"\e[3~": delete-char
 
 # VT
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
+#"\e[1~": beginning-of-line
+#"\e[4~": end-of-line
 
 # kvt
-"\e[H": beginning-of-line
-"\e[F": end-of-line
+#"\e[H": beginning-of-line
+#"\e[F": end-of-line
 
 # rxvt and konsole (i.e. the KDE-app...)
-"\e[7~": beginning-of-line
-"\e[8~": end-of-line
+#"\e[7~": beginning-of-line
+#"\e[8~": end-of-line
 
 # VT220
-"\eOH": beginning-of-line
-"\eOF": end-of-line
+#"\eOH": beginning-of-line
+#"\eOF": end-of-line
 
 # Allow 8-bit input/output
 #set meta-flag on
@@ -207,26 +207,32 @@ set keymap vi-insert
 "\M-K": unix-word-rubout
 
 # Pressing tab will list all completions & select the first one. Pressing it 
-# again will cycle through available completions.
+# again will cycle through available completions.  (TAB)
 TAB: menu-complete
-# Shift-TAB cycles completions backward
+# Shift-TAB cycles completions backward (S-Tab)
 "\e[Z": menu-complete-backward
 
-# Edit options before rerunning previous command, eg: ls a b c -> ls -al a b c
-"\C-o": "\e-0eli "
+# Edit options before rerunning previous command, eg: ls a b c -> ls -al a b c.  (C-o)
+#"\C-o": "\e-0eli "
 
-# Cycle thru completions.
+"\C-o": kill-line
+
+# Cycle thru completions.(C-b)
 #"\C-b": menu-complete
 
-# glob patterns without executing, eg: 'rm *x'
+# glob patterns without executing, eg: 'rm *x' (M-e)
 "\M-e": glob-expand-word
-#
+# Perform alias expansion on the current line. (C-M-e)
+"\C-\M-e": shell-expand-line
+#Perform alias expansion on the current line. (C-M-e)
+#"\C-\M-e":  alias-expand-line
+
 #Delete letters till space from current position cursor
 #"\C-e": "\elldt a"
 #
-# Two escapes clear command line. (Use C-c or \eC\eC instead)
+# Two escapes clear command line.
 "\e\e": "\e0\C-ki"
-# Two escapes clear screen. (Use C-c or \eC\eC instead)
+# Clear screen and go to end of line.
 "\C-l": "\e0\C-lA"
 
 # Vim style history search (Already Default) {{{
