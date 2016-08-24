@@ -13,6 +13,12 @@ export LESS=" -R "
 #alias l='ls -CF'                              #
 #}}}
 
+# Node.js {{{
+#alias node='/cygdrive/c/Program\ Files/nodejs/node.exe'
+#alias npm='/c/Users/ADMIN/AppData/Roaming/npm/node_modules/npm/bin/npm'
+#alias npm='/cygdrive/c/Program\ Files/nodejs/npm'
+#}}}
+
 # Translate {{{
 alias trans='trans -play -speak'
 alias itr='trans {en=ru} -play -speak -shell'
@@ -103,6 +109,7 @@ alias gld='git log --oneline --decorate --graph --all'
 alias ga='git add'
 alias gdw='git diff --word-diff'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gc='git commit'
 alias gco='git checkout'
 alias gi='git init'
