@@ -1,6 +1,7 @@
 # User dependent .bashrc file
 #PATH+=:/cygdrive/c/home/Anton/bin:/cygdrive/c/Far\ Manager:/cygdrive/c/home/Anton/c_program:/cygdrive/c/home/Anton/.local/mplayer
-PATH+=:/cygdrive/c/cygwin64/home/Anton/bin:/Far\ Manager:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/Python27:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application
+PATH+=:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/Python27:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs
+
 #PATH+=:/home/Anton/bin:/Far\ Manager:/home/Anton/c_program:/home/Anton/.local/mplayer
 
 # If not running interactively, don't do anything
