@@ -1,0 +1,83 @@
+snippet fop "fopen function"
+fopen("$1", "${2:r}");
+$0
+endsnippet
+
+snippet fcl "fclose function"
+fclose(${1:var});
+$0
+endsnippet
+
+snippet em "emp{text}"
+emp{${1:${VISUAL:text}}}
+endsnippet
+
+snippet geto "getopt(int argc, char argv, const char *optstring)"
+getopt(argc, argv, "${1:keys}");
+endsnippet
+
+# switch
+snippet switch2 "switch via two cases"
+switch (${1:/* variable */}) 
+{
+	case ${2:/* variable case */}:
+		${3}
+		${4:break;}${5}
+	case ${6:/* variable case */}:
+		${7}
+		${8:break;}${9}
+	default:
+		${10}
+}
+endsnippet
+# switch without default
+snippet switchndef2 "switchndef via two cases"
+switch (${1:/* variable */}) 
+{
+	case ${2:/* variable case */}:
+		${3}
+		${4:break;}${5}
+	case ${6:/* variable case */}:
+		${7}
+		${8:break;}${9}
+}
+endsnippet
+
+snippet str "struct"
+struct ${1:/*struct name*/} {
+	$2;
+	$3;
+};$4
+endsnippet
+
+snippet tst "struct with alias"
+typedef struct {
+	$1;
+	$2;
+}${3:/* alias */};$4
+endsnippet
+
+snippet tun "union with alias"
+typedef union {
+	$1;
+	$2;
+}${3:/* alias */};$4
+endsnippet
+
+snippet ten "enum with alias"
+typedef enum {
+	$1, $2
+}${3:/* alias */};$4
+endsnippet
+
+snippet sc "#include <stdio.h>; int scanf(const char *format, ...);"
+scanf("%${1:d}", &$2)
+endsnippet
+
+snippet fgets "#include <stdio.h>; char *fgets(char *str, int num, FILE *stream);"
+fgets(${1:/* char *str */}, ${2:/* int num */}, ${3:/* FILE *stream, stdin, stdout */});$4
+endsnippet
+
+snippet sprintf "#include <stdio.h>; int sprintf(char *buf, const char *format, ...);"
+sprintf(${1:/* char *buf */}, "${2:/* const char *format */}", ${3:/* ... */});$4
+endsnippet

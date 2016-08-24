@@ -1,0 +1,25 @@
+
+"============== Script configs ===============
+" let NERDTreeMinimalUI=1
+" let NERDTreeDirArrows=1
+
+" Load custom settings
+"
+"source c:/cygwin64/home/Anton/.vim/startup/vundle.vim
+source c:/cygwin64/home/Anton/.vim/startup/vim-plug.vim
+"source c:/cygwin64/home/Anton/.vim/startup/vimacs.vim
+source c:/cygwin64/home/Anton/.vim/startup/easymotion.vim
+source c:/cygwin64/home/Anton/.vim/startup/mappings.vim
+source c:/cygwin64/home/Anton/.vim/startup/settings.vim
+source c:/cygwin64/home/Anton/.vim/startup/ctrlpfunky.vim
+source c:/cygwin64/home/Anton/.vim/startup/airline.vim
+source c:/cygwin64/home/Anton/.vim/startup/nerdtree.vim
+source c:/cygwin64/home/Anton/.vim/startup/tmuxline.vim
+"source c:/cygwin64/home/Anton/.vim/startup/promptline.vim
+source c:/cygwin64/home/Anton/.vim/startup/vim-smile.vim
+source c:/cygwin64/home/Anton/.vim/startup/neocomplete.vim
+source c:/cygwin64/home/Anton/.vim/startup/WatchForChanges.vim
+source c:/cygwin64/home/Anton/.vim/startup/multiple-cursors.vim
+
+
+" Syntax-specific settings
