@@ -299,6 +299,17 @@ autocmd User fugitive
             \ endif
 "}}}
 
+Plug 'airblade/vim-gitgutter'
+"{{{
+set updatetime=2
+let g:gitgutter_sign_removed = '✗'
+"let g:gitgutter_sign_added = 'xx'
+"let g:gitgutter_sign_modified = 'yy'
+"let g:gitgutter_sign_removed_first_line = '^^'
+"let g:gitgutter_sign_modified_removed = 'ww'
+"}}}
+
+
 Plug 'tpope/vim-unimpaired'
 Plug 'tomtom/tcomment_vim'
 Plug 'terryma/vim-expand-region'
@@ -310,7 +321,6 @@ Plug 'bling/vim-airline'   " fugitive display git branches
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
-Plug 'airblade/vim-gitgutter'
 "Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux'      " for syntax and a few feachers for .tmux.conf
 "Plug 'edkolev/promptline.vim'
