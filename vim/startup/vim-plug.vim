@@ -277,7 +277,7 @@ Plug 'rking/ag.vim'   "SEARCH
 " https://github.com/ggreer/the_silver_searcher
 
 nnoremap \ :Ag<SPACE>
-"let g:ag_working_path_mode = 'r'
+let g:ag_working_path_mode = 'r'
 "}}}
 Plug 'Chun-Yang/vim-action-ag'    "SEARCH
 "{{{
