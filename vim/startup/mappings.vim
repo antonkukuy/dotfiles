@@ -151,13 +151,25 @@ set pastetoggle=<M-S-p>
 "}}}
 
 "Windows {{{
-" Move faster
+" Move faster between windows
 "{{{
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-l> <C-w>l
-"nnoremap <C-c> <C-w>c
+nnoremap <silent> <C-h> :call WindMove('h')<CR>
+nnoremap <silent> <C-j> :call WindMove('j')<CR>
+nnoremap <silent> <C-k> :call WindMove('k')<CR>
+nnoremap <silent> <C-l> :call WindMove('l')<CR>
+
+function! WindMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if(match(a:key, '[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
 "}}}
 
 " scroll screen faster
@@ -520,23 +532,5 @@ nnoremap <silent> <Leader>F :call Gather(@/)<CR>
 nnoremap <silent> <Esc> :call CloseScratch()<CR>
 "}}}
 
-" Windows move
-nnoremap <silent> <C-h> :call WindMove('h')<CR>
-nnoremap <silent> <C-j> :call WindMove('j')<CR>
-nnoremap <silent> <C-k> :call WindMove('k')<CR>
-nnoremap <silent> <C-l> :call WindMove('l')<CR>
-
-function! WindMove(key)
-    let t:curwin = winnr()
-    exec "wincmd ".a:key
-    if (t:curwin == winnr())
-        if(match(a:key, '[jk]'))
-            wincmd v
-        else
-            wincmd s
-        endif
-        exec "wincmd ".a:key
-    endif
-endfunction
 " }}}
 
