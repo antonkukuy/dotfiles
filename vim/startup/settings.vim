@@ -2,13 +2,13 @@
 filetype plugin on
 set nocompatible
 syntax enable
-colorscheme molokai              " Указываем цветовую схему 
+colorscheme molokai
 highlight Normal ctermfg=white ctermbg=black
 "set cursorcolumn
-"set cursorline                " Включаем подсветку строки с курсором
-"set lines=38 columns=80            " Указываем размер окна
-set rtp+=/home/Anton/opt_vim
-set tags+=/home/Anton/opt_vim/tags
+"set cursorline                " Turn on highlight string
+"set lines=38 columns=80            " size window
+set rtp+=/home/Anton/options_vim
+set tags+=/home/Anton/options_vim/tags
 
 
 " 4 displaying text{{{
@@ -41,12 +41,12 @@ set mps+=<:>
 
 " 14 tabs and indenting{{{
 
-" Рекомендуется устанавливать количество пробелов в TAB равное четырем
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=4 
+set softtabstop=4
 set smartindent
 set expandtab
-set number           " Включаем нумерацию строк
+set number
 
 "}}}
 
@@ -115,8 +115,8 @@ set fileformats=unix,dos,mac
 
 set mouse=a     " Turn on mouse
 "set mouse=     "disable mouse
-set mousehide   " Прятать указатель во время набора текста
-set nohlsearch    " Воключает подсветку выражения которое вы ищете в тексте.
+set mousehide   " Hide mouse when you are working.
+set nohlsearch    " Turn off highlight's searching
 
 :ab head# #=================================================
 :ab hcom "=================================================
