@@ -14,9 +14,8 @@ set tags+=/home/Anton/opt_vim/tags
 " 4 displaying text{{{
 
 set list             " show hidden symbol
-"set listchars=tab:▸\ ,eol:¬
 "set listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
-set listchars=tab:▸·,eol:¬,precedes:«,extends:»,trail:-
+set listchars=tab:×·,eol:¬,precedes:«,extends:»,trail:-
 "Invisible character colors 
 highlight NonText ctermfg=40
 highlight SpecialKey ctermfg=40
