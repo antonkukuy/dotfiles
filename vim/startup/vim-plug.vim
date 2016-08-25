@@ -305,10 +305,15 @@ set updatetime=2
 let g:gitgutter_sign_removed = '✗'
 "let g:gitgutter_sign_added = 'xx'
 "let g:gitgutter_sign_modified = 'yy'
-"let g:gitgutter_sign_removed_first_line = '^^'
-"let g:gitgutter_sign_modified_removed = 'ww'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '✗'
 "}}}
 
+Plug 'vim-multiple-cursors'
+"{{{
+nnoremap ;f :<c-u>call multiple_cursors#new('n')<cr>
+nnoremap ;v :<c-u>call multiple_cursors#new('v')<cr>
+"}}}
 
 Plug 'tpope/vim-unimpaired'
 Plug 'tomtom/tcomment_vim'
@@ -325,10 +330,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'tmux-plugins/vim-tmux'      " for syntax and a few feachers for .tmux.conf
 "Plug 'edkolev/promptline.vim'
 Plug 'jpalardy/vim-slime'
-Plug 'vim-multiple-cursors'
 "Plug 'itchyny/calendar.vim'
 "Plug 'kien/ctrlp.vim_reserve'
-Plug 'cstrahan/vim-eclim'
+"Plug 'cstrahan/vim-eclim'   conflict with Gpush(fugitive)
 "Plug 'ryanoasis/vim-devicons'
 
 

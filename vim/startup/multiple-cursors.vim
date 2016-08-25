@@ -4,7 +4,7 @@
 " Map start key separately from next key
 "let g:multi_cursor_start_key='<F3>'
 
-let g:multi_cursor_use_default_mapping=1
+"let g:multi_cursor_use_default_mapping=1
 
 " Default mapping
 ""let g:multi_cursor_next_key='<F3>'

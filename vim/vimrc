@@ -1,8 +1,3 @@
-
-"============== Script configs ===============
-" let NERDTreeMinimalUI=1
-" let NERDTreeDirArrows=1
-
 " Load custom settings
 "
 "source c:/cygwin64/home/Anton/.vim/startup/vundle.vim
@@ -19,7 +14,5 @@ source c:/cygwin64/home/Anton/.vim/startup/tmuxline.vim
 source c:/cygwin64/home/Anton/.vim/startup/vim-smile.vim
 source c:/cygwin64/home/Anton/.vim/startup/neocomplete.vim
 source c:/cygwin64/home/Anton/.vim/startup/WatchForChanges.vim
-source c:/cygwin64/home/Anton/.vim/startup/multiple-cursors.vim
+"source c:/cygwin64/home/Anton/.vim/startup/multiple-cursors.vim
 
-
-" Syntax-specific settings
