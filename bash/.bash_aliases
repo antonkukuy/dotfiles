@@ -29,16 +29,42 @@ alias brt='trans -play -speak -bing'
 alias trbrief='trans -play -speak -brief'
 #}}}
 
-# Various command {{{
-#alias nmp='cmd /c npm'
-alias balias='vim ~/.bash_aliases'
-alias bhistory='vim ~/.bash_history'
-alias inputrc='vim ~/.inputrc'
-alias vimacs='vim ~/.vim/bundle/vimacs-0.93/plugin/vimacs-0.93.vim'
+# Open by VIM{{{
+alias balias='vim ~/dotfiles/bash/.bash_aliases'
+alias bhistory='vim ~/dotfiles/bash/.bash_history'
+alias inputrc='vim ~/dotfiles/bash/.inputrc'
+alias bashrc='vim ~/dotfiles/bash/.bashrc'
+alias vimacs='vim ~/dotfiles/vim/bundle/vimacs-0.93/plugin/vimacs-0.93.vim'
+alias vimrc='vim ~/dotfiles/vim/vimrc'
+alias vundle='vim ~/dotfiles/vim/startup/vundle.vim'
+alias vplug='vim ~/dotfiles/vim/startup/vim-plug.vim'
+alias mapping='vim ~/dotfiles/vim/startup/mappings.vim'
+alias setting='vim ~/dotfiles/vim/startup/settings.vim'
 alias cvimrc='vim j:/GOOGLE/ext_settings/.cvimrc'
+alias tmuxconf='vim c:/cygwin64/home/Anton/.tmux.conf'
+#}}}
+
+# Change directory{{{
+alias home='cd c:/Users/ADMIN/'
 alias cdir='cd ~/c_program'
 alias ..='cd ..'
 alias ..2='cd ../..'
+alias key='cd d:/KEYBOARD/VimKee4/'
+alias num='cd d:/KEYBOARD/NumpadMouse/'
+alias ahk='cd d:/AutoHotKey/'
+
+    # Switch disk {{{
+    alias diskc='cd c:/'
+    alias diskd='cd d:/'
+    alias diske='cd e:/'
+    alias diskh='cd h:/'
+    alias diskj='cd j:/'
+    alias diskk='cd k:/'
+    #}}}
+
+#}}}
+
+# Various command {{{
 alias rm='rm -i'
 alias rmd='rm -id'
 alias open='xdg-open'
@@ -46,30 +72,10 @@ alias chrome='c:/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
 alias vless=/usr/share/vim/vim74/macros/less.sh
 alias grep='grep --color=auto'
 alias so='source c:/cygwin64/home/Anton/.bashrc'
-alias bashrc='vim ~/.bashrc'
-alias vimrc='vim ~/.vim/vimrc'
-alias vundle='vim ~/.vim/startup/vundle.vim'
-alias vplug='vim ~/.vim/startup/vim-plug.vim'
-alias mapping='vim ~/.vim/startup/mappings.vim'
-alias setting='vim ~/.vim/startup/settings.vim'
 alias sotmux='tmux source-file c:/cygwin64/home/Anton/.tmux.conf'
-alias tmuxconf='vim c:/cygwin64/home/Anton/.tmux.conf'
 alias tmux='tmux attach || tmux new' 
-alias home='cd c:/Users/ADMIN/'
 alias cs=clear
-alias key='cd d:/KEYBOARD/VimKee4/'
-alias num='cd d:/KEYBOARD/NumpadMouse/'
-alias ahk='cd d:/AutoHotKey/'
 alias weather='sh c:/cygwin64/home/Anton/scripts/weather/openweathermap.sh'
-#}}}
-
-# Switch disk {{{
-alias diskc='cd c:/'
-alias diskd='cd d:/'
-alias diske='cd e:/'
-alias diskh='cd h:/'
-alias diskj='cd j:/'
-alias diskk='cd k:/'
 #}}}
 
 # TMUX {{{
