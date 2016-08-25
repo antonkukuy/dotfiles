@@ -147,6 +147,7 @@ let g:surround_99 = "/* \r */"
 "let g:surround_102 = "\"{{{ \r \"}}}"
 autocmd FileType autohotkey let b:surround_102 = ";{{{ \r ;}}}"
 autocmd FileType vim let b:surround_102 = "\"{{{ \r \"}}}"
+autocmd FileType sh let b:surround_102 = "#{{{ \r #}}}"
 "}}}
 
 "Plug 'ternjs/tern_for_vim', { 'for': 'javascript'  }
