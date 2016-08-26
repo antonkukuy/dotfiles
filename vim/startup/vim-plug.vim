@@ -211,9 +211,9 @@ let g:ctrlp_show_hidden = 1
 
 " удобное управление для CtrlP
 map <leader>c :CtrlP<CR>
-map <leader>v :CtrlPBuffer<CR>
-map <leader>b :CtrlPBufTag<CR>
-map <leader>cb :CtrlPBookmarkDir<CR>
+map <leader>cb :CtrlPBuffer<CR>
+map <leader>cbt :CtrlPBufTag<CR>
+map <leader>cbd :CtrlPBookmarkDir<CR>
 map <leader>cba :CtrlPBookmarkDirAdd<CR>
 
 "}}}
@@ -315,6 +315,8 @@ Plug 'vim-multiple-cursors'
 nnoremap ;f :<c-u>call multiple_cursors#new('n')<cr>
 nnoremap ;v :<c-u>call multiple_cursors#new('v')<cr>
 "}}}
+
+Plug '~/.vim/bundle/bufexplorer-7.4.9'
 
 Plug 'tpope/vim-unimpaired'
 Plug 'tomtom/tcomment_vim'
