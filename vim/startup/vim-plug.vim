@@ -1,4 +1,5 @@
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/dotfiles/vim/bundle')
+"call plug#begin('~/.vim/bundle')
 
 " Make sure you use single quotes
 
@@ -155,26 +156,26 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
 " tern_for_vim {{{
 
 " KEYS (default){{{
- " <leader>tdo  :TernDoc<cr>     " documentation under cursor
- " <leader>tb  :TernDocBrowse<cr>     " browse documentation
- " <leader>tt  :TernType<cr>     " type hints
- " <leader>tde  :TernDef<cr>     " jump to definition (yes, 'td' is duplicated)
- " <leader>tpd  :TernDefPreview<cr>     " jump to definition inside preview
- " <leader>tsd  :TernDefSplit<cr>     " definition in new split
- " <leader>ttd  :TernDefTab<cr>     " definition in new tab
- " <leader>tr  :TernRefs<cr>     " all references under cursor
- " <leader>tR  :TernRename<cr>     " rename variable
+ " ;tD  :TernDoc<cr>     " documentation under cursor
+ " ;tb  :TernDocBrowse<cr>     " browse documentation
+ " ;tt  :TernType<cr>     " type hints
+ " ;td  :TernDef<cr>     " jump to definition
+ " ;tpd  :TernDefPreview<cr>     " jump to definition inside preview
+ " ;tsd  :TernDefSplit<cr>     " definition in new split
+ " ;ttd  :TernDefTab<cr>     " definition in new tab
+ " ;tr  :TernRefs<cr>     " all references under cursor
+ " ;tR  :TernRename<cr>     " rename variable
 "}}}
 
 if exists('g:plugs["tern_for_vim"]')
     autocmd FileType javascript setlocal omnifunc=tern#Complete
-    let tern#command = ["node", "c:/cygwin64/home/Anton/.vim/bundle/tern_for_vim/node_modules/tern/bin/tern"]
-    let tern#is_show_argument_hints_enabled = 1
+    let tern#command = ["node", "c:/cygwin64/home/Anton/dotfiles/vim/bundle/tern_for_vim/node_modules/tern/bin/tern", '--no-port-file']
+    "let tern#is_show_argument_hints_enabled = 1
     let g:tern_show_signature_in_pum = 1
     "let g:tern_show_argument_hints='on_move' 
-    let g:tern_show_argument_hints='on_hold' 
+    "let g:tern_show_argument_hints='on_hold' 
     let g:tern_map_keys = 1
-    let g:tern_map_prefix=','
+    let g:tern_map_prefix=';'
 else
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
