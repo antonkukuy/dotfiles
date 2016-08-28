@@ -103,17 +103,17 @@ endfor
 "{{{
 "noremap <A-r>  :w<CR>:so %<CR>
 "noremap <A-s>  :w<CR>
-noremap <leader>r  :w \| so % \| echo "source is done"<CR>
+noremap <leader>r  :w \| source $MYVIMRC \| echo "source is done"<CR>
 noremap <leader>s  :w<CR>
 noremap <leader>sq  :w \| :q<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+"nnoremap <leader>sv :source $MYVIMRC<CR>
 
 nmap <A-s>  :!gcc -o hello hello.c<CR>
 nmap <A-r> ,s:exec '!gcc -o hello hello.c && ./hello > /dev/pty1 \|\| echo "Programm is not correct"> /dev/pty1'<CR><CR>
 "map <A-r> ,s:exec '!gcc -o hello hello.c;echo > /dev/pty1;echo > /dev/pty1;./hello > /dev/pty1'<CR><CR>
 
 "Reload file
-nmap <leader>gr  :e!<CR>
+nmap <leader>re  :e!<CR>
 "}}}
 
     "Internal surround
