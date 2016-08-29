@@ -1,5 +1,5 @@
-call plug#begin('~/dotfiles/vim/bundle')
-"call plug#begin('~/.vim/bundle')
+"call plug#begin('~/dotfiles/vim/bundle')
+call plug#begin('~/.vim/bundle')
 
 " Make sure you use single quotes
 
@@ -87,7 +87,7 @@ let g:AutoPairsShortcutFastWrap = '<A-S-f>'
 " to .vimrc, if the key is empty string '', then the shortcut will be disabled.
 "}}}
 
-Plug 'ron89/thesaurus_query.vim' 
+"Plug 'ron89/thesaurus_query.vim' 
 " thesaurus_query.vim {{{
 
 "default setting g:tq_language='en'
@@ -317,7 +317,8 @@ nnoremap ;v :<c-u>call multiple_cursors#new('v')<cr>
 "}}}
 
 Plug '~/.vim/bundle/bufexplorer-7.4.9'
-
+Plug 'gko/vim-coloresque'
+"Plug 'gerw/vim-HiLinkTrace'    " a plugin for revealing all syntax groups
 Plug 'tpope/vim-unimpaired'
 Plug 'tomtom/tcomment_vim'
 Plug 'terryma/vim-expand-region'
