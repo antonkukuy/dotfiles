@@ -81,7 +81,8 @@ endfor
 " Various map {{{
     "Convert inserted text to normal mode commands
     inoremap <F11> <ESC>u@.
-    noremap <leader>z :w \| :suspend<CR>
+    nnoremap <leader>z :w \| :suspend<CR>
+    nnoremap <Space> za
 
     " Command-line 
     "{{{
