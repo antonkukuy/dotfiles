@@ -83,6 +83,12 @@ endfor
     inoremap <F11> <ESC>u@.
     noremap <leader>z :w \| :suspend<CR>
 
+    " Command-line 
+    "{{{
+    " Open the command-line window
+    cnoremap <A-e> <C-f>
+    "}}}
+
     " Quick movements
     " {{{
     inoremap II <C-o>I
