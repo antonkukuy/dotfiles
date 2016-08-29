@@ -316,6 +316,30 @@ nnoremap ;f :<c-u>call multiple_cursors#new('n')<cr>
 nnoremap ;v :<c-u>call multiple_cursors#new('v')<cr>
 "}}}
 
+Plug 'godlygeek/tabular'
+"{{{
+let mapleader=','
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+" After align text with '|' if you are continuing taping text surrunding '|' then it automaticaly align one.
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+"}}}
+
 Plug '~/.vim/bundle/bufexplorer-7.4.9'
 Plug 'gko/vim-coloresque'
 "Plug 'gerw/vim-HiLinkTrace'    " a plugin for revealing all syntax groups
