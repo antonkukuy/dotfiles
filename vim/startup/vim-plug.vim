@@ -340,6 +340,17 @@ function! s:align()
 endfunction
 "}}}
 
+Plug 'sjl/gundo.vim/', {'on': 'GundoToggle'}
+"{{{
+nnoremap <F5> :GundoToggle<CR>
+"automatically rendering preview diffs as you move through the undo tree
+let g:gundo_preview_bottom=1
+let g:gundo_width = 20
+let g:gundo_preview_height = 10
+let g:gundo_playback_delay= 5000
+"let g:gundo_close_on_revert=1
+"}}}
+
 Plug '~/.vim/bundle/bufexplorer-7.4.9'
 Plug 'gko/vim-coloresque'
 "Plug 'gerw/vim-HiLinkTrace'    " a plugin for revealing all syntax groups
@@ -347,10 +358,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tomtom/tcomment_vim'
 Plug 'terryma/vim-expand-region'
 Plug 'junegunn/vim-plug'
-Plug 'Konfekt/FastFold'
+"Plug 'Konfekt/FastFold'
 Plug 'tpope/vim-obsession'
 Plug 'junegunn/vader.vim' 
-Plug 'bling/vim-airline'   " fugitive display git branches 
+Plug 'bling/vim-airline'   " fugitive display names of git branches and counts(types) changes in file
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
