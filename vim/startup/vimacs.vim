@@ -1,4 +1,5 @@
 """
+
 "" Vimacs (0.93)
 "
 " Vim-Improved eMACS
@@ -35,6 +36,8 @@
 " Public License instead of this License.
 "
 
+
+
 " TODO: :h map-script
 "       :h cpoptions
 "       :h mapleader
@@ -44,6 +47,7 @@
 "       :h write-plugin
 
 " Have <unique> for all maps?
+"{{{
 
 
 " Never load Vimacs if user wants true Vi!  (We're not _that_ evil 8)
@@ -61,13 +65,14 @@ endif
 let s:saved_cpoptions = &cpoptions
 set cpoptions-=<,C
 
+"}}}
 
 " Set a default value for a variable only if it doesn't exist
 " (like "$foo |= 'bar'" in Perl)
 "
 " Thanks to Piet Delport for this solution, and Benji Fisher for
 " additional comments :)
-"
+"{{{
 
 function! <SID>LetDefault(var_name, value)
   if !exists(a:var_name)
@@ -87,12 +92,13 @@ if g:VM_Enabled == 0 || (exists("loaded_vimacs") && g:VM_Dev == 0) || &cp
   finish
 endif
 
+"}}}
 
 "
 " Function to mark a cursor position and restore it afterward -- used in a few
 " functions, like FillParagraph().  Blatantly stolen from foo.vim by Benji
 " Fisher :)
-"
+"{{{
 
 function! <SID>Mark(...)
   if a:0 == 0
@@ -108,6 +114,7 @@ function! <SID>Mark(...)
   endif
 endfun
 
+"}}}
 
 "
 " It's a good idea to have a command height of at least 2 if showmode is on,
@@ -115,7 +122,7 @@ endfun
 " e.g. <C-x><C-s>, which saves the file, will display that the file has been
 " saved, but the notice will be immediately overwritten by the modeline when
 " this happens.
-"
+"{{{
 
 " Don't fork around with cmdheight?
 LetDefault g:VM_CmdHeightAdj 1
@@ -124,13 +131,13 @@ if &cmdheight == 1 && &showmode == 1 && g:VM_CmdHeightAdj
   set cmdheight=2
 endif
 
+"}}}
 
-"
 " Vim options essential for emulating Emacs-ish behaviour
-"
+"{{{
 
 " Turn off <Alt>/<Meta> pulling down GUI menu
-"set winaltkeys=no
+set winaltkeys=no
 " Emacs normally wraps everything
 set whichwrap=b,s,<,>,h,l,[,],~
 " Emacs always has 'hidden buffers'
@@ -143,10 +150,10 @@ set wildcharm=<Tab>
 " Recognise key sequences that start with <Esc> in Insert Mode
 set esckeys
 
+"}}}
 
-"
 " For the UNIX console -- make <Esc>x == <M-x>
-"
+"{{{
 
 " Pressing <M-x> sends <Esc>x?  (As Unix terminals often do)
 LetDefault g:VM_UnixConsoleMetaSendsEsc 1
@@ -168,30 +175,39 @@ if has("unix") && !has("gui_running") && g:VM_UnixConsoleMetaSendsEsc
   set <M-0>=0
   set <M-a>=a
   set <M-b>=b
+    set <M-B>=B
   set <M-c>=c
   set <M-d>=d
   set <M-e>=e
   set <M-f>=f
+  set <M-F>=F
   set <M-g>=g
   set <M-h>=h
   set <M-i>=i
   set <M-j>=j
+    set <M-J>=J
   set <M-k>=k
+    set <M-K>=K
   set <M-l>=l
   set <M-m>=m
   set <M-n>=n
   set <M-o>=o
+  "set <M-O>=O
   set <M-p>=p
+    set <M-P>=P
   set <M-q>=q
   set <M-r>=r
   set <M-s>=s
   set <M-t>=t
   set <M-u>=u
   set <M-v>=v
+    set <M-V>=V
   set <M-w>=w
   set <M-x>=x
   set <M-y>=y
   set <M-z>=z
+    set <M-,>=,
+    set <M-;>=;
   set <M->=
   set <M-/>=/
   " Doing "set <M->>=^[>" throws up an error, so we be dodgey and use Char-190
@@ -207,11 +223,26 @@ if has("unix") && !has("gui_running") && g:VM_UnixConsoleMetaSendsEsc
   set <M-Space>=^[<Space>
 
 endif
+"}}}
+
+" Compatible vim internal command Vim
+"{{{
+
+inoremap <M-S-v> <C-v>
+
+" Vim mapleader
+imap <M-,> <C-o>,
+" prefix
+imap <M-;> <C-o>;
+" indent
+inoremap <C-x>> <C-t>
+inoremap <C-x>< <C-d>
 
 
-"
+"}}}
+
 " One or two <Esc>s to get back to Normal mode?
-"
+"{{{
 
 " on CmdwinLeave?
 if g:VM_SingleEscToNormal == 1
@@ -227,8 +258,9 @@ if g:VM_SingleEscToNormal == 1
   set ttimeout
   set timeoutlen=50
 else
-  "inoremap <Esc><Esc> <C-l>
+  inoremap <Esc> <Nop>
   inoremap <Esc><Esc> <Esc>
+  vnoremap <Esc> <Nop>
   vnoremap <Esc><Esc> <Esc>
   "set notimeout
   "set nottimeout
@@ -236,19 +268,20 @@ endif
 
 command! UseF1ForNormal echoerr "Use F1 or <C-z> to return to Normal mode.  :help vimacs-unix-esc-key"
 
+"}}}
 
-"
 " Insert mode <-> Normal mode <-> Command mode
-" 
+"{{{
 
 inoremap <M-x> <C-o>:
 inoremap <M-:> <C-o>:
 inoremap <F1> <C-l>
 inoremap <F2> <C-o>
 inoremap <M-`> <C-o>
+inoremap <C-x><C-z> <C-o>:w \| suspend<CR>
 "inoremap <silent> <C-z> <C-l>:echo "Returning to Normal mode; press <C-z> again to suspend Vimacs"<CR>
-inoremap <silent> <C-z> <Esc>:echo "Returning to Normal mode; press <C-z> again to suspend Vimacs"<CR>
-nnoremap <C-z> :call <SID>Suspend()<CR>
+"inoremap <silent> <C-z> <Esc>:echo "Returning to Normal mode; press <C-z> again to suspend Vimacs"<CR>
+"nnoremap <C-z> :call <SID>Suspend()<CR>
 " M-` isn't defined in Emacs
 
 inoremap <M-1> <C-o>1
@@ -274,16 +307,17 @@ function! <SID>Suspend()
   endif
 endfunction
 
+"}}}
 
-"
 " Leaving Vim
-"
+"{{{
 
 inoremap <C-x><C-c> <C-o>:confirm qall<CR>
 
+"}}}
 
-"
 " Files & Buffers
+"{{{
 "
 
 inoremap <C-x><C-f> <C-o>:hide edit<Space>
@@ -295,25 +329,27 @@ inoremap <C-x><C-w> <C-o>:write<Space>
 inoremap <C-x><C-q> <C-o>:set invreadonly<CR>
 inoremap <C-x><C-r> <C-o>:hide view<Space>
 
+"}}}
 
 "
 " Help Sistemmii (hi Finns)
+"{{{
 "
 "inoremap <C-h> <C-o>:help
 
+"}}}
 
-"
 " Error Recovery
-" 
+"{{{
 
 inoremap <C-_> <C-o>u
 inoremap <C-x><C-u> <C-o>u
 "lots of other stuff :(
 
+"}}}
 
-"
 " Incremental Searching and Query Replace
-"
+"{{{
 
 inoremap <C-s> <C-o>:call <SID>StartSearch('/')<CR><C-o>/
 inoremap <C-r> <C-o>:call <SID>StartSearch('?')<CR><C-o>?
@@ -326,7 +362,7 @@ inoremap <C-M-r> <C-o>:call <SID>StartSearch('?')<CR><C-o>?
 inoremap <M-s> <C-o>:set invhls<CR>
 inoremap <M-%> <C-o>:call <SID>QueryReplace()()<CR>
 inoremap <C-M-%> <C-o>:call <SID>QueryReplace()_regexp()<CR>
-cnoremap <C-r> <CR><C-o>?<Up>
+"cnoremap <C-r> <CR><C-o>?<Up>
 
 command! QueryReplace :call <SID>QueryReplace()()
 command! QueryReplaceRegexp :call <SID>QueryReplace()_regexp()
@@ -429,20 +465,24 @@ function! <SID>QueryReplaceRegexp()
   execute ".,$s/" . searchtext_esc . "/" . replacetext_esc . "/cg"
 endfunction
 
+"}}}
 
 "
 " Command line editing
-"
+"{{{
 
 " Navigation
+"{{{
 cmap <C-b> <Left>
 cmap <C-f> <Right>
 cnoremap <M-f> <S-Right>
 cnoremap <M-b> <S-Left>
 cmap <C-a> <Home>
 cmap <C-e> <End>
+"}}}
 
 " Editing
+"{{{
 cmap <M-p> <Up>
 cmap <M-n> <Down>
 cmap <C-d> <Del>
@@ -451,14 +491,15 @@ cnoremap <M-w> <C-y>
 cnoremap <M-BS> <C-w>
 cnoremap <C-k> <C-f>d$<C-c><End>
 "Should really use &cedit, not just <C-f> -- but how?
+"}}}
 
+"}}}
 
-"
 " Navigation
-"
+"{{{
 
 " Insert/Visual/Operator mode maps
-imap <C-b> <Left>
+inoremap <C-b> <Left>
 vmap <C-b> <Left>
 omap <C-b> <Left>
 imap <C-f> <Right>
@@ -473,8 +514,7 @@ omap <C-n> <Down>
 inoremap <M-f> <C-o>e<Right>
 vnoremap <M-f> e<Right>
 onoremap <M-f> e<Right>
-inoremap <M-b> <C-o>b<Left>
-"inoremap <M-b> <C-Left>
+inoremap <M-b> <C-Left>
 vnoremap <M-b> <C-Left>
 onoremap <M-b> <C-Left>
 imap <C-a> <Home>
@@ -545,10 +585,10 @@ endfunction
 
 command! GotoLine :call <SID>GotoLine()
 
+"}}}
 
-"
 " General Editing
-"
+"{{{
 
 inoremap <C-c> <Space><Left>
 inoremap <C-u> <C-o>d0
@@ -556,14 +596,16 @@ inoremap <C-q> <C-v>
 inoremap <C-^> <C-y>
 inoremap <M-r> <C-r>=
 
-"" Aborting
+" Aborting
+"{{{
 cnoremap <C-g> <C-c>
 onoremap <C-g> <C-c>
 
+"}}}
+"}}}
 
-"
 " Killing and Deleting
-"
+"{{{
 
 inoremap <C-d> <Del>
 inoremap <silent> <M-d> <C-r>=<SID>KillWord()<CR>
@@ -596,122 +638,130 @@ function! <SID>KillLine()
   endif
 endfunction
 
+"}}}
 
-"
 " Abbreviations
-" 
+"{{{
 
 inoremap <M-/> <C-p>
 inoremap <C-M-/> <C-x>
 inoremap <C-M-x> <C-x>
 inoremap <C-]> <C-x>
 
+"}}}
 
-"
 " Visual stuff (aka 'marking' aka 'region' aka 'block' etc etc)
-"
+"{{{
 
-set sel=exclusive
-" Visual mode
-inoremap <silent> <C-Space> <C-r>=<SID>StartVisualMode()<CR>
-" Unix terminals produce <C-@>, not <C-Space>
-imap <C-@> <C-Space>
-vnoremap <C-x><C-Space> <Esc>
-vnoremap <C-g> <Esc>
-vnoremap <C-x><C-@> <Esc>
-vnoremap <M-w> "1y
-"May have to change to "1d and paste ...
+  "{{{
+  set sel=exclusive
+  " Visual mode
+  inoremap <silent> <C-Space> <C-r>=<SID>StartVisualMode()<CR>
+  " Unix terminals produce <C-@>, not <C-Space>
+  imap <C-@> <C-Space>
+  vnoremap <C-x><C-Space> <Esc>
+  vnoremap <C-g> <Esc>
+  vnoremap <C-x><C-@> <Esc>
+  vnoremap <M-w> "1y
+  "May have to change to "1d and paste ...
+  "}}}
 
-" Marking blocks
-inoremap <M-Space> <C-o>:call <SID>StartMarkSel()<CR><C-o>viw
-inoremap <M-h> <C-o>:call <SID>StartMarkSel()<CR><C-o>vap
-inoremap <C-<> <C-o>:call <SID>StartMarkSel()<CR><C-o>v1G0o
-inoremap <C->> <C-o>:call <SID>StartMarkSel()<CR><C-o>vG$o
-inoremap <C-x>h <C-o>:call <SID>StartMarkSel()<CR><Esc>1G0vGo
+    " Marking blocks
+  "{{{
+  inoremap <M-Space> <C-o>:call <SID>StartMarkSel()<CR><C-o>viw
+  inoremap <M-h> <C-o>:call <SID>StartMarkSel()<CR><C-o>vap
+  inoremap <C-<> <C-o>:call <SID>StartMarkSel()<CR><C-o>v1G0o
+  inoremap <C->> <C-o>:call <SID>StartMarkSel()<CR><C-o>vG$o
+  inoremap <C-x>h <C-o>:call <SID>StartMarkSel()<CR><Esc>1G0vGo
+  "}}}
 
-" Block operations
-vnoremap <C-w> "1d
-vnoremap <S-Del> "_d
-vnoremap <C-x><C-x> o
-vnoremap <C-x><C-u> U
-vnoremap <M-x> :
+    " Block operations
+  "{{{
+  vnoremap <C-w> "1d
+  vnoremap <S-Del> "_d
+  vnoremap <C-x><C-x> o
+  vnoremap <C-x><C-u> U
+  vnoremap <M-x> :
+  "}}}
 
-" Pasting
-inoremap <silent> <C-y> <C-o>:call <SID>ResetKillRing()<CR><C-r><C-o>"
-inoremap <S-Ins> <C-r><C-o>*
-"inoremap <M-y> <C-o>:echoerr "Sorry, yank-pop is not yet implemented!"<CR>
-inoremap <M-y> <C-o>:call <SID>YankPop()<CR>
+    " Pasting
+  "{{{
+  inoremap <silent> <C-y> <C-o>:call <SID>ResetKillRing()<CR><C-r><C-o>"
+  inoremap <S-Ins> <C-r><C-o>*
+  "inoremap <M-y> <C-o>:echoerr "Sorry, yank-pop is not yet implemented!"<CR>
+  inoremap <M-y> <C-o>:call <SID>YankPop()<CR>
 
-function! <SID>YankPop()
-  undo
-  if !exists("s:kill_ring_position")
-    call <SID>ResetKillRing()
-  endif
-  execute "normal! i\<C-r>\<C-o>" . s:kill_ring_position . "\<Esc>"
-  call <SID>IncrKillRing()
-endfunction
+  function! <SID>YankPop()
+    undo
+    if !exists("s:kill_ring_position")
+      call <SID>ResetKillRing()
+    endif
+    execute "normal! i\<C-r>\<C-o>" . s:kill_ring_position . "\<Esc>"
+    call <SID>IncrKillRing()
+  endfunction
 
-function! <SID>ResetKillRing()
-  let s:kill_ring_position = 3
-endfunction
+  function! <SID>ResetKillRing()
+    let s:kill_ring_position = 3
+  endfunction
 
-function! <SID>IncrKillRing()
-  if s:kill_ring_position >= 9
-    let s:kill_ring_position = 2
-  else
-    let s:kill_ring_position = s:kill_ring_position + 1
-  endif
-endfunction
+  function! <SID>IncrKillRing()
+    if s:kill_ring_position >= 9
+      let s:kill_ring_position = 2
+    else
+      let s:kill_ring_position = s:kill_ring_position + 1
+    endif
+  endfunction
 
-function! <SID>StartMarkSel()
-  if &selectmode =~ 'key'
-    set keymodel-=stopsel
-  endif
-endfunction
+  function! <SID>StartMarkSel()
+    if &selectmode =~ 'key'
+      set keymodel-=stopsel
+    endif
+  endfunction
 
-function! <SID>StartVisualMode()
-  call <SID>StartMarkSel()
-  if col('.') > strlen(getline('.'))
-    " At EOL
-    return "\<Right>\<C-o>v\<Left>"
-  else
-    return "\<C-o>v"
-  endif
-endfunction
-
-
-"
-" Use <Shift> to select text, ala Windows.
-" (XEmacs supports this)
-"
-
-" We need to make sure that the 'keymodel' option has stopsel before we
-" start the actual marking, so that the user can cancel it with any
-" navigational key as she normally would.  This is in contrast to the
-" <C-Space> style of marking, where navigational keys do _not_ cancel
-" marking.
-"
-" Note that this doesn't work properly if the user remaps 
-
-inoremap <silent> <S-Up>       <C-o>:call <SID>StartShiftSel()<CR><S-Up>
-inoremap <silent> <S-Down>     <C-o>:call <SID>StartShiftSel()<CR><S-Down>
-inoremap <silent> <S-Left>     <C-o>:call <SID>StartShiftSel()<CR><S-Left>
-inoremap <silent> <S-Right>    <C-o>:call <SID>StartShiftSel()<CR><S-Right>
-inoremap <silent> <S-End>      <C-o>:call <SID>StartShiftSel()<CR><S-End>
-inoremap <silent> <S-Home>     <C-o>:call <SID>StartShiftSel()<CR><S-Home>
-inoremap <silent> <S-PageUp>   <C-o>:call <SID>StartShiftSel()<CR><S-PageUp>
-inoremap <silent> <S-PageDown> <C-o>:call <SID>StartShiftSel()<CR><S-PageDown>
-
-function! <SID>StartShiftSel()
-  if &selectmode =~ "key"
-    set keymodel+=stopsel
-  endif
-endfunction
+  function! <SID>StartVisualMode()
+    call <SID>StartMarkSel()
+    if col('.') > strlen(getline('.'))
+      " At EOL
+      return "\<Right>\<C-o>v\<Left>"
+    else
+      return "\<C-o>v"
+    endif
+  endfunction
 
 
-"
+  "
+  " Use <Shift> to select text, ala Windows.
+  " (XEmacs supports this)
+  "
+
+  " We need to make sure that the 'keymodel' option has stopsel before we
+  " start the actual marking, so that the user can cancel it with any
+  " navigational key as she normally would.  This is in contrast to the
+  " <C-Space> style of marking, where navigational keys do _not_ cancel
+  " marking.
+  "
+  " Note that this doesn't work properly if the user remaps 
+
+  inoremap <silent> <S-Up>       <C-o>:call <SID>StartShiftSel()<CR><S-Up>
+  inoremap <silent> <S-Down>     <C-o>:call <SID>StartShiftSel()<CR><S-Down>
+  inoremap <silent> <S-Left>     <C-o>:call <SID>StartShiftSel()<CR><S-Left>
+  inoremap <silent> <S-Right>    <C-o>:call <SID>StartShiftSel()<CR><S-Right>
+  inoremap <silent> <S-End>      <C-o>:call <SID>StartShiftSel()<CR><S-End>
+  inoremap <silent> <S-Home>     <C-o>:call <SID>StartShiftSel()<CR><S-Home>
+  inoremap <silent> <S-PageUp>   <C-o>:call <SID>StartShiftSel()<CR><S-PageUp>
+  inoremap <silent> <S-PageDown> <C-o>:call <SID>StartShiftSel()<CR><S-PageDown>
+
+  function! <SID>StartShiftSel()
+    if &selectmode =~ "key"
+      set keymodel+=stopsel
+    endif
+  endfunction
+
+  "}}}
+"}}}
+
 " Window Operations
-"
+"{{{
 
 inoremap <C-x>2 <C-o><C-w>s
 inoremap <C-x>3 <C-o><C-w>v
@@ -750,15 +800,15 @@ command! -nargs=1 -complete=file FindFileOtherWindow :call <SID>FindFileOtherWin
 
 command! ScrollOtherWindow silent! execute "normal! \<C-w>w\<PageDown>\<C-w>W"
 
+"}}}
 
-"
 " Formatting
-"
+"{{{
 
 inoremap <silent> <M-q> <C-o>:call <SID>FillParagraph()<CR>
 "inoremap <script> <C-o> <CR><Left>
-"inoremap <C-M-o> <C-o>:echoerr "<C-M-o> not supported yet; sorry!"<CR>
-"inoremap <C-x><C-o> <C-o>:call <SID>DeleteBlankLines()<CR>
+inoremap <C-M-o> <C-o>:echoerr "<C-M-o> not supported yet; sorry!"<CR>
+inoremap <C-x><C-o> <C-o>:call <SID>DeleteBlankLines()<CR>
 " Try GoZ<Esc>:g/^$/.,/./-j<CR>Gdd
 inoremap <M-^> <Up><End><C-o>J
 vnoremap <C-M-\> =
@@ -779,20 +829,19 @@ function! <SID>DeleteBlankLines()
   normal j
 endfunction
 
+"}}}
 
-
-"
 " Case Change
-" 
+"{{{
 
 inoremap <M-l> <C-o>gul<C-o>w
 inoremap <M-u> <C-o>gUe<C-o>w
 inoremap <M-c> <C-o>gUl<C-o>w
 
+"}}}
 
-"
 " Buffers
-"
+"{{{
 
 inoremap <C-x>b <C-r>=<SID>BufExplorerOrBufferList()<CR>
 inoremap <C-x><C-b> <C-o>:buffers<CR>
@@ -806,17 +855,17 @@ function! <SID>BufExplorerOrBufferList()
       " the default in Emacs, and also select the last viewed file.
       let g:bufExplorerSortBy = "mru"
     endif
-"   echo bufexplorer_initial_keys
+    "   echo bufexplorer_initial_keys
     return "\<C-o>:BufExplorer\<CR>"
   else
     return "\<C-o>:buffer \<Tab>"
   endif
 endfunction
 
+"}}}
 
-"
 " Marks (a.k.a. "Registers" in Emacs)
-"
+"{{{
 
 inoremap <C-x>/ <C-o>:call <SID>PointToRegister()<CR>
 inoremap <C-x>r<Space> <C-o>:call <SID>PointToRegister()<CR>
@@ -842,11 +891,10 @@ function! <SID>JumpToRegister()
   execute "normal! `" . c
 endfunction
 
+"}}}
 
-
-"
 " Transposing
-"
+"{{{
 
 "" for testing -- foo bar baz quux
 
@@ -856,32 +904,33 @@ inoremap <C-t> <Left><C-o>x<C-o>p
 " Do-What-I-Mean'ish anyway)
 inoremap <M-t> <Esc>dawbhpi
 inoremap <C-x><C-t> <Up><C-o>dd<End><C-o>p<Down>
-inoremap <C-M-t> <C-o>:echoerr "C-M-t is not implemented yet; sorry!"<CR>
+"inoremap <C-M-t> <C-o>:echoerr "C-M-t is not implemented yet; sorry!"<CR>
 
+"}}}
 
-"
 " Tags
-"
+"{{{
 
 inoremap <M-.> <C-o><C-]>
 inoremap <M-*> <C-o><C-t>
 inoremap <C-x>4. <C-o><C-w>}
 
+"}}}
 
-"
 " Shells
-"
+"{{{
 
 vnoremap <M-!> !
 inoremap <M-!> <C-o>:!
 
+"}}}
 
-"
 " Rectangles
-"
+"{{{
 
 vnoremap <C-x>r <C-v>
 
+"}}}
 
 "
 " Abbreviations?
@@ -898,9 +947,8 @@ vnoremap <C-x>r <C-v>
 "
 
 
-"
 " Redraw
-"
+"{{{
 
 inoremap <C-l> <C-o>zz<C-o><C-l>
 
@@ -917,6 +965,7 @@ if g:VM_F10Menu == 1
   inoremap <F10> <C-o>:emenu <Tab>
 endif
 
+"}}}
 
 "
 " We're done :)
