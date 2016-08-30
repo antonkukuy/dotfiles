@@ -3,7 +3,8 @@ call plug#begin('~/.vim/bundle')
 
 " Make sure you use single quotes
 
-Plug '~/.vim/bundle/vimacs-0.93'
+"Plug '~/.vim/bundle/vimacs-0.93'
+" vimacs
 "{{{
 let g:VM_SingleEscToNormal = 0
 "let g:VM_UnixConsoleRemapEsc = 1
@@ -25,8 +26,6 @@ Plug 'SirVer/ultisnips', { 'on': [] }
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
- let g:UltiSnipsExpandTrigger="<s-tab>"
-"let g:UltiSnipsExpandTrigger="<s-tab>"
 "let g:UltiSnipsSnippetDirectories=["~/.vim/mycoolsnippets"]
  let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/mycoolsnippets', "UltiSnips"]
 "
@@ -36,9 +35,9 @@ Plug 'SirVer/ultisnips', { 'on': [] }
 " let g:UltiSnipsEditSplit="vertical"">"
 
 " let g:UltiSnipsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
-" let g:UltiSnipsExpandTrigger="<c-j>"
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+ let g:UltiSnipsExpandTrigger="<s-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<A-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<A-k>"
   let g:UltiSnipsListSnippets="<c-l>"
 
   inoremap <silent> <S-tab> <C-r>=LoadUltiSnips()<cr>
@@ -201,20 +200,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 "ctrlp.vim {{{
 let mapleader = ","    "Leader
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_map ='<leader>c'
 
-"let g:ctrlp_show_hidden = 1
-"nnoremap <Leader>fu :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-
-"unarrow the list down with a word under cursor
-"nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-
-" удобное управление для CtrlP
-map <leader>c :CtrlP<CR>
-map <leader>cb :CtrlPBuffer<CR>
-map <leader>cbt :CtrlPBufTag<CR>
-map <leader>cbd :CtrlPBookmarkDir<CR>
-map <leader>cba :CtrlPBookmarkDirAdd<CR>
+nmap <leader>cb :CtrlPBuffer<CR>
+nmap <leader>cbt :CtrlPBufTag<CR>
+nmap <leader>cbd :CtrlPBookmarkDir<CR>
+nmap <leader>cba :CtrlPBookmarkDirAdd<CR>
 
 "}}}
 
@@ -310,10 +301,25 @@ let g:gitgutter_sign_removed_first_line = '^'
 let g:gitgutter_sign_modified_removed = '✗'
 "}}}
 
-Plug 'vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 "{{{
-nnoremap ;f :<c-u>call multiple_cursors#new('n')<cr>
-nnoremap ;v :<c-u>call multiple_cursors#new('v')<cr>
+"Plug'hlissner/vim-multiedit'
+"let g:multi_cursor_next_key='<C-n>'
+"let g:multi_cursor_prev_key='<C-p>'
+" Called once right before you start selecting multiple cursors
+"With this locking and unlocking we prevent neocomplete
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
 "}}}
 
 Plug 'godlygeek/tabular'
@@ -351,7 +357,7 @@ let g:gundo_playback_delay= 5000
 "let g:gundo_close_on_revert=1
 "}}}
 
-Plug '~/.vim/bundle/bufexplorer-7.4.9'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'gko/vim-coloresque'
 "Plug 'gerw/vim-HiLinkTrace'    " a plugin for revealing all syntax groups
 Plug 'tpope/vim-unimpaired'
