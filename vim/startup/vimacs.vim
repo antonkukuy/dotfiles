@@ -654,7 +654,7 @@ inoremap <C-]> <C-x>
 "{{{
 
   "{{{
-  set sel=exclusive
+  "set sel=exclusive    " confilct with plugin vim-multiple-cursors
   " Visual mode
   inoremap <silent> <C-Space> <C-r>=<SID>StartVisualMode()<CR>
   " Unix terminals produce <C-@>, not <C-Space>
