@@ -209,6 +209,7 @@ inoremap <M-;>wlc <C-o><C-w>l<C-o>:close<CR>
 nmap <silent> ;p :bprevious<CR>
 nmap <silent> ;n :bnext<CR>
 nmap <silent> ;t :BuffersToggle<CR>
+nmap <silent> ;bd :bdelete<CR>
 
 " }}}
 
