@@ -357,6 +357,7 @@ let g:gundo_playback_delay= 5000
 "let g:gundo_close_on_revert=1
 "}}}
 
+Plug 'tpope/vim-abolish'   " Smart search with :Subvert   command
 Plug 'jlanzarotta/bufexplorer'
 Plug 'gko/vim-coloresque'
 "Plug 'gerw/vim-HiLinkTrace'    " a plugin for revealing all syntax groups
