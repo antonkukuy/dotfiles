@@ -110,7 +110,7 @@ endfor
 "{{{
 "noremap <A-r>  :w<CR>:so %<CR>
 "noremap <A-s>  :w<CR>
-noremap <leader>r  :w \| source $MYVIMRC \| echo "source is done"<CR>
+noremap <leader>r  :w \| source $MYVIMRC \| echo "source is done" \| sleep 1<CR>
 noremap <leader>s  :w<CR>
 noremap <leader>sq  :w \| :q<CR>
 "nnoremap <leader>sv :source $MYVIMRC<CR>
