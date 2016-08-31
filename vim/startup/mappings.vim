@@ -191,6 +191,7 @@ nmap <C-w><TAB> :tabn<CR>
 " Close window 
 "{{{
 nnoremap ;< :cclose<CR>  " after search, for preview windows <C-W>z
+nnoremap ;wo :only<CR>
 nnoremap ;wc :close<CR>
 nnoremap ;wjc <C-w>j:close<CR>
 nnoremap ;wkc <C-w>k:close<CR>
