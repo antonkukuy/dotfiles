@@ -325,8 +325,10 @@ inoremap <C-x><C-s> <C-o>:update<CR>
 inoremap <C-x>s <C-o>:wall<CR>
 inoremap <C-x>i <C-o>:read<Space>
 "what does C-x C-v do?
-inoremap <C-x><C-w> <C-o>:write<Space>
-inoremap <C-x><C-q> <C-o>:set invreadonly<CR>
+inoremap <C-x><C-w> <C-o>:wq<CR>
+"inoremap <C-x><C-w> <C-o>:write<Space>
+inoremap <C-q>  <C-o>:q!<CR>
+"inoremap <C-x><C-q> <C-o>:set invreadonly<CR>
 inoremap <C-x><C-r> <C-o>:hide view<Space>
 
 "}}}
@@ -352,7 +354,7 @@ inoremap <C-x><C-u> <C-o>u
 "{{{
 
 inoremap <C-s> <C-o>:call <SID>StartSearch('/')<CR><C-o>/
-inoremap <C-r> <C-o>:call <SID>StartSearch('?')<CR><C-o>?
+"inoremap <C-r> <C-o>:call <SID>StartSearch('?')<CR><C-o>?
 inoremap <M-n> <C-o>:cnext<CR>
 " <M-n> not in Emacs: next in QuickFix
 inoremap <M-p> <C-o>:cprevious<CR>
@@ -592,7 +594,7 @@ command! GotoLine :call <SID>GotoLine()
 
 inoremap <C-c> <Space><Left>
 inoremap <C-u> <C-o>d0
-inoremap <C-q> <C-v>
+"inoremap <C-q> <C-v>
 inoremap <C-^> <C-y>
 inoremap <M-r> <C-r>=
 
