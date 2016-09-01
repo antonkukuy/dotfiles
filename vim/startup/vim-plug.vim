@@ -13,6 +13,7 @@ let g:VM_SingleEscToNormal = 0
 Plug 'mattn/emmet-vim' 
 " emmet-vim {{{
 
+autocmd FileType html setlocal omnifunc=emmet#completeTag
 let g:user_emmet_leader_key='<C-Z>'
 "let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/snippets_emmet.json')), "\n"))
 
@@ -95,12 +96,18 @@ let g:AutoPairsShortcutFastWrap = '<A-S-f>'
 "let g:tq_mthesaur_file="~/.vim/mthesaur.txt"
 " }}}
 
-"Plug 'scrooloose/nerdtree' 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " nerdtree {{{
 
 nmap <TAB><TAB> :NERDTreeToggle<cr>
-"nmap <TAB> :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+let NERDTreeWinSize=20
+let g:NERDTreeDirArrowExpandable = '>'
+let g:NERDTreeDirArrowCollapsible = '∨'
+let NERDTreeMouseMode=2
+"let NERDTreeBookmarksFile='$HOME/.vim/.NERDTreeBookmarks'
+let NERDTreeIgnore=['\.swp']
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -128,6 +135,9 @@ call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 autocmd VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "}}}
 
 Plug 'Shougo/neocomplete.vim' 
@@ -357,6 +367,21 @@ let g:gundo_playback_delay= 5000
 "let g:gundo_close_on_revert=1
 "}}}
 
+Plug 'Chiel92/vim-autoformat'
+"{{{
+nnoremap <F3> :Autoformat<CR>
+let g:autoformat_verbosemode=1
+"}}}
+
+Plug 'scrooloose/syntastic'
+"{{{
+let g:syntastic_stl_format = "[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]"
+let g:syntastic_html_checkers = ["tidy", "validator"]
+let g:syntastic_aggregate_errors = 1
+"}}}
+
+"Plug 'tpope/vim-commentary'
+Plug 'tommcdo/vim-exchange'   " Easy text exchange operator for Vim
 Plug 'tpope/vim-abolish'   " Smart search with :Subvert   command
 Plug 'jlanzarotta/bufexplorer'
 Plug 'gko/vim-coloresque'
@@ -388,7 +413,6 @@ Plug 'jpalardy/vim-slime'
 "Plug 'valloric/youcompleteme'
 "let g:ycm_min_num_of_chars_for_completion = 1
 "Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'scrooloose/nerdtree'
 "Plug 'VundleVim/Vundle.vim'
 
 
