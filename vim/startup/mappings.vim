@@ -83,6 +83,18 @@ endfor
     inoremap <F11> <ESC>u@.
     nnoremap <leader>z :w \| :suspend<CR>
     nnoremap <Space> za
+    "nnoremap Q @='n.'<CR>
+    nnoremap Q :normal n.<CR>
+
+    nnoremap <silent> <Plug>TransposeCharacters xp
+    \:call repeat#set("\<Plug>TransposeCharacters")<CR>
+    nmap xp <Plug>TransposeCharacters
+
+    " Formating
+    "{{{
+    nnoremap <leader>gq :%!pandoc -f html -t markdown \| pandoc -f markdown -t html<CR>
+    vnoremap <leader>gq :!pandoc -f html -t markdown \| pandoc -f markdown -t html<CR>
+    "}}}
 
     " Command-line 
     "{{{
