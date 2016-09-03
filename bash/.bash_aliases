@@ -68,10 +68,10 @@ alias ahk='cd d:/AutoHotKey/'
 alias rm='rm -i'
 alias rmd='rm -id'
 alias open='xdg-open'
-alias chrome='c:/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
+alias chrome='/usr/bin/google-chrome-unstable'
 alias vless=/usr/share/vim/vim74/macros/less.sh
 alias grep='grep --color=auto'
-alias so='source c:/cygwin64/home/Anton/.bashrc'
+alias so='source $HOME/dotfiles/bash/.bashrc'
 alias sotmux='tmux source-file c:/cygwin64/home/Anton/.tmux.conf'
 alias tmux='tmux attach || tmux new' 
 alias cs=clear
