@@ -83,8 +83,15 @@
   #Space: magic-space
 #}}}
 
+# Vim style history search (Already Default) {{{
+#"[A": history-search-backward
+#"[B": history-search-forward
+"\C-k": history-search-backward
+"\C-j": history-search-forward
+#}}}
+
 # Use Vi, not Emacs, style editing(Header) {{{
-set editing-mode vi
+#set editing-mode vi
 # vi settings                                         
 $if mode=vi
 # Show all completions as soon as I press tab, even if there's more than one
