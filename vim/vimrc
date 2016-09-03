@@ -1,18 +1,18 @@
 " Load custom settings
 "
-"source c:/cygwin64/home/Anton/.vim/startup/vundle.vim
-source c:/cygwin64/home/Anton/.vim/startup/vim-plug.vim
-source c:/cygwin64/home/Anton/.vim/startup/vimacs.vim
-source c:/cygwin64/home/Anton/.vim/startup/easymotion.vim
-source c:/cygwin64/home/Anton/.vim/startup/mappings.vim
-source c:/cygwin64/home/Anton/.vim/startup/settings.vim
-source c:/cygwin64/home/Anton/.vim/startup/ctrlpfunky.vim
-source c:/cygwin64/home/Anton/.vim/startup/airline.vim
-source c:/cygwin64/home/Anton/.vim/startup/nerdtree.vim
-source c:/cygwin64/home/Anton/.vim/startup/tmuxline.vim
-"source c:/cygwin64/home/Anton/.vim/startup/promptline.vim
-source c:/cygwin64/home/Anton/.vim/startup/vim-smile.vim
-source c:/cygwin64/home/Anton/.vim/startup/neocomplete.vim
-source c:/cygwin64/home/Anton/.vim/startup/WatchForChanges.vim
-"source c:/cygwin64/home/Anton/.vim/startup/multiple-cursors.vim
+"source $HOME/.vim/startup/vundle.vim
+source $HOME/.vim/startup/vim-plug.vim
+source $HOME/.vim/startup/vimacs.vim
+source $HOME/.vim/startup/easymotion.vim
+source $HOME/.vim/startup/mappings.vim
+source $HOME/.vim/startup/settings.vim
+source $HOME/.vim/startup/ctrlpfunky.vim
+source $HOME/.vim/startup/airline.vim
+"source $HOME/.vim/startup/nerdtree.vim
+source $HOME/.vim/startup/tmuxline.vim
+"source $HOME/.vim/startup/promptline.vim
+source $HOME/.vim/startup/vim-smile.vim
+source $HOME/.vim/startup/neocomplete.vim
+source $HOME/.vim/startup/WatchForChanges.vim
+"source $HOME/.vim/startup/multiple-cursors.vim
 
