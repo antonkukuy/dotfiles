@@ -103,8 +103,8 @@ nmap <TAB><TAB> :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=20
-let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = '∨'
+"let g:NERDTreeDirArrowExpandable = '>'
+"let g:NERDTreeDirArrowCollapsible = '∨'
 let NERDTreeMouseMode=2
 "let NERDTreeBookmarksFile='$HOME/.vim/.NERDTreeBookmarks'
 let NERDTreeIgnore=['\.swp']
@@ -404,7 +404,7 @@ Plug 'jpalardy/vim-slime'
 "Plug 'itchyny/calendar.vim'
 "Plug 'kien/ctrlp.vim_reserve'
 "Plug 'cstrahan/vim-eclim'   conflict with Gpush(fugitive)
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 
 "Plug 'ervandew/supertab'
