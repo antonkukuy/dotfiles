@@ -51,7 +51,7 @@
 
 
 " Never load Vimacs if user wants true Vi!  (We're not _that_ evil 8)
-if v:progname =~ '^vi$'
+if v:progname =~ '^vim$'
   finish
 endif
 
