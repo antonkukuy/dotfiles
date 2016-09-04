@@ -41,7 +41,7 @@ source ~/.bash_bind
 # translate {{{
 export HOME_LANG=en
 export TARGET_LANG=ru
-export PLAYER='c:/cygwin64/home/Anton/.local/mplayer/mplayer.exe'
+export PLAYER='mplayer'
 #}}}
 
 export BROWSER=Chrome
