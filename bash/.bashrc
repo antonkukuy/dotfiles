@@ -21,8 +21,8 @@ fi
 
 # Source files {{{
 source ~/.local/bin/bashmarks.sh
-source ~/.shell_promptline.sh
-source ~/.bash_bind
+source ~/dotfiles/bash/shell_promptline.sh
+source ~/dotfiles/bash/bash_bind
 #source ~/.profile
 #}}}
 
