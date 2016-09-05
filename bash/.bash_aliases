@@ -73,7 +73,7 @@ alias vless=/usr/share/vim/vim74/macros/less.sh
 alias grep='grep --color=auto'
 alias so='source $HOME/dotfiles/bash/.bashrc'
 alias sotmux='tmux source-file c:/cygwin64/home/Anton/.tmux.conf'
-alias tmux='tmux attach || tmux new' 
+alias attmux='tmux attach || tmux new' 
 alias cs=clear
 alias weather='sh c:/cygwin64/home/Anton/scripts/weather/openweathermap.sh'
 #}}}
