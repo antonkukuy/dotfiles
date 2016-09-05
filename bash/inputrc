@@ -1,0 +1,276 @@
+#$if Bash
+#
+#Read in the contents of the inputrc file, and incorporate any bindings or variable assignments found there.
+#by default Emacs style C-x C-r
+#Control-x: re-read-init-file
+#
+# for vim
+#set convert-meta on   # russian input don't work
+# Standard options {{{
+# To the extent possible under law, the author(s) have dedicated all 
+# copyright and related and neighboring rights to this software to the 
+# public domain worldwide. This software is distributed without any warranty. 
+# You should have received a copy of the CC0 Public Domain Dedication along 
+# with this software. 
+# If not, see <http://creativecommons.org/publicdomain/zero/1.0/>. 
+
+# base-files version 4.2-4
+
+# ~/.inputrc: readline initialization file.
+
+# The latest version as installed by the Cygwin Setup program can
+# always be found at /etc/defaults/etc/skel/.inputrc
+
+# Modifying /etc/skel/.inputrc directly will prevent
+# setup from updating it.
+
+# The copy in your home directory (~/.inputrc) is yours, please
+# feel free to customise it to create a shell
+# environment to your liking.  If you feel a change
+# would be benifitial to all, please feel free to send
+# a patch to the cygwin mailing list.
+
+
+# the following line is actually
+# equivalent to "\C-?": delete-char
+#"\e[3~": delete-char
+
+# VT
+#"\e[1~": beginning-of-line
+#"\e[4~": end-of-line
+
+# kvt
+#"\e[H": beginning-of-line
+#"\e[F": end-of-line
+
+# rxvt and konsole (i.e. the KDE-app...)
+#"\e[7~": beginning-of-line
+#"\e[8~": end-of-line
+
+# VT220
+#"\eOH": beginning-of-line
+#"\eOF": end-of-line
+
+# Allow 8-bit input/output
+#set meta-flag on
+#set convert-meta off
+#set input-meta on
+#set output-meta on
+#$if Bash
+  # Don't ring bell on completion
+  #set bell-style none
+
+  # or, don't beep at me - show me
+  #set bell-style visible
+
+  # Filename completion/expansion
+  #set completion-ignore-case on
+  #set show-all-if-ambiguous on
+
+  # Expand homedir name
+  #set expand-tilde on
+
+  # Append "/" to all dirnames
+  #set mark-directories on
+  #set mark-symlinked-directories on
+
+  # Match all files
+  #set match-hidden-files on
+
+  # 'Magic Space'
+  # Insert a space character then performs
+  # a history expansion in the line
+  #Space: magic-space
+#}}}
+
+# Emacs style {{{
+
+$if mode=emacs
+# Show all completions as soon as I press tab, even if there's more than one
+set show-all-if-ambiguous on
+# Ignore case
+set completion-ignore-case on
+# on menu-complete, first display the common prefix, then cycle through the 
+# options when hitting TAB
+#set menu-complete-display-prefix on
+#"[A": history-search-backward
+#"[B": history-search-forward
+"\C-k": history-search-backward
+"\C-j": history-search-forward
+#"\M-\C-b": vi-backward-bigword
+#"\M-\C-f": vi-forward-bigword
+
+# Delete within surround {{{
+"\e'": "''\C-b"
+"\e\"": "\"\"\C-b"
+"\e(": "()\C-b"
+"\e/": "//\C-b"
+"\ee": "\C-]\"\e"
+"\ea": "\C-]\'\e"
+#}}}
+$endif
+#}}}
+
+# Use Vi, not Emacs, style editing(Header) {{{
+#set editing-mode vi
+# vi settings                                         
+$if mode=vi
+# Show all completions as soon as I press tab, even if there's more than one
+set show-all-if-ambiguous on
+# Ignore case
+set completion-ignore-case on
+# on menu-complete, first display the common prefix, then cycle through the 
+# options when hitting TAB
+#set menu-complete-display-prefix on
+#}}}
+
+# Keymaps vi-command {{{
+
+# Keymaps for when we're in command mode (e.g., after hitting ESC)
+set keymap vi-command
+#Keyboard Macros{{{
+#Begin saving the characters typed into the current keyboard macro.
+#"qw": start-kbd-macro
+
+#Stop saving the characters typed into the current keyboard macro and save the definition.
+#"q": end-kbd-macro
+
+#Re-execute the last keyboard macro defined, by making the characters in the macro appear as if typed at the keyboard.
+#"@w": call-last-kbd-macro
+
+#Print the last keboard macro defined in a format suitable for the inputrc file.
+#"\C-z\C-p": print-last-kbd-macro
+#}}}
+
+# Surround {{{
+"ci\"": "F\"ldt\"i"
+"ci`": "F`ldt`i"
+"ci\'": "F\'ldt\'i"
+"ci[": "F[ldt]i"
+"ci{": "F{ldt}i"
+"ci(": "F(ldt)i"
+"ci<": "F<ldt>i"
+"ci/": "F/ldt/i"
+"ci,": "F,ldt,i"
+"ci.": "F.ldt.i"
+"ci?": "F?ldt?i"
+"ci!": "F!ldt!i"
+"ci@": "F@ldt@i"
+"ci$": "F$ldt$i"
+"ci%": "F%ldt%i"
+"ci^": "F^ldt^i"
+"ci&": "F&ldt&i"
+"ci*": "F*ldt*i"
+"ci-": "F-ldt-i"
+"ci_": "F_ldt_i"
+"ci=": "F=ldt=i"
+"ci+": "F+ldt+i"
+"ci ": "F ldt i"
+"ci\#": "F\#ldt\#i"
+"ci;": "F;ldt;i"
+"ci:": "F:ldt:i"
+"ci|": "F|ldt|i"
+"ci\\": "F\\ldt\\i"
+#}}}
+
+#Delete letters till space from current position cursor
+"E": "ldt a"
+
+# Two escapes clear command line. (Use C-c or \eC\eC instead)
+"\e\e": "\e0\C-ki"
+
+"K": beginning-of-history
+"J": end-of-history
+
+
+# Insert the arguments from the last command
+#"p": "i !!*\r"
+#}}}
+
+# Keymaps vi-insert {{{
+
+# Keymaps for when we're in insert (i.e., typing stuff in) mode
+set keymap vi-insert
+
+# Completion brackets {{{
+"(": "\C-v()\C-b"
+"[": "\C-v[]\C-b"
+"{": "\C-v{}\C-b"
+"<": "\C-v<>\C-b"
+"\"": "\C-v\"\C-v\"\C-b"
+"\047": "\C-v\047\C-v\047\C-b"
+"\`": "\C-v\`\C-v\`\C-b"
+#}}}
+
+#Delete the character behind the cursor. A numeric argument means to kill the characters instead of deleting them.
+#"\C-j": backward-delete-char
+
+#Delete the character under the cursor, unless the cursor is at the end of the line, in which case the character behind the cursor is deleted.
+#"\C-\'": forward-backward-delete-char
+
+# remap escape
+"jj": vi-movement-mode
+
+#"\C-[": prefix-meta
+
+# Words are composed of letters and digits.
+"\M-b": backward-word
+"\M-f": forward-word
+# Words are delimited by non-quoted shell metacharacters.
+#"\M-b": shell-backward-word
+#"\M-f": shell-forward-word
+
+# Drag the word before point past the word after point, moving point past that word as well.
+"\M-t": transpose-words
+"\C-b": backward-char
+"\C-f": forward-char
+"\e[C": forward-char
+"\e[D": backward-char
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+
+# Kill from point to the end of the current word, or if between words, to the end of the next word. Word boundaries are the same as forward-word.
+"\M-k": kill-word
+# Kill the word behind point, using white space as a word boundary. The killed text is saved on the kill-ring.
+"\M-K": unix-word-rubout
+
+# Pressing tab will list all completions & select the first one. Pressing it 
+# again will cycle through available completions.  (TAB)
+TAB: menu-complete
+# Shift-TAB cycles completions backward (S-Tab)
+"\e[Z": menu-complete-backward
+
+# Edit options before rerunning previous command, eg: ls a b c -> ls -al a b c.  (C-o)
+#"\C-o": "\e-0eli "
+
+"\C-o": kill-line
+
+# Cycle thru completions.(C-b)
+#"\C-b": menu-complete
+
+# glob patterns without executing, eg: 'rm *x' (M-e)
+"\M-e": glob-expand-word
+# Perform alias expansion on the current line. (C-M-e)
+"\C-\M-e": shell-expand-line
+#Perform alias expansion on the current line. (C-M-e)
+#"\C-\M-e":  alias-expand-line
+
+#Delete letters till space from current position cursor
+#"\C-e": "\elldt a"
+#
+# Two escapes clear command line.
+"\e\e": "\e0\C-ki"
+# Clear screen and go to end of line.
+"\C-l": "\e0\C-lA"
+
+# Vim style history search (Already Default) {{{
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\C-k": history-search-backward
+"\C-j": history-search-forward
+#}}}
+
+$endif
+#}}}
+
+#$endif
