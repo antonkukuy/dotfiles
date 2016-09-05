@@ -83,11 +83,32 @@
   #Space: magic-space
 #}}}
 
-# Vim style history search (Already Default) {{{
-#"\e[A": history-search-backward
-#"\e[B": history-search-forward
+# Emacs style {{{
+
+$if mode=emacs
+# Show all completions as soon as I press tab, even if there's more than one
+set show-all-if-ambiguous on
+# Ignore case
+set completion-ignore-case on
+# on menu-complete, first display the common prefix, then cycle through the 
+# options when hitting TAB
+#set menu-complete-display-prefix on
+#"[A": history-search-backward
+#"[B": history-search-forward
 "\C-k": history-search-backward
 "\C-j": history-search-forward
+#"\M-\C-b": vi-backward-bigword
+#"\M-\C-f": vi-forward-bigword
+
+# Delete within surround {{{
+"\e'": "''\C-b"
+"\e\"": "\"\"\C-b"
+"\e(": "()\C-b"
+"\e/": "//\C-b"
+"\ee": "\C-]\"\e"
+"\ea": "\C-]\'\e"
+#}}}
+$endif
 #}}}
 
 # Use Vi, not Emacs, style editing(Header) {{{
