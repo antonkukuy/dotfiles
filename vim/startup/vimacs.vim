@@ -51,7 +51,9 @@
 
 
 " Never load Vimacs if user wants true Vi!  (We're not _that_ evil 8)
-if v:progname =~ '^vim$'
+" You should create symbol link 'vim-' to 'vim'
+if v:progname =~ '^vim-$'
+  echoerr 'You do not use Vimacs :('
   finish
 endif
 
