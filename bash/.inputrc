@@ -86,6 +86,9 @@
 # Emacs style {{{
 
 $if mode=emacs
+# Pressing tab will list all completions & select the first one. Pressing it 
+# again will cycle through available completions.  (TAB)
+TAB: menu-complete
 # Show all completions as soon as I press tab, even if there's more than one
 set show-all-if-ambiguous on
 # Ignore case
