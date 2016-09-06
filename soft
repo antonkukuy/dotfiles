@@ -1,0 +1,12 @@
+sudo apt-get install ranger mc gparted automake autoconf build-essencial pv checkinstall
+
+
+
+sudo add-apt-repository ppa:notepadqq-team/notepadqq
+sudo apt-get update
+sudo apt-get install notepadqq
+
+
+
+
+# from ClassicMenu, wine
