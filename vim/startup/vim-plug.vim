@@ -381,6 +381,7 @@ let g:syntastic_aggregate_errors = 1
 "}}}
 
 "Plug 'tpope/vim-commentary'
+"Plug 'statox/vim-compare-lines'
 Plug 'tommcdo/vim-exchange'   " Easy text exchange operator for Vim
 Plug 'tpope/vim-abolish'   " Smart search with :Subvert   command
 Plug 'jlanzarotta/bufexplorer'
