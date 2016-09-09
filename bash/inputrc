@@ -102,6 +102,8 @@ set completion-ignore-case on
 "\C-j": history-search-forward
 #"\M-\C-b": vi-backward-bigword
 #"\M-\C-f": vi-forward-bigword
+# Clear command line
+"\e\e": "\C-e\C-u"
 
 # Delete within surround {{{
 "\e'": "''\C-b"
