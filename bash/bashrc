@@ -36,7 +36,23 @@ source ~/dotfiles/bash/bash_bind
 # translate {{{
 export HOME_LANG=en
 export TARGET_LANG=ru
-export PLAYER='mplayer'
+#export PLAYER='mplayer'
+#}}}
+
+# ls {{{
+LS_COLORS='di=90;1:fi=0:ln=1;96:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=32:*.deb=33:*.rpm=90'
+export LS_COLORS
+#maybe for example di=5;31;42
+#di = directory
+#fi = file
+#ln = symbolic link
+#pi = fifo file
+#so = socket file
+#bd = block (buffered) special file
+#cd = character (unbuffered) special file
+#or = symbolic link pointing to a non-existent file (orphan)
+#mi = non-existent file pointed to by a symbolic link (visible when you type ls -l)
+#ex = file which is executable (ie. has 'x' set in permissions).
 #}}}
 
 export BROWSER=Chrome
