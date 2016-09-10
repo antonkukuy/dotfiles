@@ -65,6 +65,8 @@ alias ahk='cd d:/AutoHotKey/'
 #}}}
 
 # Various command {{{
+alias mv='mv -i'
+alias cp='cp -i'
 alias rm='rm -i'
 alias rmd='rm -id'
 alias open='xdg-open'
