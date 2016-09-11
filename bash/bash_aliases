@@ -44,6 +44,21 @@ alias cvimrc='vim j:/GOOGLE/ext_settings/.cvimrc'
 alias tmuxconf='vim c:/cygwin64/home/Anton/.tmux.conf'
 #}}}
 
+# Open by NVIM{{{
+alias nbalias='nvim ~/dotfiles/bash/bash_aliases'
+alias nbhistory='nvim ~/dotfiles/bash/bash_history'
+alias ninputrc='nvim ~/dotfiles/bash/inputrc'
+alias nbashrc='nvim ~/dotfiles/bash/bashrc'
+alias nvimacs='nvim ~/dotfiles/vim/startup/vimacs.vim'
+alias nvimrc='nvim ~/dotfiles/vim/vimrc'
+alias nvundle='nvim ~/dotfiles/vim/startup/vundle.vim'
+alias nvplug='nvim ~/dotfiles/vim/startup/vim-plug.vim'
+alias nmapping='nvim ~/dotfiles/vim/startup/mappings.vim'
+alias nsetting='nvim ~/dotfiles/vim/startup/settings.vim'
+alias ncvimrc='nvim j:/GOOGLE/ext_settings/.cvimrc'
+alias ntmuxconf='nvim c:/cygwin64/home/Anton/.tmux.conf'
+#}}}
+
 # Change directory{{{
 alias home='cd c:/Users/ADMIN/'
 alias cdir='cd ~/c_program'
