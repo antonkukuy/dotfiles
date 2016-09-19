@@ -21,7 +21,8 @@ export LESS=" -R "
 
 # Translate {{{
 alias trans='trans -play -speak'
-alias itr='trans {en=ru} -play -speak -shell'
+alias etr='trans {en=ru} -play -speak -shell'
+alias rtr='trans {ru=en} -play -speak -shell'
 alias aitr='trans -play -speak -shell'
 alias mtr='trans -M'
 alias htr='trans -H|less'
