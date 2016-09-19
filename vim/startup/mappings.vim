@@ -57,11 +57,11 @@ map <C-z> <Nop>
     vmap <F12> <Esc>:wq<CR>
     "}}}
 
-    " Quit editor <F10>
+    " Quit editor <F6>
     "{{{
-    nmap <F6> :q!<CR>
-    imap <F6> <Esc>:q!<CR>
-    vmap <F6> <Esc>:q!<CR>
+    nmap <F6> :q<CR>
+    imap <F6> <Esc>:q<CR>
+    vmap <F6> <Esc>:q<CR>
     "}}}
     "}}}
 
@@ -112,18 +112,19 @@ endfor
     "Line modifications
     "{{{
     inoremap CC <C-o>C
-    inoremap SS <C-o>S
+    "inoremap SS <C-o>S
     inoremap DD <C-o>dd
     inoremap UU <C-o>u
     inoremap RR <C-o><C-R>
     "}}}
 
-    " SAVE and RELOAD current fale
+    " SAVE and RELOAD current file
 "{{{
 "noremap <A-r>  :w<CR>:so %<CR>
 "noremap <A-s>  :w<CR>
 noremap <leader>r  :w \| source $MYVIMRC \| echo "source is done" \| sleep 1<CR>
 noremap <leader>s  :w<CR>
+inoremap SS <ESC>:w<CR>
 noremap <leader>sq  :w \| :q<CR>
 "nnoremap <leader>sv :source $MYVIMRC<CR>
 
