@@ -1,5 +1,6 @@
 sudo apt-get install ranger mc gparted automake autoconf build-essencial pv checkinstall
 
+sudo apt-get install source-highlight   #for less highlight source
 
 
 sudo add-apt-repository ppa:notepadqq-team/notepadqq
@@ -7,6 +8,60 @@ sudo apt-get update
 sudo apt-get install notepadqq
 
 
-
+# lspci (after installation will require: update-pciids)
+# dmidecode(info hardware about)
+# lshw (info hardware about)
+# lsusb (usb hardware info)
 
 # from ClassicMenu, wine
+
+xbindkeys
+xbindkeys-config
+
+
+# nodejs
+sudo apt-get install python-software-properties
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install nodejs
+
+
+#neovim
+sudo apt-get install software-properties-common
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo apt-get install python-dev python-pip python3-dev
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo apt-get install neovim
+
+
+dpkg-dev
+# dpkg-buildpackage  within dpkg-dev
+
+
+Установим необходимый софт:
+    sudo apt-get install auto-apt checkinstall
+Обновим данные о пакетах... auto-apt:
+    sudo auto-apt update
+    sudo auto-apt updatedb && sudo auto-apt update-local
+Процесс занимает много времени...
+Скачаем исходники htop
+wget http://...
+Распакуем их:
+    tar zxvf htop-1.0.3.tar.gz
+Перейдем в папку с исходниками:
+    cd htop-1.0.3/
+И выполним команду:
+    sudo auto-apt -y run ./configure
+Программа auto-apt определит все зависимости и установит их.
+Соберем пакет DEB и установим программу:
+    sudo checkinstall -D
+Так же можно установить готовый пакет командой:
+    sudo dpkg -i namepacket.deb
+
+
+tshark   # analis web trafic
+common getway interfase 'cgi'
+
+ffmpeg   # convert video
