@@ -2,3 +2,4 @@ vim/bundle/**
 vim/vimrc_*
 vim/.netrwhist
 tmux/plugins/**
+vim/init.vim
