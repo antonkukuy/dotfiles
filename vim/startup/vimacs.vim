@@ -163,7 +163,7 @@ LetDefault g:VM_UnixConsoleMetaSendsEsc 1
 " One or two <Esc>s required to go back to Normal mode?
 LetDefault g:VM_SingleEscToNormal 1
 
-if has("unix") && !has("gui_running") && g:VM_UnixConsoleMetaSendsEsc
+if has("unix") && !has("gui_running") && !has("nvim")&& g:VM_UnixConsoleMetaSendsEsc
   " <Esc>x maps to <M-x>
   set <M-1>=1
   set <M-2>=2
