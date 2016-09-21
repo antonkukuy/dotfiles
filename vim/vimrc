@@ -7,7 +7,7 @@ source $HOME/.vim/startup/easymotion.vim
 source $HOME/.vim/startup/mappings.vim
 source $HOME/.vim/startup/settings.vim
 source $HOME/.vim/startup/ctrlpfunky.vim
-source $HOME/.vim/startup/airline.vim
+"source $HOME/.vim/startup/airline.vim
 "source $HOME/.vim/startup/nerdtree.vim
 source $HOME/.vim/startup/tmuxline.vim
 "source $HOME/.vim/startup/promptline.vim

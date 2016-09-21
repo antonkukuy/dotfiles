@@ -140,11 +140,15 @@ autocmd VimEnter * call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "}}}
 
+if has("nvim")
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+let g:deoplete#enable_at_startup = 1
+else
 Plug 'Shougo/neocomplete.vim' 
 " neocomplete.vim {{{
 
 "}}}
-
+endif
 Plug 'tpope/vim-surround' 
 " vim-surround {{{
 " {visual}S!
@@ -380,6 +384,51 @@ let g:syntastic_html_checkers = ["tidy", "validator"]
 let g:syntastic_aggregate_errors = 1
 "}}}
 
+Plug 'bling/vim-airline'   " fugitive display names of git branches and counts(types) changes in file
+"{{{
+function! AiflineInit()
+    let g:airline_section_a = airline#section#create(['mode',' ','branch'])
+    let g:airline_section_b = airline#section#create_left(['hunks','%f'])
+    "let g:airline_section_b = airline#section#create_left(['ffenc','hunks','%f'])
+    let g:airline_section_c = airline#section#create(['filetype'])
+    " let g:airline_section_x = airline#section#create(['%P',' ','[%{strlen(&fenc)?&fenc:&enc}]'])
+    let g:airline_section_x = airline#section#create(['%P',' ','ffenc'])
+    let g:airline_section_y = airline#section#create(['%B'])
+    "let g:airline_section_z = airline#section#create_right(['%l','%c'])
+    if has("nvim")
+        let g:airline_section_z = airline#section#create_right(['%l','%c','nvim','%{ObsessionStatus()}'])
+    else
+        let g:airline_section_z = airline#section#create_right(['%l','%c','%{ObsessionStatus()}'])
+    endif
+endfunction
+autocmd VimEnter * call AiflineInit()
+
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
+let g:airline_linecolumn_prefix = '¶ '
+let g:airline_fugitive_prefix = '⎇ '
+let g:airline_paste_symbol = 'ρ'
+let g:airline#extensions#whitespace#enabled = '0'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts =1    " Replace symbols
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#syntastic#enabled = 1
+" расширение для отображения табов
+let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#tab_nr_type=1
+"let g:airline#extensions#tabline#buffer_idx_mode=0
+" расширение для отображения веток git (использует плагин fugitive)
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#tmuxline#enabled = 0    " 1 for tmuxline confugure files 
+" ========================
+"иНТЕГРация со сторонними плагинами
+let g:airline_enable_fugitive=1
+let g:airline_enable_syntastic=1
+let g:airline_enable_bufferline=1
+
+"}}}
+
+
 "Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-exchange'   " Easy text exchange operator for Vim
 Plug 'tpope/vim-abolish'   " Smart search with :Subvert   command
@@ -393,7 +442,6 @@ Plug 'junegunn/vim-plug'
 "Plug 'Konfekt/FastFold'
 Plug 'tpope/vim-obsession'
 Plug 'junegunn/vader.vim' 
-Plug 'bling/vim-airline'   " fugitive display names of git branches and counts(types) changes in file
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
