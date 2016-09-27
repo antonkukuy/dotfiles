@@ -23,6 +23,8 @@ export LESS=" -R "
 alias trans='trans -play -speak'
 alias etr='trans {en=ru} -play -speak -shell'
 alias rtr='trans {ru=en} -play -speak -shell'
+alias yrtr='trans {ru=en} -play -speak -shell -engine yandex'
+alias yetr='trans {en=ru} -play -speak -shell -engine yandex'
 alias aitr='trans -play -speak -shell'
 alias mtr='trans -M'
 alias htr='trans -H|less'
@@ -66,6 +68,7 @@ alias ahk='cd d:/AutoHotKey/'
 #}}}
 
 # Various command {{{
+alias ankiru='/c/Program\ Files\ \(x86\)/Anki/anki.exe -l ru'
 alias rm='rm -i'
 alias rmd='rm -id'
 alias open='xdg-open'
