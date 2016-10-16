@@ -65,3 +65,13 @@ tshark   # analis web trafic
 common getway interfase 'cgi'
 
 ffmpeg   # convert video
+
+
+Есть скрипт pdfcrop на перле (не путать с одноимённым скриптом на питоне), который умеет обрезать поля автоматически. В Debian он входит в состав пакета texlive-extra-utils.
+Использовать так:
+pdfcrop --clip --margin 5 исходный.pdf обрезанный.pdf
+
+Исходный PDF → растеризованные изображения страниц (использую pdftoppm) → разрезание страниц на части и обрезка полей (использую convert из ImageMagick) → сборка нового PDF или DjVu из обрезанных страниц.
+
+Для объединения PDF-страниц в PDF-документ я использую pdftk
+pdftk *.pdf cat output книжка.pdf 
