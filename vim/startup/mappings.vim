@@ -130,6 +130,8 @@ noremap <leader>sq  :w \| :q<CR>
 
 nmap <A-s>  :!gcc -o hello hello.c<CR>
 nmap <A-r> ,s:exec '!gcc -o hello hello.c && ./hello > /dev/pty1 \|\| echo "Programm is not correct"> /dev/pty1'<CR><CR>
+nmap ,p ,s:exec '!python3 %> /dev/pty1 \|\| echo "Programm is not correct"> /dev/pty1'<CR><CR>
+nmap ,P ,s:exec '!python3 %'<CR>
 "map <A-r> ,s:exec '!gcc -o hello hello.c;echo > /dev/pty1;echo > /dev/pty1;./hello > /dev/pty1'<CR><CR>
 
 "Reload file
@@ -466,7 +468,7 @@ endfunction
 
 " Execute current file
 "{{{
-"nnoremap <F5> :call ExecuteFile()<CR>
+nnoremap <Leader><F5> :call ExecuteFile()<CR>
 
 " Will attempt to execute the current file based on the `&filetype`
 " You need to manually map the filetypes you use most commonly to the
@@ -477,7 +479,7 @@ function! ExecuteFile()
   \   'coffee': 'coffee',
   \   'python': 'python',
   \   'html': 'open',
-  \   'sh': 'sh'
+  \   'sh': 'sh',
   \   'awk': 'awk'
   \ }
   let cmd = get(filetype_to_command, &filetype, &filetype)
