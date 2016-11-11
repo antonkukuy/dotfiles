@@ -154,7 +154,6 @@ let g:surround_99 = "/* \r */"
 " {visual}S*
 "let g:surround_42 = "/* \r */"
 " {visual}Sf
-"let g:surround_102 = "\"{{{ \r \"}}}"
 autocmd FileType autohotkey let b:surround_102 = ";{{{ \r ;}}}"
 autocmd FileType vim let b:surround_102 = "\"{{{ \r \"}}}"
 autocmd FileType sh let b:surround_102 = "#{{{ \r #}}}"
@@ -378,7 +377,23 @@ Plug 'scrooloose/syntastic'
 let g:syntastic_stl_format = "[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]"
 let g:syntastic_html_checkers = ["tidy", "validator"]
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
 "}}}
+
+" Grab some text and 'send' it to a GNU Screen / tmux / whimrepl session.
+Plug 'jpalardy/vim-slime'
+"{{{
+let g:slime_target = "tmux"
+let g:slime_preserve_curpos = 0
+"The default mappings are:
+"xmap <c-c><c-c> <Plug>SlimeRegionSend
+"nmap <c-c><c-c> <Plug>SlimeParagraphSend
+"nmap <c-c>v     <Plug>SlimeConfig
+"}}}
+
 
 "Plug 'tpope/vim-commentary'
 "Plug 'statox/vim-compare-lines'
@@ -401,7 +416,6 @@ Plug 'tpope/vim-vinegar'
 "Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux'      " for syntax and a few feachers for .tmux.conf
 "Plug 'edkolev/promptline.vim'
-Plug 'jpalardy/vim-slime'
 "Plug 'itchyny/calendar.vim'
 "Plug 'kien/ctrlp.vim_reserve'
 "Plug 'cstrahan/vim-eclim'   conflict with Gpush(fugitive)
