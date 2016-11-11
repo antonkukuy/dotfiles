@@ -2887,6 +2887,7 @@ if (Option["view"])
 print string | Option["pager"]
 else
 print string > Option["output"]
+# print string >> "/home/Anton/newTrans"      # print whole translate out
 }
 function play(text, tl,    url) {
 url = _TTSUrl(text, tl)
@@ -3157,6 +3158,7 @@ returnPlaylist[0]["text"] = translation
 returnPlaylist[0]["tl"] = tl
 }
 } else {
+wToHistory = Option["history"]
 wShowOriginal = Option["show-original"]
 wShowOriginalPhonetics = Option["show-original-phonetics"]
 wShowTranslation = Option["show-translation"]
@@ -3174,6 +3176,7 @@ isarray(oExamples) || isarray(oSeeAlso))) {
 wShowOriginalDictionary = 1
 wShowTranslation = 0
 }
+RS="\n\t\t"  #indentation
 hasWordClasses = exists(wordClasses)
 hasAltTranslations = exists(altTranslations[0])
 if (!hasWordClasses && !hasAltTranslations)
@@ -3184,6 +3187,8 @@ if (wShowOriginal) {
 if (r) r = r RS RS
 r = r m("-- display original text & phonetics")
 r = r prettify("original", s(join(original), il))
+if (wToHistory) printf "\t\t%s\n\n", r >> "/home/Anton/.trans_history"     # history translates
+r = RS ansi("light magenta", r)                       # color original text
 if (wShowOriginalPhonetics)
 r = r RS prettify("original-phonetics", showPhonetics(join(oPhonetics), il))
 }
@@ -3196,6 +3201,7 @@ r = r RS prettify("translation-phonetics", showPhonetics(join(phonetics), tl))
 }
 if (wShowPromptMessage || wShowLanguages)
 if (r) r = r RS
+RS="\n"   # indentation
 if (wShowPromptMessage) {
 if (hasWordClasses) {
 if (r) r = r RS
@@ -4045,6 +4051,7 @@ Option["user-agent"] = ENVIRON["USER_AGENT"] ? ENVIRON["USER_AGENT"] :
 Option["no-rlwrap"] = 0
 Option["interactive"] = 0
 Option["emacs"] = 0
+Option["history"] = 0
 Option["input"] = NULLSTR
 Option["output"] = STDOUT
 Option["hl"] = ENVIRON["HOME_LANG"] ? ENVIRON["HOME_LANG"] : UserLang
@@ -4367,6 +4374,11 @@ continue
 match(ARGV[pos], /^--?(E|emacs)$/)
 if (RSTART) {
 Option["emacs"] = 1
+continue
+}
+match(ARGV[pos], /^--?(history)$/)
+if (RSTART) {
+Option["history"] = 1
 continue
 }
 match(ARGV[pos], /^--?no-rlwrap$/)

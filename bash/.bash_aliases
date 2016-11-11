@@ -21,7 +21,7 @@ export LESS=" -R "
 
 # Translate {{{
 alias trans='trans -play -speak'
-alias etr='trans {en=ru} -play -speak -shell'
+alias etr='trans {en=ru} -play -speak -shell -history'
 alias rtr='trans {ru=en} -play -speak -shell'
 alias yrtr='trans {ru=en} -play -speak -shell -engine yandex'
 alias yetr='trans {en=ru} -play -speak -shell -engine yandex'
@@ -68,6 +68,8 @@ alias ahk='cd d:/AutoHotKey/'
 #}}}
 
 # Various command {{{
+alias py35='/c/Users/ADMIN/AppData/Local/Programs/Python/Python35/python.exe'
+alias lames='/c/Program\ Files\ \(x86\)/Lame\ For\ Audacity/lame.exe'
 alias ankiru='/c/Program\ Files\ \(x86\)/Anki/anki.exe -l ru'
 alias rm='rm -i'
 alias rmd='rm -id'
