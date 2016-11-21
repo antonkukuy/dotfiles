@@ -102,6 +102,7 @@ set completion-ignore-case on
 "\C-j": history-search-forward
 #"\M-\C-b": vi-backward-bigword
 #"\M-\C-f": vi-forward-bigword
+"\C-x\C-l": kill-line
 
 # Delete within surround {{{
 "\e'": "''\C-b"
