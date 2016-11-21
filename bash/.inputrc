@@ -56,7 +56,7 @@
 #set convert-meta off
 #set input-meta on
 #set output-meta on
-#$if Bash
+# $if Bash
   # Don't ring bell on completion
   #set bell-style none
 
@@ -81,6 +81,7 @@
   # Insert a space character then performs
   # a history expansion in the line
   #Space: magic-space
+# $endif
 #}}}
 
 # Emacs style {{{
@@ -100,9 +101,25 @@ set completion-ignore-case on
 #"[B": history-search-forward
 "\C-k": history-search-backward
 "\C-j": history-search-forward
-#"\M-\C-b": vi-backward-bigword
-#"\M-\C-f": vi-forward-bigword
-"\C-x\C-l": kill-line
+
+$if bash
+    "\ef": shell-forward-word
+    "\eb": shell-backward-word
+    "\ed": shell-kill-word
+    "\eF": forward-word
+    "\eB": backward-word
+$else
+    "\ef": vi-forward-bigword
+    "\eb": vi-backward-bigword
+    "\ed": kill-word
+    "\eF": vi-forward-word
+    "\eB": vi-backward-word
+$endif
+
+"\eY": copy-forward-word
+"\ey": copy-backward-word
+"\ek": kill-line
+"\e_": yank-pop
 
 # Delete within surround {{{
 "\e'": "''\C-b"
