@@ -119,7 +119,14 @@ $endif
 "\eY": copy-forward-word
 "\ey": copy-backward-word
 "\ek": kill-line
-"\e_": yank-pop
+"\e?": yank-pop
+
+"\eU": upcase-word
+"\eL": downcase-word
+"\eC": capitalize-word
+"\eu": "\eb\eU"
+"\el": "\eb\eL"
+"\ec": "\eb\eC"
 
 # Delete within surround {{{
 "\e'": "''\C-b"
