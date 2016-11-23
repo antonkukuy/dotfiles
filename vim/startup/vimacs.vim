@@ -836,9 +836,13 @@ endfunction
 " Case Change
 "{{{
 
-inoremap <M-l> <C-o>gul<C-o>w
-inoremap <M-u> <C-o>gUe<C-o>w
-inoremap <M-c> <C-o>gUl<C-o>w
+" inoremap <M-l> <C-o>gul<C-o>w
+" inoremap <M-u> <C-o>gUe<C-o>w
+" inoremap <M-c> <C-o>gUl<C-o>w
+inoremap <M-u> <Esc>bgUwea
+inoremap <M-l> <Esc>bguwea
+inoremap <M-c> <Esc>b~ea
+
 
 "}}}
 
