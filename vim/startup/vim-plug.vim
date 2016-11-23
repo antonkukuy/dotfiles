@@ -72,6 +72,11 @@ Plug 'vim-scripts/Auto-Pairs'
 let g:AutoPairsShortcutBackInsert = '<A-S-b>'
 "let g:AutoPairsShortcutBackInsert = '<>'
 let g:AutoPairsShortcutFastWrap = '<A-S-f>'
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+
+" When the filetype is FILETYPE then make AutoPairs only match for parenthesis
+" au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
+
 " System Shortcuts:
 "     <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
 "     <BS>  : Delete brackets in pair
@@ -147,16 +152,17 @@ Plug 'Shougo/neocomplete.vim'
 
 Plug 'tpope/vim-surround' 
 " vim-surround {{{
-" {visual}S!
-autocmd FileType html let b:surround_33 = "<!-- \r -->"
 " {visual}Sc
 let g:surround_99 = "/* \r */"
 " {visual}S*
 "let g:surround_42 = "/* \r */"
 " {visual}Sf
+autocmd FileType html let b:surround_102 = "<!-- \r -->"
 autocmd FileType autohotkey let b:surround_102 = ";{{{ \r ;}}}"
 autocmd FileType vim let b:surround_102 = "\"{{{ \r \"}}}"
 autocmd FileType sh let b:surround_102 = "#{{{ \r #}}}"
+autocmd FileType tmux let b:surround_102 = "#{{{ \r #}}}"
+autocmd FileType python let b:surround_102 = "'''\r '''"
 "}}}
 
 "Plug 'ternjs/tern_for_vim', { 'for': 'javascript'  }
