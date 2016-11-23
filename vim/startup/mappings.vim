@@ -12,6 +12,7 @@ noremap ,, ,
 inoremap jj <ESC>
 
 map <C-z> <Nop>
+imap <C-j> <C-e><CR>
 
 " Encodings "{{{
     " Encoding changes at reading file <F7>
@@ -153,7 +154,7 @@ nmap ci> F>lvt<
     " Internal auto-pairs
 "{{{
 " create <cursor_position>
-imap < <><C-b>
+" imap < <><C-b>
 "}}}
 
     " more natural movement with wrap on
@@ -549,9 +550,9 @@ function! CloseScratch()
 endfunction
 
 "A pattern when prompted.
-nnoremap <silent> <Leader>f :call Gather(input("Search for: "))<CR>
+nnoremap <silent> <Leader>g :call Gather(input("Search for: "))<CR>
 "To filter on the last search pattern.
-nnoremap <silent> <Leader>F :call Gather(@/)<CR>
+nnoremap <silent> <Leader>G :call Gather(@/)<CR>
 "Close the scratch buffer listing the search hits.
 nnoremap <silent> <Esc> :call CloseScratch()<CR>
 "}}}
