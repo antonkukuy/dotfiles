@@ -401,6 +401,7 @@ let g:slime_preserve_curpos = 0
 "}}}
 
 
+Plug 'tpope/vim-endwise'   " plugin helps to end certain structures automatically
 "Plug 'tpope/vim-commentary'
 "Plug 'statox/vim-compare-lines'
 Plug 'tommcdo/vim-exchange'   " Easy text exchange operator for Vim
