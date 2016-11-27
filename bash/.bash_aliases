@@ -82,6 +82,8 @@ alias open='xdg-open'
 alias chrome='c:/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
 alias vless=/usr/share/vim/vim74/macros/less.sh
 alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias so='source c:/cygwin64/home/Anton/.bashrc'
 alias sotmux='tmux source-file c:/cygwin64/home/Anton/.tmux.conf'
 alias attmux='tmux attach || tmux new' 
