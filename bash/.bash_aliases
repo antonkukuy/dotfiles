@@ -10,6 +10,7 @@ export LESS=" -R "
  alias vdir='ls -hF --color=tty --format=long'
  alias ll='ls -slihF --color=tty'                              # long list
  alias la='ls -hFA --color=tty'                              # all but . and ..
+ alias l.='ls -d .* --color=tty'                              # dotfiles and dotdirectory
 #alias l='ls -CF'                              #
 #}}}
 
@@ -22,6 +23,7 @@ export LESS=" -R "
 # Translate {{{
 alias trans='trans -play -speak'
 alias etr='trans {en=ru} -play -speak -shell -history'
+alias etrr='trans {en=ru} -play -speak -shell'
 alias rtr='trans {ru=en} -play -speak -shell'
 alias yrtr='trans {ru=en} -play -speak -shell -engine yandex'
 alias yetr='trans {en=ru} -play -speak -shell -engine yandex'
@@ -68,9 +70,12 @@ alias ahk='cd d:/AutoHotKey/'
 #}}}
 
 # Various command {{{
+alias -- -='cd -'
 alias py35='/c/Users/ADMIN/AppData/Local/Programs/Python/Python35/python.exe'
 alias lames='/c/Program\ Files\ \(x86\)/Lame\ For\ Audacity/lame.exe'
 alias ankiru='/c/Program\ Files\ \(x86\)/Anki/anki.exe -l ru'
+alias cp='cp -i'
+alias mv='mv -i'
 alias rm='rm -i'
 alias rmd='rm -id'
 alias open='xdg-open'
