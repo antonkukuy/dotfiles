@@ -86,6 +86,7 @@ alias so='source c:/cygwin64/home/Anton/.bashrc'
 alias sotmux='tmux source-file c:/cygwin64/home/Anton/.tmux.conf'
 alias attmux='tmux attach || tmux new' 
 alias cs=clear
+alias which='alias | /usr/bin/which --read-alias --show-dot --show-tilde'
 alias weather='sh c:/cygwin64/home/Anton/scripts/weather/openweathermap.sh'
 #}}}
 
