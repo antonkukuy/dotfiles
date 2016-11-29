@@ -1,3 +1,6 @@
+ranger   # vi-based file manager
+
+
 sudo apt-get install ranger mc gparted automake autoconf build-essencial pv checkinstall
 
 sudo apt-get install source-highlight   #for less highlight source

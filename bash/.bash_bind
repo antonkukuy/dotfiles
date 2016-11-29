@@ -1,7 +1,7 @@
 #!/bin/bash
 #print previous command but only the first nth arguments
 #Alt+1, Alt+2 ... etc
-bind '"\e1": "!$ \r"'
+# bind '"\e1": "!$ \r"'
 #bind '"\e2": "!-2 \r"'
 #bind '"\e3": "!-3 \r"'
 #bind '"\e3": "!-3 \r"'

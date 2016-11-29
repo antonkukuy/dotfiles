@@ -1,8 +1,13 @@
 #$if Bash
+set editing-mode vi
 #
 #Read in the contents of the inputrc file, and incorporate any bindings or variable assignments found there.
 #by default Emacs style C-x C-r
 #Control-x: re-read-init-file
+
+# duration readline will wait for a character
+# set keyseq-timeout 600
+
 #
 # for vim
 #set convert-meta on   # russian input don't work
@@ -120,13 +125,38 @@ $endif
 "\ey": copy-backward-word
 "\ek": kill-line
 "\e?": yank-pop
+"\e\e": "\C-a\ek"   # Two escapes clear command line.
 
 "\eU": upcase-word
 "\eL": downcase-word
 "\eC": capitalize-word
-"\eu": "\eb\eU"
-"\el": "\eb\eL"
-"\ec": "\eb\eC"
+"\eu": "\eB\eU"
+"\eu2": "\e2\eB\e2\eU"
+"\eu3": "\e3\eB\e3\eU"
+"\eu4": "\e4\eB\e4\eU"
+"\eu5": "\e5\eB\e5\eU"
+"\eu6": "\e6\eB\e6\eU"
+"\eu7": "\e7\eB\e7\eU"
+"\eu8": "\e8\eB\e8\eU"
+"\eu9": "\e9\eB\e9\eU"
+"\el": "\eB\eL"
+"\el2": "\e2\eB\e2\eL"
+"\el3": "\e3\eB\e3\eL"
+"\el4": "\e4\eB\e4\eL"
+"\el5": "\e5\eB\e5\eL"
+"\el6": "\e6\eB\e6\eL"
+"\el7": "\e7\eB\e7\eL"
+"\el8": "\e8\eB\e8\eL"
+"\el9": "\e9\eB\e9\eL"
+"\ec": "\eB\eC"
+"\ec2": "\e2\eB\e2\eC"
+"\ec3": "\e3\eB\e3\eC"
+"\ec4": "\e4\eB\e4\eC"
+"\ec5": "\e5\eB\e5\eC"
+"\ec6": "\e6\eB\e6\eC"
+"\ec7": "\e7\eB\e7\eC"
+"\ec8": "\e8\eB\e8\eC"
+"\ec9": "\e9\eB\e9\eC"
 
 # Delete within surround {{{
 "\e'": "''\C-b"
@@ -145,22 +175,22 @@ $endif
 $endif
 #}}}
 
-# Use Vi, not Emacs, style editing(Header) {{{
-#set editing-mode vi
-# vi settings                                         
+# Vim style {{{
+
 $if mode=vi
+
 # Show all completions as soon as I press tab, even if there's more than one
 set show-all-if-ambiguous on
 # Ignore case
 set completion-ignore-case on
-# on menu-complete, first display the common prefix, then cycle through the 
-# options when hitting TAB
-#set menu-complete-display-prefix on
+# Pressing tab will list all completions & select the first one. Pressing it 
+# again will cycle through available completions.  (TAB)
+TAB: menu-complete
 #}}}
 
 # Keymaps vi-command {{{
 
-# Keymaps for when we're in command mode (e.g., after hitting ESC)
+# Keymaps for when we're in command mode (e.g., after hitting C-o)
 set keymap vi-command
 #Keyboard Macros{{{
 #Begin saving the characters typed into the current keyboard macro.
@@ -210,7 +240,7 @@ set keymap vi-command
 #Delete letters till space from current position cursor
 "E": "ldt a"
 
-# Two escapes clear command line. (Use C-c or \eC\eC instead)
+# Two escapes clear command line.
 "\e\e": "\e0\C-ki"
 
 "K": beginning-of-history
@@ -218,93 +248,364 @@ set keymap vi-command
 
 
 # Insert the arguments from the last command
-#"p": "i !!*\r"
+#"p": "iВ !!*\r"
 #}}}
 
-# Keymaps vi-insert {{{
+# # Keymaps vi-insert DEPRECATED {{{
+#
+# # Keymaps for when we're in insert (i.e., typing stuff in) mode
+# set keymap vi-insert
+#
+#
+# #Delete the character behind the cursor. A numeric argument means to kill the characters instead of deleting them.
+# #"\C-j": backward-delete-char
+#
+# #Delete the character under the cursor, unless the cursor is at the end of the line, in which case the character behind the cursor is deleted.
+# #"\C-\'": forward-backward-delete-char
+#
+# # remap escape
+# "jj": vi-movement-mode
+#
+# #"\C-[": prefix-meta
+#
+# # Words are composed of letters and digits.
+# "\e-b": backward-word
+# "\e-f": forward-word
+# # Words are delimited by non-quoted shell metacharacters.
+# #"\M-b": shell-backward-word
+# #"\M-f": shell-forward-word
+#
+# # Drag the word before point past the word after point, moving point past that word as well.
+# "\e-t": transpose-words
+# "\C-b": backward-char
+# "\C-f": forward-char
+# "\e[C": forward-char
+# "\e[D": backward-char
+# "\C-a": beginning-of-line
+# "\C-e": end-of-line
+#
+# # Kill from point to the end of the current word, or if between words, to the end of the next word. Word boundaries are the same as forward-word.
+# "\e-k": kill-word
+# # Kill the word behind point, using white space as a word boundary. The killed text is saved on the kill-ring.
+# "\e-K": unix-word-rubout
+#
+# # Pressing tab will list all completions & select the first one. Pressing it 
+# # again will cycle through available completions.  (TAB)
+# TAB: menu-complete
+# # Shift-TAB cycles completions backward (S-Tab)
+# "\e[Z": menu-complete-backward
+#
+# # Edit options before rerunning previous command, eg: ls a b c -> ls -al a b c.  (C-o)
+# #"\C-o": "\e-0eli "
+#
+# "\C-o": kill-line
+#
+# # Cycle thru completions.(C-b)
+# #"\C-b": menu-complete
+#
+# # glob patterns without executing, eg: 'rm *x' (M-e)
+# "\e-e": glob-expand-word
+# # Perform alias expansion on the current line. (C-M-e)
+# "\C-\e-e": shell-expand-line
+# #Perform alias expansion on the current line. (C-M-e)
+# #"\C-\M-e":  alias-expand-line
+#
+# #Delete letters till space from current position cursor
+# #"\C-e": "\elldt a"
+# #
+# # Two escapes clear command line.
+# "\e\e": "\e0\C-ki"
+# # Clear screen and go to end of line.
+# "\C-l": "\e0\C-lA"
+#
+# # Vim style history search (Already Default) {{{
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
+# "\C-k": history-search-backward
+# "\C-j": history-search-forward
+# #}}}
+#
+# $endif
+# #}}}
 
-# Keymaps for when we're in insert (i.e., typing stuff in) mode
+
 set keymap vi-insert
-
-# Completion brackets {{{
-"(": "\C-v()\C-b"
-"[": "\C-v[]\C-b"
-"{": "\C-v{}\C-b"
-"<": "\C-v<>\C-b"
-"\"": "\C-v\"\C-v\"\C-b"
-"\047": "\C-v\047\C-v\047\C-b"
-"\`": "\C-v\`\C-v\`\C-b"
-#}}}
-
-#Delete the character behind the cursor. A numeric argument means to kill the characters instead of deleting them.
-#"\C-j": backward-delete-char
-
-#Delete the character under the cursor, unless the cursor is at the end of the line, in which case the character behind the cursor is deleted.
-#"\C-\'": forward-backward-delete-char
-
+"\C-o": vi-movement-mode
+"\e": abort
+# Two escapes clear command line.
+"\e\e": "\C-oddi"
 # remap escape
 "jj": vi-movement-mode
 
-#"\C-[": prefix-meta
+# Emacs style within vi mode {{{
 
-# Words are composed of letters and digits.
-"\M-b": backward-word
-"\M-f": forward-word
-# Words are delimited by non-quoted shell metacharacters.
-#"\M-b": shell-backward-word
-#"\M-f": shell-forward-word
-
-# Drag the word before point past the word after point, moving point past that word as well.
-"\M-t": transpose-words
-"\C-b": backward-char
-"\C-f": forward-char
-"\e[C": forward-char
-"\e[D": backward-char
-"\C-a": beginning-of-line
-"\C-e": end-of-line
-
-# Kill from point to the end of the current word, or if between words, to the end of the next word. Word boundaries are the same as forward-word.
-"\M-k": kill-word
-# Kill the word behind point, using white space as a word boundary. The killed text is saved on the kill-ring.
-"\M-K": unix-word-rubout
-
-# Pressing tab will list all completions & select the first one. Pressing it 
-# again will cycle through available completions.  (TAB)
-TAB: menu-complete
-# Shift-TAB cycles completions backward (S-Tab)
-"\e[Z": menu-complete-backward
-
-# Edit options before rerunning previous command, eg: ls a b c -> ls -al a b c.  (C-o)
-#"\C-o": "\e-0eli "
-
-"\C-o": kill-line
-
-# Cycle thru completions.(C-b)
-#"\C-b": menu-complete
-
-# glob patterns without executing, eg: 'rm *x' (M-e)
-"\M-e": glob-expand-word
-# Perform alias expansion on the current line. (C-M-e)
-"\C-\M-e": shell-expand-line
-#Perform alias expansion on the current line. (C-M-e)
-#"\C-\M-e":  alias-expand-line
-
-#Delete letters till space from current position cursor
-#"\C-e": "\elldt a"
-#
-# Two escapes clear command line.
-"\e\e": "\e0\C-ki"
-# Clear screen and go to end of line.
-"\C-l": "\e0\C-lA"
-
-# Vim style history search (Already Default) {{{
-"\e[A": history-search-backward
-"\e[B": history-search-forward
 "\C-k": history-search-backward
 "\C-j": history-search-forward
+
+$if bash
+    "\ef": shell-forward-word
+    "\eb": shell-backward-word
+    "\ed": shell-kill-word
+    "\eF": forward-word
+    "\eB": backward-word
+$else
+    "\ef": vi-forward-bigword
+    "\eb": vi-backward-bigword
+    "\ed": kill-word
+    "\eF": vi-forward-word
+    "\eB": vi-backward-word
+$endif
+
+"\eY": copy-forward-word
+"\ey": copy-backward-word
+"\ek": kill-line
+"\e?": yank-pop
+
+"\eU": upcase-word
+"\eL": downcase-word
+"\eC": capitalize-word
+"\eu": "\eB\eU"
+"\eu2": "\e2\eB\e2\eU"
+"\eu3": "\e3\eB\e3\eU"
+"\eu4": "\e4\eB\e4\eU"
+"\eu5": "\e5\eB\e5\eU"
+"\eu6": "\e6\eB\e6\eU"
+"\eu7": "\e7\eB\e7\eU"
+"\eu8": "\e8\eB\e8\eU"
+"\eu9": "\e9\eB\e9\eU"
+"\el": "\eB\eL"
+"\el2": "\e2\eB\e2\eL"
+"\el3": "\e3\eB\e3\eL"
+"\el4": "\e4\eB\e4\eL"
+"\el5": "\e5\eB\e5\eL"
+"\el6": "\e6\eB\e6\eL"
+"\el7": "\e7\eB\e7\eL"
+"\el8": "\e8\eB\e8\eL"
+"\el9": "\e9\eB\e9\eL"
+"\ec": "\eB\eC"
+"\ec2": "\e2\eB\e2\eC"
+"\ec3": "\e3\eB\e3\eC"
+"\ec4": "\e4\eB\e4\eC"
+"\ec5": "\e5\eB\e5\eC"
+"\ec6": "\e6\eB\e6\eC"
+"\ec7": "\e7\eB\e7\eC"
+"\ec8": "\e8\eB\e8\eC"
+"\ec9": "\e9\eB\e9\eC"
+
+# Delete within surround {{{
+"\e'": "''\C-b"
+"\e\"": "\"\"\C-b"
+"\e(": "()\C-b"
+"\e[": "[]\C-b"
+"\e{": "{}\C-b"
+"\e<": "<>\C-b"
+"\e;": ";;\C-b"
+"\e:": "::\C-b"
+"\e`": "``\C-b"
+"\e/": "//\C-b"
+"\ee": "\C-]\"\e"
+"\ea": "\C-]\'\e"
+#}}}
+# $endif
 #}}}
 
+# #{{{
+
+"\C-g": abort
+"\C-x\C-g": abort
+"\e\C-g": abort
+"\C-m": accept-line
+# alias-expand-line (not bound)
+# arrow-key-prefix (not bound)
+# backward-byte (not bound)
+"\C-b": backward-char
+"\eOD": backward-char
+"\e[D": backward-char
+"\C-h": backward-delete-char
+"\C-?": backward-delete-char
+"\C-x\C-?": backward-kill-line
+"\e\C-h": backward-kill-word
+"\e\C-?": backward-kill-word
+"\eB": backward-word
+# beginning-of-history (not bound)
+"\C-a": beginning-of-line
+"\eOH": beginning-of-line
+"\e[1~": beginning-of-line
+"\e[H": beginning-of-line
+"\C-xe": call-last-kbd-macro
+"\eC": capitalize-word
+"\C-]": character-search
+"\e\C-]": character-search-backward
+"\C-l": clear-screen
+# complete (not bound)
+"\e!": complete-command
+# complete-filename (not bound)
+"\e@": complete-hostname
+# complete-into-braces (not bound)
+"\e~": complete-username
+"\e$": complete-variable
+"\ey": copy-backward-word
+"\eY": copy-forward-word
+# copy-region-as-kill (not bound)
+# dabbrev-expand (not bound)
+"\C-d": delete-char
+"\e[3~": delete-char
+# delete-char-or-list (not bound)
+"\e\\": delete-horizontal-space
+"\e-": digit-argument
+"\e0": digit-argument
+"\e1": digit-argument
+"\e2": digit-argument
+"\e3": digit-argument
+"\e4": digit-argument
+"\e5": digit-argument
+"\e6": digit-argument
+"\e7": digit-argument
+"\e8": digit-argument
+"\e9": digit-argument
+"\C-x\C-v": display-shell-version
+"\C-xA": do-lowercase-version
+"\C-xB": do-lowercase-version
+"\C-xC": do-lowercase-version
+"\C-xD": do-lowercase-version
+"\C-xE": do-lowercase-version
+"\C-xF": do-lowercase-version
+"\C-xG": do-lowercase-version
+"\C-xH": do-lowercase-version
+"\C-xI": do-lowercase-version
+"\C-xJ": do-lowercase-version
+"\C-xK": do-lowercase-version
+"\C-xL": do-lowercase-version
+"\C-xM": do-lowercase-version
+"\C-xN": do-lowercase-version
+"\C-xO": do-lowercase-version
+"\C-xP": do-lowercase-version
+"\C-xQ": do-lowercase-version
+"\C-xR": do-lowercase-version
+"\C-xS": do-lowercase-version
+"\C-xT": do-lowercase-version
+"\C-xU": do-lowercase-version
+"\C-xV": do-lowercase-version
+"\C-xW": do-lowercase-version
+"\C-xX": do-lowercase-version
+"\C-xY": do-lowercase-version
+"\C-xZ": do-lowercase-version
+"\eA": do-lowercase-version
+"\eD": do-lowercase-version
+"\eE": do-lowercase-version
+"\eG": do-lowercase-version
+"\eH": do-lowercase-version
+"\eI": do-lowercase-version
+"\eJ": do-lowercase-version
+"\eK": do-lowercase-version
+"\eM": do-lowercase-version
+"\eN": do-lowercase-version
+"\eP": do-lowercase-version
+"\eQ": do-lowercase-version
+"\eR": do-lowercase-version
+"\eS": do-lowercase-version
+"\eT": do-lowercase-version
+"\eV": do-lowercase-version
+"\eW": do-lowercase-version
+"\eX": do-lowercase-version
+"\eZ": do-lowercase-version
+"\eL": downcase-word
+# dump-functions (not bound)
+# dump-macros (not bound)
+# dump-variables (not bound)
+"\e\C-i": dynamic-complete-history
+"\C-x\C-e": edit-and-execute-command
+# emacs-editing-mode (not bound)
+"\C-x)": end-kbd-macro
+"\e>": end-of-history
+"\C-e": end-of-line
+"\eOF": end-of-line
+"\e[4~": end-of-line
+"\e[F": end-of-line
+"\C-x\C-x": exchange-point-and-mark
+# forward-backward-delete-char (not bound)
+# forward-byte (not bound)
+"\C-f": forward-char
+"\eOC": forward-char
+"\e[C": forward-char
+"\C-s": forward-search-history
+"\eF": forward-word
+"\eg": glob-complete-word
+"\C-x*": glob-expand-word
+"\C-xg": glob-list-expansions
+# history-and-alias-expand-line (not bound)
+"\e^": history-expand-line
+"\C-k": history-search-backward
+"\C-j": history-search-forward
+# history-substring-search-backward (not bound)
+# history-substring-search-forward (not bound)
+"\e#": insert-comment
+"\e*": insert-completions
+# insert-last-argument (not bound)
+"\ek": kill-line
+# kill-region (not bound)
+# kill-whole-line (not bound)
+# kill-word (not bound)
+# magic-space (not bound)
+"\C-i": menu-complete
+# menu-complete-backward (not bound)
+"\C-n": next-history
+"\eOB": next-history
+"\e[B": next-history
+"\en": non-incremental-forward-search-history
+# non-incremental-forward-search-history-again (not bound)
+"\ep": non-incremental-reverse-search-history
+# non-incremental-reverse-search-history-again (not bound)
+# old-menu-complete (not bound)
+# "\C-o": operate-and-get-next
+# overwrite-mode (not bound)
+# paste-from-clipboard (not bound)
+"\C-x!": possible-command-completions
+"\e=": possible-completions
+"\C-x/": possible-filename-completions
+"\C-x@": possible-hostname-completions
+"\C-x~": possible-username-completions
+"\C-x$": possible-variable-completions
+"\C-p": previous-history
+"\eOA": previous-history
+"\e[A": previous-history
+# print-last-kbd-macro (not bound)
+"\C-q": quoted-insert
+"\C-v": quoted-insert
+# redraw-current-line (not bound)
+"\C-x\C-r": re-read-init-file
+"\C-r": reverse-search-history
+"\e\C-r": revert-line
+"\er": revert-line
+"\C-@": set-mark
+"\e ": set-mark
+# shell-backward-kill-word (not bound)
+"\eb": shell-backward-word
+"\e\C-e": shell-expand-line
+"\ef": shell-forward-word
+"\ed": shell-kill-word
+# skip-csi-sequence (not bound)
+"\C-x(": start-kbd-macro
+# tab-insert (not bound)
+"\e&": tilde-expand
+"\C-t": transpose-chars
+"\et": transpose-words
+# tty-status (not bound)
+"\C-x\C-u": undo
+"\C-_": undo
+# universal-argument (not bound)
+# unix-filename-rubout (not bound)
+"\C-u": unix-line-discard
+"\C-w": unix-word-rubout
+"\eU": upcase-word
+"\C-y": yank
+"\e.": yank-last-arg
+"\e_": yank-last-arg
+"\e\C-y": yank-nth-arg
+"\e?": yank-pop
+# 
+# #}}}
 $endif
-#}}}
+
 
 #$endif
