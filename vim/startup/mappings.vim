@@ -207,17 +207,17 @@ nmap <C-w><TAB> :tabn<CR>
 " Close window 
 "{{{
 nnoremap ;< :cclose<CR>  " after search, for preview windows <C-W>z
-nnoremap ;wo :only<CR>
-nnoremap ;wc :close<CR>
-nnoremap ;wjc <C-w>j:close<CR>
-nnoremap ;wkc <C-w>k:close<CR>
-nnoremap ;whc <C-w>h:close<CR>
-nnoremap ;wlc <C-w>l:close<CR>
+nnoremap ;o :only<CR>
+nnoremap ;c :close<CR>
+nnoremap ;j <C-w>j:close<CR>
+nnoremap ;k <C-w>k:close<CR>
+nnoremap ;h <C-w>h:close<CR>
+nnoremap ;l <C-w>l:close<CR>
 
-inoremap <M-;>wjc <C-o><C-w>j<C-o>:close<CR>
-inoremap <M-;>wkc <C-o><C-w>k<C-o>:close<CR>
-inoremap <M-;>whc <C-o><C-w>h<C-o>:close<CR>
-inoremap <M-;>wlc <C-o><C-w>l<C-o>:close<CR>
+inoremap <M-;>j <C-o><C-w>j<C-o>:close<CR>
+inoremap <M-;>k <C-o><C-w>k<C-o>:close<CR>
+inoremap <M-;>h <C-o><C-w>h<C-o>:close<CR>
+inoremap <M-;>l <C-o><C-w>l<C-o>:close<CR>
 "}}}
 "}}}
 
