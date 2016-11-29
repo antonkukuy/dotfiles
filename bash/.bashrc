@@ -1,5 +1,4 @@
 # User dependent .bashrc file
-# . (dot) stands as source command
 #PATH+=:/cygdrive/c/home/Anton/bin:/cygdrive/c/Far\ Manager:/cygdrive/c/home/Anton/c_program:/cygdrive/c/home/Anton/.local/mplayer
 PATH+=:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/Python27:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs
 
@@ -18,10 +17,11 @@ fi
 #}}}
 
 # Source files {{{
-source ~/.local/bin/bashmarks.sh
-source ~/.shell_promptline.sh
-source ~/.bash_bind
-source ~/.tmuxinator.bash
+# . (dot) stands as source command
+. ~/.local/bin/bashmarks.sh
+. ~/.shell_promptline.sh
+. ~/.bash_bind
+. ~/.tmuxinator.bash
 #source ~/.profile
 #}}}
 
@@ -61,6 +61,9 @@ shopt -s histverify
 # shopt -s dirspell 2>/dev/null
 # shopt -s cdspell 2>/dev/null
 
+# don't overwrite existing file
+set -o noclobber
+
 export BROWSER=Chrome
 #export LESSCHARSET=koi8-r
 #export LANG=ru_RU.utf8
@@ -72,31 +75,17 @@ export PAGER=less
 export MANPAGER="/usr/bin/most -s"
 # export MANPAGER="less" # -X option stands -> Don't clear the screen after quitting a manual page
 
-# # Colored man pages
-# export LESS_TERMCAP_mb=$'\E[01;31m'
-# export LESS_TERMCAP_md=$'\E[01;31m'
-# export LESS_TERMCAP_me=$'\E[0m'
-# export LESS_TERMCAP_se=$'\E[0m'
-# export LESS_TERMCAP_so=$'\E[01;44;33m'
-# export LESS_TERMCAP_ue=$'\E[0m'
-# export LESS_TERMCAP_us=$'\E[01;32m'
-
-
-# export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking 
-# export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold 
-# export LESS_TERMCAP_me=$'\E[0m'           # end mode 
-# export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode 
-# export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box 
-# export LESS_TERMCAP_ue=$'\E[0m'           # end underline 
-# export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-# force colours
-# force_color_prompt=yes
+# # Colored less pager
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking 
+export LESS_TERMCAP_md=$'\E[01;31m'       # begin bold 
+export LESS_TERMCAP_me=$'\E[0m'           # end mode 
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode 
+export LESS_TERMCAP_so=$'\E[01;44;33m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline 
+export LESS_TERMCAP_us=$'\E[01;32m'       # begin underline
 
 # use colour prompt
 # color_prompt=yes
-
-
-
 
 export EDITOR=vim
 export GIT_PS1_SHOWDIRTYSTATE=1
