@@ -161,6 +161,7 @@ autocmd FileType html let b:surround_102 = "<!-- \r -->"
 autocmd FileType autohotkey let b:surround_102 = ";{{{ \r ;}}}"
 autocmd FileType vim let b:surround_102 = "\"{{{ \r \"}}}"
 autocmd FileType sh let b:surround_102 = "#{{{ \r #}}}"
+autocmd FileType readline let b:surround_102 = "#{{{ \r #}}}"
 autocmd FileType tmux let b:surround_102 = "#{{{ \r #}}}"
 autocmd FileType python let b:surround_102 = "'''\r '''"
 "}}}
