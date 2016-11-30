@@ -175,9 +175,9 @@ $endif
 $endif
 #}}}
 
-# Vim style {{{
-
 $if mode=vi
+
+# Vim style {{{
 
 # Show all completions as soon as I press tab, even if there's more than one
 set show-all-if-ambiguous on
@@ -192,6 +192,7 @@ TAB: menu-complete
 
 # Keymaps for when we're in command mode (e.g., after hitting C-o)
 set keymap vi-command
+
 #Keyboard Macros{{{
 #Begin saving the characters typed into the current keyboard macro.
 #"qw": start-kbd-macro
@@ -237,6 +238,15 @@ set keymap vi-command
 "ci\\": "F\\ldt\\i"
 #}}}
 
+# change case {{{
+"gU": upcase-word
+"gu": downcase-word
+"gC": capitalize-word
+"gUU": "50gUa"
+"guu": "50gua"
+"gCC": "50gCa"
+#}}}
+
 #Delete letters till space from current position cursor
 "E": "ldt a"
 
@@ -246,88 +256,11 @@ set keymap vi-command
 "K": beginning-of-history
 "J": end-of-history
 
-
 # Insert the arguments from the last command
 #"p": "iВ !!*\r"
 #}}}
 
-# # Keymaps vi-insert DEPRECATED {{{
-#
-# # Keymaps for when we're in insert (i.e., typing stuff in) mode
-# set keymap vi-insert
-#
-#
-# #Delete the character behind the cursor. A numeric argument means to kill the characters instead of deleting them.
-# #"\C-j": backward-delete-char
-#
-# #Delete the character under the cursor, unless the cursor is at the end of the line, in which case the character behind the cursor is deleted.
-# #"\C-\'": forward-backward-delete-char
-#
-# # remap escape
-# "jj": vi-movement-mode
-#
-# #"\C-[": prefix-meta
-#
-# # Words are composed of letters and digits.
-# "\e-b": backward-word
-# "\e-f": forward-word
-# # Words are delimited by non-quoted shell metacharacters.
-# #"\M-b": shell-backward-word
-# #"\M-f": shell-forward-word
-#
-# # Drag the word before point past the word after point, moving point past that word as well.
-# "\e-t": transpose-words
-# "\C-b": backward-char
-# "\C-f": forward-char
-# "\e[C": forward-char
-# "\e[D": backward-char
-# "\C-a": beginning-of-line
-# "\C-e": end-of-line
-#
-# # Kill from point to the end of the current word, or if between words, to the end of the next word. Word boundaries are the same as forward-word.
-# "\e-k": kill-word
-# # Kill the word behind point, using white space as a word boundary. The killed text is saved on the kill-ring.
-# "\e-K": unix-word-rubout
-#
-# # Pressing tab will list all completions & select the first one. Pressing it 
-# # again will cycle through available completions.  (TAB)
-# TAB: menu-complete
-# # Shift-TAB cycles completions backward (S-Tab)
-# "\e[Z": menu-complete-backward
-#
-# # Edit options before rerunning previous command, eg: ls a b c -> ls -al a b c.  (C-o)
-# #"\C-o": "\e-0eli "
-#
-# "\C-o": kill-line
-#
-# # Cycle thru completions.(C-b)
-# #"\C-b": menu-complete
-#
-# # glob patterns without executing, eg: 'rm *x' (M-e)
-# "\e-e": glob-expand-word
-# # Perform alias expansion on the current line. (C-M-e)
-# "\C-\e-e": shell-expand-line
-# #Perform alias expansion on the current line. (C-M-e)
-# #"\C-\M-e":  alias-expand-line
-#
-# #Delete letters till space from current position cursor
-# #"\C-e": "\elldt a"
-# #
-# # Two escapes clear command line.
-# "\e\e": "\e0\C-ki"
-# # Clear screen and go to end of line.
-# "\C-l": "\e0\C-lA"
-#
-# # Vim style history search (Already Default) {{{
-# "\e[A": history-search-backward
-# "\e[B": history-search-forward
-# "\C-k": history-search-backward
-# "\C-j": history-search-forward
-# #}}}
-#
-# $endif
-# #}}}
-
+# Keymaps vi-insert {{{
 
 set keymap vi-insert
 "\C-o": vi-movement-mode
@@ -361,36 +294,41 @@ $endif
 "\ek": kill-line
 "\e?": yank-pop
 
+# change case {{{
 "\eU": upcase-word
 "\eL": downcase-word
 "\eC": capitalize-word
-"\eu": "\eB\eU"
-"\eu2": "\e2\eB\e2\eU"
-"\eu3": "\e3\eB\e3\eU"
-"\eu4": "\e4\eB\e4\eU"
-"\eu5": "\e5\eB\e5\eU"
-"\eu6": "\e6\eB\e6\eU"
-"\eu7": "\e7\eB\e7\eU"
-"\eu8": "\e8\eB\e8\eU"
-"\eu9": "\e9\eB\e9\eU"
-"\el": "\eB\eL"
-"\el2": "\e2\eB\e2\eL"
-"\el3": "\e3\eB\e3\eL"
-"\el4": "\e4\eB\e4\eL"
-"\el5": "\e5\eB\e5\eL"
-"\el6": "\e6\eB\e6\eL"
-"\el7": "\e7\eB\e7\eL"
-"\el8": "\e8\eB\e8\eL"
-"\el9": "\e9\eB\e9\eL"
-"\ec": "\eB\eC"
-"\ec2": "\e2\eB\e2\eC"
-"\ec3": "\e3\eB\e3\eC"
-"\ec4": "\e4\eB\e4\eC"
-"\ec5": "\e5\eB\e5\eC"
-"\ec6": "\e6\eB\e6\eC"
-"\ec7": "\e7\eB\e7\eC"
-"\ec8": "\e8\eB\e8\eC"
-"\ec9": "\e9\eB\e9\eC"
+"\eu": "\C-obgUa"
+"\e\C-u": "\C-ogUU"
+"\eu2": "\C-o2b2gUa"
+"\eu3": "\C-o3b3gUa"
+"\eu4": "\C-o4b4gUa"
+"\eu5": "\C-o5b5gUa"
+"\eu6": "\C-o6b6gUa"
+"\eu7": "\C-o7b7gUa"
+"\eu8": "\C-o8b8gUa"
+"\eu9": "\C-o9b9gUa"
+"\el": "\C-obgua"
+"\e\C-l": "\C-oguu"
+"\el2": "\C-o2b2gua"
+"\el3": "\C-o3b3gua"
+"\el4": "\C-o4b4gua"
+"\el5": "\C-o5b5gua"
+"\el6": "\C-o6b6gua"
+"\el7": "\C-o7b7gua"
+"\el8": "\C-o8b8gua"
+"\el9": "\C-o9b9gua"
+"\ec": "\C-obgCa"
+"\eG": "\C-ogCC"
+"\ec2": "\C-o2b2gCa"
+"\ec3": "\C-o3b3gCa"
+"\ec4": "\C-o4b4gCa"
+"\ec5": "\C-o5b5gCa"
+"\ec6": "\C-o6b6gCa"
+"\ec7": "\C-o7b7gCa"
+"\ec8": "\C-o8b8gCa"
+"\ec9": "\C-o9b9gCa"
+#}}}
 
 # Delete within surround {{{
 "\e'": "''\C-b"
@@ -406,14 +344,13 @@ $endif
 "\ee": "\C-]\"\e"
 "\ea": "\C-]\'\e"
 #}}}
-# $endif
 #}}}
 
-# #{{{
+# rest keys {{{
 
-"\C-g": abort
-"\C-x\C-g": abort
-"\e\C-g": abort
+# "\C-g": abort
+# "\C-x\C-g": abort
+# "\e\C-g": abort
 "\C-m": accept-line
 # alias-expand-line (not bound)
 # arrow-key-prefix (not bound)
@@ -464,51 +401,55 @@ $endif
 "\e8": digit-argument
 "\e9": digit-argument
 "\C-x\C-v": display-shell-version
-"\C-xA": do-lowercase-version
-"\C-xB": do-lowercase-version
-"\C-xC": do-lowercase-version
-"\C-xD": do-lowercase-version
-"\C-xE": do-lowercase-version
-"\C-xF": do-lowercase-version
-"\C-xG": do-lowercase-version
-"\C-xH": do-lowercase-version
-"\C-xI": do-lowercase-version
-"\C-xJ": do-lowercase-version
-"\C-xK": do-lowercase-version
-"\C-xL": do-lowercase-version
-"\C-xM": do-lowercase-version
-"\C-xN": do-lowercase-version
-"\C-xO": do-lowercase-version
-"\C-xP": do-lowercase-version
-"\C-xQ": do-lowercase-version
-"\C-xR": do-lowercase-version
-"\C-xS": do-lowercase-version
-"\C-xT": do-lowercase-version
-"\C-xU": do-lowercase-version
-"\C-xV": do-lowercase-version
-"\C-xW": do-lowercase-version
-"\C-xX": do-lowercase-version
-"\C-xY": do-lowercase-version
-"\C-xZ": do-lowercase-version
-"\eA": do-lowercase-version
-"\eD": do-lowercase-version
-"\eE": do-lowercase-version
-"\eG": do-lowercase-version
-"\eH": do-lowercase-version
-"\eI": do-lowercase-version
-"\eJ": do-lowercase-version
-"\eK": do-lowercase-version
-"\eM": do-lowercase-version
-"\eN": do-lowercase-version
-"\eP": do-lowercase-version
-"\eQ": do-lowercase-version
-"\eR": do-lowercase-version
-"\eS": do-lowercase-version
-"\eT": do-lowercase-version
-"\eV": do-lowercase-version
-"\eW": do-lowercase-version
-"\eX": do-lowercase-version
-"\eZ": do-lowercase-version
+
+# do-lowercase-version {{{
+# "\C-xA": do-lowercase-version
+# "\C-xB": do-lowercase-version
+# "\C-xC": do-lowercase-version
+# "\C-xD": do-lowercase-version
+# "\C-xE": do-lowercase-version
+# "\C-xF": do-lowercase-version
+# "\C-xG": do-lowercase-version
+# "\C-xH": do-lowercase-version
+# "\C-xI": do-lowercase-version
+# "\C-xJ": do-lowercase-version
+# "\C-xK": do-lowercase-version
+# "\C-xL": do-lowercase-version
+# "\C-xM": do-lowercase-version
+# "\C-xN": do-lowercase-version
+# "\C-xO": do-lowercase-version
+# "\C-xP": do-lowercase-version
+# "\C-xQ": do-lowercase-version
+# "\C-xR": do-lowercase-version
+# "\C-xS": do-lowercase-version
+# "\C-xT": do-lowercase-version
+# "\C-xU": do-lowercase-version
+# "\C-xV": do-lowercase-version
+# "\C-xW": do-lowercase-version
+# "\C-xX": do-lowercase-version
+# "\C-xY": do-lowercase-version
+# "\C-xZ": do-lowercase-version
+# "\eA": do-lowercase-version
+# "\eD": do-lowercase-version
+# "\eE": do-lowercase-version
+# "\eG": do-lowercase-version
+# "\eH": do-lowercase-version
+# "\eI": do-lowercase-version
+# "\eJ": do-lowercase-version
+# "\eK": do-lowercase-version
+# "\eM": do-lowercase-version
+# "\eN": do-lowercase-version
+# "\eP": do-lowercase-version
+# "\eQ": do-lowercase-version
+# "\eR": do-lowercase-version
+# "\eS": do-lowercase-version
+# "\eT": do-lowercase-version
+# "\eV": do-lowercase-version
+# "\eW": do-lowercase-version
+# "\eX": do-lowercase-version
+# "\eZ": do-lowercase-version
+#}}}
+
 "\eL": downcase-word
 # dump-functions (not bound)
 # dump-macros (not bound)
@@ -605,7 +546,85 @@ $endif
 "\e?": yank-pop
 # 
 # #}}}
+
+#}}}
+
 $endif
 
-
+# # Keymaps vi-insert DEPRECATED {{{
+#
+# # Keymaps for when we're in insert (i.e., typing stuff in) mode
+# set keymap vi-insert
+#
+#
+# #Delete the character behind the cursor. A numeric argument means to kill the characters instead of deleting them.
+# #"\C-j": backward-delete-char
+#
+# #Delete the character under the cursor, unless the cursor is at the end of the line, in which case the character behind the cursor is deleted.
+# #"\C-\'": forward-backward-delete-char
+#
+# # remap escape
+# "jj": vi-movement-mode
+#
+# #"\C-[": prefix-meta
+#
+# # Words are composed of letters and digits.
+# "\e-b": backward-word
+# "\e-f": forward-word
+# # Words are delimited by non-quoted shell metacharacters.
+# #"\M-b": shell-backward-word
+# #"\M-f": shell-forward-word
+#
+# # Drag the word before point past the word after point, moving point past that word as well.
+# "\e-t": transpose-words
+# "\C-b": backward-char
+# "\C-f": forward-char
+# "\e[C": forward-char
+# "\e[D": backward-char
+# "\C-a": beginning-of-line
+# "\C-e": end-of-line
+#
+# # Kill from point to the end of the current word, or if between words, to the end of the next word. Word boundaries are the same as forward-word.
+# "\e-k": kill-word
+# # Kill the word behind point, using white space as a word boundary. The killed text is saved on the kill-ring.
+# "\e-K": unix-word-rubout
+#
+# # Pressing tab will list all completions & select the first one. Pressing it 
+# # again will cycle through available completions.  (TAB)
+# TAB: menu-complete
+# # Shift-TAB cycles completions backward (S-Tab)
+# "\e[Z": menu-complete-backward
+#
+# # Edit options before rerunning previous command, eg: ls a b c -> ls -al a b c.  (C-o)
+# #"\C-o": "\e-0eli "
+#
+# "\C-o": kill-line
+#
+# # Cycle thru completions.(C-b)
+# #"\C-b": menu-complete
+#
+# # glob patterns without executing, eg: 'rm *x' (M-e)
+# "\e-e": glob-expand-word
+# # Perform alias expansion on the current line. (C-M-e)
+# "\C-\e-e": shell-expand-line
+# #Perform alias expansion on the current line. (C-M-e)
+# #"\C-\M-e":  alias-expand-line
+#
+# #Delete letters till space from current position cursor
+# #"\C-e": "\elldt a"
+# #
+# # Two escapes clear command line.
+# "\e\e": "\e0\C-ki"
+# # Clear screen and go to end of line.
+# "\C-l": "\e0\C-lA"
+#
+# # Vim style history search (Already Default) {{{
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
+# "\C-k": history-search-backward
+# "\C-j": history-search-forward
+# #}}}
+#
+# $endif
+# #}}}
 #$endif
