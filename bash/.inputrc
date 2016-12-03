@@ -1,9 +1,5 @@
 #$if Bash
 set editing-mode vi
-#
-#Read in the contents of the inputrc file, and incorporate any bindings or variable assignments found there.
-#by default Emacs style C-x C-r
-#Control-x: re-read-init-file
 
 # duration readline will wait for a character
 # set keyseq-timeout 600
@@ -177,6 +173,8 @@ $endif
 
 $if mode=vi
 
+"\e": abort
+
 # Vim style {{{
 
 # Show all completions as soon as I press tab, even if there's more than one
@@ -264,7 +262,6 @@ set keymap vi-command
 
 set keymap vi-insert
 "\C-o": vi-movement-mode
-"\e": abort
 # Two escapes clear command line.
 "\e\e": "\C-oddi"
 # remap escape
@@ -330,12 +327,15 @@ $endif
 "\ec9": "\C-o9b9gCa"
 #}}}
 
-# Delete within surround {{{
+# SURROUND {{{
 "\e'": "''\C-b"
 "\e\"": "\"\"\C-b"
 "\e(": "()\C-b"
+"\e(3": "(())\C-ohi"
 "\e[": "[]\C-b"
+"\e[3": "[[  ]]\C-o2hi"
 "\e{": "{}\C-b"
+"\e{3": "{  }\C-b\C-b"
 "\e<": "<>\C-b"
 "\e;": ";;\C-b"
 "\e:": "::\C-b"
@@ -343,7 +343,22 @@ $endif
 "\e/": "//\C-b"
 "\ee": "\C-]\"\e"
 "\ea": "\C-]\'\e"
+"\eif": "if ;then ; fi;\C-o4bi"
+"\eor": "for i in ; { ; }\C-o3bi"
 #}}}
+
+# change, delete surrounding {{{
+"\eS": "\C-oF'r\"f'r\"a"
+"\es": "\C-oF\"r'f\"r'a"
+"\ed": "\C-oF'xf'xa"
+"\eD": "\C-oF\"xf\"xa"
+"\ed{": "\C-oF{xf}xa"
+"\ed[": "\C-oF[xf]xa"
+"\ed(": "\C-oF(xf)xa"
+"\ed<": "\C-oF<xf>xa"
+"\ed`": "\C-oF`xf`xa"
+#}}}
+
 #}}}
 
 # rest keys {{{
@@ -454,7 +469,7 @@ $endif
 # dump-functions (not bound)
 # dump-macros (not bound)
 # dump-variables (not bound)
-"\e\C-i": dynamic-complete-history
+# "\e\C-i": dynamic-complete-history
 "\C-x\C-e": edit-and-execute-command
 # emacs-editing-mode (not bound)
 "\C-x)": end-kbd-macro
@@ -524,7 +539,7 @@ $endif
 "\eb": shell-backward-word
 "\e\C-e": shell-expand-line
 "\ef": shell-forward-word
-"\ed": shell-kill-word
+"\e\C-d": shell-kill-word
 # skip-csi-sequence (not bound)
 "\C-x(": start-kbd-macro
 # tab-insert (not bound)
