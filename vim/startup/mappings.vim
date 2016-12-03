@@ -478,7 +478,7 @@ function! ExecuteFile()
   let filetype_to_command = {
   \   'javascript': 'node',
   \   'coffee': 'coffee',
-  \   'python': 'python',
+  \   'python': 'python3',
   \   'html': 'open',
   \   'sh': 'sh',
   \   'awk': 'awk'
@@ -510,6 +510,7 @@ function! RunShellCommand(cmdline)
   call setline(3,substitute(getline(2),'.','=','g'))
   execute '$read !'. expanded_cmdline
   setlocal nomodifiable
+  nnoremap <buffer> <silent> q    :<C-U>bdelete<CR>
   1
 endfunction
 
