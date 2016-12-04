@@ -357,6 +357,7 @@ $endif
 "\ed(": "\C-oF(xf)xa"
 "\ed<": "\C-oF<xf>xa"
 "\ed`": "\C-oF`xf`xa"
+"\eh": "\C-h\C-d"
 #}}}
 
 #}}}
