@@ -35,10 +35,10 @@ alias trbrief='trans -play -speak -brief'
 #}}}
 
 # Open by VIM{{{
-alias balias='vim ~/dotfiles/bash/.bash_aliases'
-alias bhistory='vim ~/dotfiles/bash/.bash_history'
-alias inputrc='vim ~/dotfiles/bash/.inputrc'
-alias bashrc='vim ~/dotfiles/bash/.bashrc'
+alias balias='vim ~/.bash_aliases'
+alias bhistory='vim ~/.bash_history'
+alias inputrc='vim ~/.inputrc'
+alias bashrc='vim ~/.bashrc'
 alias vimacs='vim ~/dotfiles/vim/startup/vimacs.vim'
 alias vimrc='vim ~/dotfiles/vim/vimrc'
 alias vundle='vim ~/dotfiles/vim/startup/vundle.vim'
@@ -70,6 +70,7 @@ alias ahk='cd d:/AutoHotKey/'
 #}}}
 
 # Various command {{{
+alias cd='cd -P'  # phisical change directory
 alias -- -='cd -'
 alias py35='/c/Users/ADMIN/AppData/Local/Programs/Python/Python35/python.exe'
 alias lames='/c/Program\ Files\ \(x86\)/Lame\ For\ Audacity/lame.exe'
