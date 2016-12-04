@@ -58,9 +58,9 @@ shopt -s histverify
 # shopt -s autocd 2>/dev/null
 
 # autocorrect minor spelling errors
-# shopt -s dirspell 2>/dev/null
-# shopt -s cdspell 2>/dev/null
-
+shopt -s dirspell  # 2>/dev/null
+shopt -s cdspell   # 2>/dev/null
+shopt -s globstar
 # don't overwrite existing file
 set -o noclobber
 
@@ -148,7 +148,13 @@ export HISTIGNORE="&:[bf]g:lct:lct :num:num :key:key :whatis*:whereis*rtr:rtr ::
 #}}}
 
 # Function {{{
-# color_my_prompt
+
+# make a directory and cd to it
+mkcd()
+{
+    (test -d "$1" || mkdir "$1") && cd "$1"
+}
+
 f(){
     ls -lha $*
 }
