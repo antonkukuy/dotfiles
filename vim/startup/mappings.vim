@@ -475,6 +475,7 @@ nnoremap <Leader><F5> :call ExecuteFile()<CR>
 " You need to manually map the filetypes you use most commonly to the
 " correct shell command.
 function! ExecuteFile()
+  write
   let filetype_to_command = {
   \   'javascript': 'node',
   \   'coffee': 'coffee',
@@ -510,6 +511,7 @@ function! RunShellCommand(cmdline)
   call setline(3,substitute(getline(2),'.','=','g'))
   execute '$read !'. expanded_cmdline
   setlocal nomodifiable
+  set wrap
   nnoremap <buffer> <silent> q    :<C-U>bdelete<CR>
   1
 endfunction
