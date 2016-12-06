@@ -264,13 +264,10 @@ set keymap vi-insert
 "\C-o": vi-movement-mode
 # Two escapes clear command line.
 "\e\e": "\C-oddi"
-# remap escape
+# escape
 "jj": vi-movement-mode
 
 # Emacs style within vi mode {{{
-
-"\C-k": history-search-backward
-"\C-j": history-search-forward
 
 $if bash
     "\ef": shell-forward-word
@@ -474,7 +471,7 @@ $endif
 "\C-x\C-e": edit-and-execute-command
 # emacs-editing-mode (not bound)
 "\C-x)": end-kbd-macro
-"\e>": end-of-history
+"\e\C-j": end-of-history
 "\C-e": end-of-line
 "\eOF": end-of-line
 "\e[4~": end-of-line
@@ -498,13 +495,12 @@ $endif
 # history-substring-search-forward (not bound)
 "\e#": insert-comment
 "\e*": insert-completions
-# insert-last-argument (not bound)
 "\ek": kill-line
 # kill-region (not bound)
 # kill-whole-line (not bound)
 # kill-word (not bound)
 # magic-space (not bound)
-"\C-i": menu-complete
+# "\C-i": menu-complete
 # menu-complete-backward (not bound)
 "\C-n": next-history
 "\eOB": next-history
@@ -556,8 +552,9 @@ $endif
 "\C-w": unix-word-rubout
 "\eU": upcase-word
 "\C-y": yank
+"\e>": insert-last-argument
 "\e.": yank-last-arg
-"\e_": yank-last-arg
+# "\e_": yank-last-arg
 "\e\C-y": yank-nth-arg
 "\e?": yank-pop
 # 
