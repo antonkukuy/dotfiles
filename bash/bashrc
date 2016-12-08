@@ -22,7 +22,13 @@ fi
 . ~/.shell_promptline.sh
 . ~/.bash_bind
 . ~/.tmuxinator.bash
+. ~/.config/ranger/plugins/bash_automatic_cd.sh
 #source ~/.profile
+
+# marker(var must be first)
+export MARKER_KEY_GET='\C-g'
+export MARKER_KEY_MARK='\e_'
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 #}}}
 
 # VIM {{{
@@ -72,6 +78,7 @@ export BROWSER=Chrome
 export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 export PAGER=less
+export PAGER_MOST=most
 export MANPAGER="/usr/bin/most -s"
 # export MANPAGER="less" # -X option stands -> Don't clear the screen after quitting a manual page
 
@@ -99,10 +106,11 @@ export HISTCONTROL="ignorespace:erasedups"
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export HISTSIZE=40000
 export HISTFILESIZE=40000
-export HISTIGNORE="&:[bf]g:lct:lct :num:num :key:key :whatis*:whereis*rtr:rtr ::etr :etr:gd:gd :gs:gs :ga .:ga . :tmux:\r:ls:ls :pwd:pwd :ll:ll :cd:cd :cs:cs :la:la :so:so :vi:vi :bhistory*:balias*:inputrc*:bashrc:bashrc :trans :trans:..*:g *:s *:l:l "
+export HISTIGNORE="&:[bf]g:lct:lct :num:num :key:key :whatis*:whereis*rtr:rtr ::etr :etr:gd:gd :gs:gs :ga .:ga . :tmux:\r:ls:ls :pwd:pwd :ll:ll :cd:cd :cs:cs :la:la :so:so :vi:vi :bhistory*:balias*:inputrc*:bashrc:bashrc :trans :trans:..*:g *:s *:l:l :etr *:ranger-cd:-:ranger:ranger "
 #export HISTTIMEFORMAT='%F %T '
-#export LESSCHARSET="windows-1251"
-#export LESSCHARSET="utf-8"
+
+# ranger
+export RANGER_LOAD_DEFAULT_RC=FALSE
 #}}}
 
 #bash completion{{{
