@@ -92,6 +92,7 @@ alias attmux='tmux attach || tmux new'
 alias cs=clear
 alias which='alias | /usr/bin/which --read-alias --show-dot --show-tilde'
 alias weather='sh c:/cygwin64/home/Anton/scripts/weather/openweathermap.sh'
+alias tldr='tldr find'
 #}}}
 
 # TMUX {{{
