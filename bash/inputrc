@@ -529,7 +529,7 @@ $endif
 "\C-x\C-r": re-read-init-file
 "\C-r": reverse-search-history
 "\e\C-r": revert-line
-"\er": revert-line
+# "\er": revert-line
 "\C-@": set-mark
 "\e ": set-mark
 # shell-backward-kill-word (not bound)
