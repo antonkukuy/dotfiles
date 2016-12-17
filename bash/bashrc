@@ -25,10 +25,16 @@ fi
 . ~/.config/ranger/plugins/bash_automatic_cd.sh
 #source ~/.profile
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # marker(var must be first)
 export MARKER_KEY_GET='\C-g'
 export MARKER_KEY_MARK='\e_'
+export MARKER_KEY_NEXT_PLACEHOLDER='\ew'
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
 #}}}
 
 # VIM {{{

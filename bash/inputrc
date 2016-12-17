@@ -523,7 +523,7 @@ $endif
 "\eOA": previous-history
 "\e[A": previous-history
 # print-last-kbd-macro (not bound)
-"\C-q": quoted-insert
+# "\C-q": quoted-insert
 "\C-v": quoted-insert
 # redraw-current-line (not bound)
 "\C-x\C-r": re-read-init-file
@@ -542,7 +542,7 @@ $endif
 # tab-insert (not bound)
 "\e&": tilde-expand
 "\C-t": transpose-chars
-"\et": transpose-words
+"\e\C-t": transpose-words
 # tty-status (not bound)
 "\C-x\C-u": undo
 "\C-_": undo
