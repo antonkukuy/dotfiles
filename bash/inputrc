@@ -270,17 +270,17 @@ set keymap vi-insert
 # Emacs style within vi mode {{{
 
 $if bash
-    "\ef": shell-forward-word
-    "\eb": shell-backward-word
-    "\ed": shell-kill-word
-    "\eF": forward-word
-    "\eB": backward-word
+    "\eF": shell-forward-word
+    "\eB": shell-backward-word
+    # "\ed": shell-kill-word
+    "\ef": forward-word
+    "\eb": backward-word
 $else
-    "\ef": vi-forward-bigword
-    "\eb": vi-backward-bigword
-    "\ed": kill-word
-    "\eF": vi-forward-word
-    "\eB": vi-backward-word
+    "\eF": vi-forward-bigword
+    "\eB": vi-backward-bigword
+    # "\ed": kill-word
+    "\ef": vi-forward-word
+    "\eb": vi-backward-word
 $endif
 
 "\eY": copy-forward-word
@@ -292,52 +292,56 @@ $endif
 "\eU": upcase-word
 "\eL": downcase-word
 "\eC": capitalize-word
-"\eu": "\C-obgUa"
+"\eu": "\C-obgUwi"
 "\e\C-u": "\C-ogUU"
-"\eu2": "\C-o2b2gUa"
-"\eu3": "\C-o3b3gUa"
-"\eu4": "\C-o4b4gUa"
-"\eu5": "\C-o5b5gUa"
-"\eu6": "\C-o6b6gUa"
-"\eu7": "\C-o7b7gUa"
-"\eu8": "\C-o8b8gUa"
-"\eu9": "\C-o9b9gUa"
-"\el": "\C-obgua"
+"\eu2": "\C-o2b2gUwi"
+"\eu3": "\C-o3b3gUwi"
+"\eu4": "\C-o4b4gUwi"
+"\eu5": "\C-o5b5gUwi"
+"\eu6": "\C-o6b6gUwi"
+"\eu7": "\C-o7b7gUwi"
+"\eu8": "\C-o8b8gUwi"
+"\eu9": "\C-o9b9gUwi"
+"\el": "\C-obguwi"
 "\e\C-l": "\C-oguu"
-"\el2": "\C-o2b2gua"
-"\el3": "\C-o3b3gua"
-"\el4": "\C-o4b4gua"
-"\el5": "\C-o5b5gua"
-"\el6": "\C-o6b6gua"
-"\el7": "\C-o7b7gua"
-"\el8": "\C-o8b8gua"
-"\el9": "\C-o9b9gua"
-"\ec": "\C-obgCa"
+"\el2": "\C-o2b2guwi"
+"\el3": "\C-o3b3guwi"
+"\el4": "\C-o4b4guwi"
+"\el5": "\C-o5b5guwi"
+"\el6": "\C-o6b6guwi"
+"\el7": "\C-o7b7guwi"
+"\el8": "\C-o8b8guwi"
+"\el9": "\C-o9b9guwi"
+"\ec": "\C-obgCwi"
 "\eG": "\C-ogCC"
-"\ec2": "\C-o2b2gCa"
-"\ec3": "\C-o3b3gCa"
-"\ec4": "\C-o4b4gCa"
-"\ec5": "\C-o5b5gCa"
-"\ec6": "\C-o6b6gCa"
-"\ec7": "\C-o7b7gCa"
-"\ec8": "\C-o8b8gCa"
-"\ec9": "\C-o9b9gCa"
+"\ec2": "\C-o2b2gCwi"
+"\ec3": "\C-o3b3gCwi"
+"\ec4": "\C-o4b4gCwi"
+"\ec5": "\C-o5b5gCwi"
+"\ec6": "\C-o6b6gCwi"
+"\ec7": "\C-o7b7gCwi"
+"\ec8": "\C-o8b8gCwi"
+"\ec9": "\C-o9b9gCwi"
 #}}}
 
 # SURROUND {{{
-"\e'": "''\C-b"
-"\e\"": "\"\"\C-b"
-"\e(": "()\C-b"
-"\e(e": "(())\C-ohi"
-"\e[": "[]\C-b"
+"\e'": "''\C-oi"
+"\e\"": "\"\"\C-oi"
+"\e(": "()\C-oi"
+"\e(e": "(  )\C-ohi"
+"\e(E": "(())\C-ohi"
+"\e[": "[]\C-oi"
 "\e[e": "[[  ]]\C-o2hi"
-"\e{": "{}\C-b"
-"\e{e": "{  }\C-b\C-b"
-"\e<": "<>\C-b"
-"\e;": ";;\C-b"
-"\e:": "::\C-b"
-"\e`": "``\C-b"
-"\e/": "//\C-b"
+"\e[E": "[[]]\C-ohi"
+"\e{": "{}\C-oi"
+"\e{e": "{  }\C-ohi"
+"\e{E": "{{}}\C-ohi"
+"\e<": "<>\C-oi"
+"\e;": ";;\C-oi"
+"\e:": "::\C-oi"
+"\e`": "``\C-oi"
+"\e/": "//\C-oi"
+"\e\\": "\\\\\C-oi"
 "\ee": "\C-]\"\e"
 "\ea": "\C-]\'\e"
 "\eif": "if ;then ; fi;\C-o4bi"
@@ -347,14 +351,35 @@ $endif
 # change, delete surrounding {{{
 "\eS": "\C-oF'r\"f'r\"a"
 "\es": "\C-oF\"r'f\"r'a"
-"\ed": "\C-oF'xf'xa"
-"\eD": "\C-oF\"xf\"xa"
+"\ed'": "\C-oF'xf'xi"
+"\ed\"": "\C-oF\"xf\"xi"
 "\ed{": "\C-oF{xf}xa"
 "\ed[": "\C-oF[xf]xa"
 "\ed(": "\C-oF(xf)xa"
 "\ed<": "\C-oF<xf>xa"
 "\ed`": "\C-oF`xf`xa"
-"\eh": "\C-h\C-d"
+"\ed": "\C-o2s"
+# "\eh": "\C-h\C-d"
+#}}}
+
+# find paratheses{{{
+"\C-s": "\C-o$i"
+"\C-s)": "\C-of)a"
+"\C-s)\e": "\C-oF)a"
+"\C-s(": "\C-of(i"
+"\C-s(\e": "\C-oF(i"
+"\C-s}": "\C-of}a"
+"\C-s{": "\C-of{i"
+"\C-s}\e": "\C-oF}a"
+"\C-s{\e": "\C-oF{i"
+"\C-s]": "\C-of]a"
+"\C-s[": "\C-of[i"
+"\C-s]\e": "\C-oF]a"
+"\C-s[\e": "\C-oF[i"
+"\C-s>": "\C-of>a"
+"\C-s<": "\C-of<i"
+"\C-s>\e": "\C-oF>a"
+"\C-s<\e": "\C-oF<i"
 #}}}
 
 #}}}
@@ -376,7 +401,7 @@ $endif
 "\C-x\C-?": backward-kill-line
 "\e\C-h": backward-kill-word
 "\e\C-?": backward-kill-word
-"\eB": backward-word
+"\eb": backward-word
 # beginning-of-history (not bound)
 "\C-a": beginning-of-line
 "\eOH": beginning-of-line
@@ -401,8 +426,8 @@ $endif
 "\C-d": delete-char
 "\e[3~": delete-char
 # delete-char-or-list (not bound)
-"\e\\": delete-horizontal-space
-"\e-": digit-argument
+"\e-": delete-horizontal-space
+# "\e-": digit-argument
 "\e0": digit-argument
 "\e1": digit-argument
 "\e2": digit-argument
@@ -416,51 +441,51 @@ $endif
 "\C-x\C-v": display-shell-version
 
 # do-lowercase-version {{{
-# "\C-xA": do-lowercase-version
-# "\C-xB": do-lowercase-version
-# "\C-xC": do-lowercase-version
-# "\C-xD": do-lowercase-version
-# "\C-xE": do-lowercase-version
-# "\C-xF": do-lowercase-version
-# "\C-xG": do-lowercase-version
-# "\C-xH": do-lowercase-version
-# "\C-xI": do-lowercase-version
-# "\C-xJ": do-lowercase-version
-# "\C-xK": do-lowercase-version
-# "\C-xL": do-lowercase-version
-# "\C-xM": do-lowercase-version
-# "\C-xN": do-lowercase-version
-# "\C-xO": do-lowercase-version
-# "\C-xP": do-lowercase-version
-# "\C-xQ": do-lowercase-version
-# "\C-xR": do-lowercase-version
-# "\C-xS": do-lowercase-version
-# "\C-xT": do-lowercase-version
-# "\C-xU": do-lowercase-version
-# "\C-xV": do-lowercase-version
-# "\C-xW": do-lowercase-version
-# "\C-xX": do-lowercase-version
-# "\C-xY": do-lowercase-version
-# "\C-xZ": do-lowercase-version
-# "\eA": do-lowercase-version
-# "\eD": do-lowercase-version
-# "\eE": do-lowercase-version
-# "\eG": do-lowercase-version
-# "\eH": do-lowercase-version
-# "\eI": do-lowercase-version
-# "\eJ": do-lowercase-version
-# "\eK": do-lowercase-version
-# "\eM": do-lowercase-version
-# "\eN": do-lowercase-version
-# "\eP": do-lowercase-version
-# "\eQ": do-lowercase-version
-# "\eR": do-lowercase-version
-# "\eS": do-lowercase-version
-# "\eT": do-lowercase-version
-# "\eV": do-lowercase-version
-# "\eW": do-lowercase-version
-# "\eX": do-lowercase-version
-# "\eZ": do-lowercase-version
+# "\c-xa": do-lowercase-version
+# "\c-xb": do-lowercase-version
+# "\c-xc": do-lowercase-version
+# "\c-xd": do-lowercase-version
+# "\c-xe": do-lowercase-version
+# "\c-xf": do-lowercase-version
+# "\c-xg": do-lowercase-version
+# "\c-xh": do-lowercase-version
+# "\c-xi": do-lowercase-version
+# "\c-xj": do-lowercase-version
+# "\c-xk": do-lowercase-version
+# "\c-xl": do-lowercase-version
+# "\c-xm": do-lowercase-version
+# "\c-xn": do-lowercase-version
+# "\c-xo": do-lowercase-version
+# "\c-xp": do-lowercase-version
+# "\c-xq": do-lowercase-version
+# "\c-xr": do-lowercase-version
+# "\c-xs": do-lowercase-version
+# "\c-xt": do-lowercase-version
+# "\c-xu": do-lowercase-version
+# "\c-xv": do-lowercase-version
+# "\c-xw": do-lowercase-version
+# "\c-xx": do-lowercase-version
+# "\c-xy": do-lowercase-version
+# "\c-xz": do-lowercase-version
+# "\ea": do-lowercase-version
+# "\ed": do-lowercase-version
+# "\ee": do-lowercase-version
+# "\eg": do-lowercase-version
+# "\eh": do-lowercase-version
+# "\ei": do-lowercase-version
+# "\ej": do-lowercase-version
+# "\ek": do-lowercase-version
+# "\em": do-lowercase-version
+# "\en": do-lowercase-version
+# "\ep": do-lowercase-version
+# "\eq": do-lowercase-version
+# "\er": do-lowercase-version
+# "\es": do-lowercase-version
+# "\et": do-lowercase-version
+# "\ev": do-lowercase-version
+# "\ew": do-lowercase-version
+# "\ex": do-lowercase-version
+# "\ez": do-lowercase-version
 #}}}
 
 "\eL": downcase-word
@@ -482,8 +507,7 @@ $endif
 "\C-f": forward-char
 "\eOC": forward-char
 "\e[C": forward-char
-"\C-s": forward-search-history
-"\eF": forward-word
+"\ef": forward-word
 "\eg": glob-complete-word
 "\C-x*": glob-expand-word
 "\C-xg": glob-list-expansions
@@ -527,15 +551,16 @@ $endif
 "\C-v": quoted-insert
 # redraw-current-line (not bound)
 "\C-x\C-r": re-read-init-file
-"\C-r": reverse-search-history
-"\e\C-r": revert-line
+"\e\C-s": reverse-search-history
+# "\C-s": forward-search-history
+# "\e\C-r": revert-line
 # "\er": revert-line
 "\C-@": set-mark
 "\e ": set-mark
 # shell-backward-kill-word (not bound)
-"\eb": shell-backward-word
+"\eB": shell-backward-word
 "\e\C-e": shell-expand-line
-"\ef": shell-forward-word
+"\eF": shell-forward-word
 "\e\C-d": shell-kill-word
 # skip-csi-sequence (not bound)
 "\C-x(": start-kbd-macro
