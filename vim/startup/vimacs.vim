@@ -275,8 +275,8 @@ command! UseF1ForNormal echoerr "Use F1 or <C-z> to return to Normal mode.  :hel
 
 inoremap <M-x> <C-o>:
 inoremap <M-:> <C-o>:
-inoremap <F1> <C-l>
-inoremap <F2> <C-o>
+" inoremap <F1> <C-l>
+" inoremap <F2> <C-o>
 inoremap <M-`> <C-o>
 inoremap <C-x><C-z> <C-o>:w \| suspend<CR>
 "inoremap <silent> <C-z> <C-l>:echo "Returning to Normal mode; press <C-z> again to suspend Vimacs"<CR>
@@ -593,7 +593,7 @@ command! GotoLine :call <SID>GotoLine()
 "{{{
 
 inoremap <C-c> <Space><Left>
-inoremap <C-u> <C-o>d0
+inoremap <C-u> <Esc>d0s
 "inoremap <C-q> <C-v>
 inoremap <C-^> <C-y>
 inoremap <M-r> <C-r>=
