@@ -76,9 +76,17 @@ imap <C-j> <C-e><CR>
     "}}}
 
 " Hack for Alt into terminal (It don't always work correct) {{{
-for i in range(65,90) + range(97,122)   "[A-Z] + [a-z]
+" Alt + ascii letters' codes map
+for i in range(65,90) + range(97,122)    "[A-Z] + [a-z]
   let c = nr2char(i)
   exec "set <M-".c.">=\e".c.""
+endfor
+
+
+" Without that <F1>-<F12> do not work
+for i in range(1040,1103)     "[А-я]
+  let c = nr2char(i)
+  exec "map \033".c." <M-".c.">"
 endfor
 "}}}
 
