@@ -9,6 +9,8 @@ highlight Normal ctermfg=white ctermbg=black
 "set lines=38 columns=80            " size window
 set rtp+=/home/Anton/options_vim
 set tags+=/home/Anton/options_vim/tags
+" set completeopt-=preview
+autocmd CompleteDone * pclose
 
 
 " 4 displaying text{{{
@@ -65,6 +67,7 @@ if has("autocmd")
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType tex setlocal ts=2 sts=2 sw=2 expandtab
 
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss setfiletype xml
@@ -106,6 +109,9 @@ set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁ
 set keymap=russian-jcukenwin
 
 "}}}
+
+" TEX. cycle through all the figure labels automatically
+set iskeyword+=:
 
 set laststatus=2   " всегда показывать строку статуса
 set hidden
