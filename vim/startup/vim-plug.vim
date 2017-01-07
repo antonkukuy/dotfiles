@@ -72,7 +72,15 @@ Plug 'vim-scripts/Auto-Pairs'
 let g:AutoPairsShortcutBackInsert = '<A-S-b>'
 "let g:AutoPairsShortcutBackInsert = '<>'
 let g:AutoPairsShortcutFastWrap = '<A-S-f>'
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+" let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+
+let autoPairsToIgnore = ['latex', 'plaintex', 'tex']
+" autocmd WinEnter,BufEnter * if &filetype != "latex" && &filetype != "plaintex" && &filetype != "tex"
+autocmd WinEnter,BufEnter * if index(autoPairsToIgnore, &ft) < 0
+      \ | let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
+      \ | else
+        \ | let g:AutoPairs = {}
+        \ | endif
 
 " When the filetype is FILETYPE then make AutoPairs only match for parenthesis
 " au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
@@ -146,6 +154,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "}}}
 
 Plug 'Shougo/neocomplete.vim' 
+Plug 'Shougo/context_filetype.vim' 
 " neocomplete.vim {{{
 
 "}}}
@@ -228,7 +237,8 @@ nmap <leader>cba :CtrlPBookmarkDirAdd<CR>
 "Plug 'justmao945/vim-clang'
 " vim-clang {{{
 "Close preview and diagnostics window for current buffer.
-map <silent> <Leader>cl <Esc>:ClangClosePreviewDiagWindow<CR>
+" map <silent> <Leader>cl <Esc>:ClangClosePreviewDiagWindow<CR>
+
 "map <silent> <Leader>cb <C-w>j:q!<CR>
 "map <silent> <Leader>ct <C-w>k:q!<CR>
 " let g:clang_verbose_pmenu = 1
@@ -284,7 +294,7 @@ Plug 'rking/ag.vim'   "SEARCH
 "the_silver_searcher is needed
 " https://github.com/ggreer/the_silver_searcher
 
-nnoremap \ :Ag<SPACE>
+" nnoremap \ :Ag<SPACE>
 let g:ag_working_path_mode = 'r'
 "}}}
 Plug 'Chun-Yang/vim-action-ag'    "SEARCH
@@ -364,7 +374,7 @@ endfunction
 
 Plug 'sjl/gundo.vim/', {'on': 'GundoToggle'}
 "{{{
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F6> :GundoToggle<CR>
 "automatically rendering preview diffs as you move through the undo tree
 let g:gundo_preview_bottom=1
 let g:gundo_width = 20
@@ -402,6 +412,31 @@ let g:slime_preserve_curpos = 0
 "}}}
 
 
+" Plug 'vim-latex/vim-latex'
+"{{{
+if &runtimepath =~ 'vim-latex'
+
+  set grepprg=grep\ -nH\ $*
+  let g:tex_flavor='latex'
+  let g:Tex_AdvancedMath=1
+  map <F10> :NERDTreeToggle<CR>
+
+  augroup MyIMAPs
+      au!
+      au VimEnter * call IMAP('``$', '$$<++>$$<++>', 'tex')
+      au VimEnter * call IMAP ('``date', "\<c-r>=strftime('%b %d %Y')\<cr>", '')
+  augroup END
+
+" Fix problem with latex-vim suite and central european diacritics
+" inoremap <S-F4>L <Plug>Tex_LeftRight
+" inoremap <S-F4>I <Plug>Tex_InsertItem
+" inoremap <M-l> <Plug>Tex_LeftRight
+" let g:Tex_CustomTemplateDirectory='~/.vim/ftplugin/latex-suite/templates/'
+endif
+
+"}}}
+
+Plug 'xuhdev/vim-latex-live-preview'
 Plug 'tpope/vim-endwise'   " plugin helps to end certain structures automatically
 "Plug 'tpope/vim-commentary'
 "Plug 'statox/vim-compare-lines'
