@@ -1,6 +1,6 @@
 # User dependent .bashrc file
 #PATH+=:/cygdrive/c/home/Anton/bin:/cygdrive/c/Far\ Manager:/cygdrive/c/home/Anton/c_program:/cygdrive/c/home/Anton/.local/mplayer
-PATH+=:/home/Anton/ffmpeg/:/cygdrive/c/Users/ADMIN/AppData/Roaming/ACEStream/player:/cygdrive/c/'Program Files (x86)'/VideoLAN/VLC:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/xpdf/bin64:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/Python27:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs
+PATH+=:/cygdrive/c/Users/ADMIN/AppData/Roaming/ACEStream/player:/cygdrive/c/'Program Files (x86)'/VideoLAN/VLC:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/xpdf/bin64:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/Python27:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs
 
 #PATH+=:/home/Anton/bin:/Far\ Manager:/home/Anton/c_program:/home/Anton/.local/mplayer
 
@@ -21,11 +21,11 @@ fi
 
 # Source files {{{
 # . (dot) stands as source command
-. ~/.local/bin/bashmarks.sh
-. ~/.shell_promptline.sh
-. ~/.bash_bind
-. ~/.tmuxinator.bash
-. ~/.config/ranger/plugins/bash_automatic_cd.sh
+[ -f ~/.local/bin/bashmarks.sh ] && source ~/.local/bin/bashmarks.sh
+[ -f ~/.local/bin/shell_promptline.sh ] && source ~/.local/bin/shell_promptline.sh
+[ -f ~/.bash_bind ] && source ~/.bash_bind
+[ -f ~/.tmuxinator.bash ] && source ~/.tmuxinator.bash
+[ -f ~/.config/ranger/plugins/bash_automatic_cd.sh ] && source ~/.config/ranger/plugins/bash_automatic_cd.sh
 #source ~/.profile
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
