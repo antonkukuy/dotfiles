@@ -14,7 +14,7 @@ inoremap jj <ESC>
 map <C-z> <Nop>
 imap <C-j> <C-e><CR>
 
-" termcap options{{{
+" termcap options {{{
 " if &term =~ "xterm"
 "   "  start insert mode (bar cursor shape)
 "   let &t_SI = "\<Esc>]12;purple\x7"
