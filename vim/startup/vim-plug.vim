@@ -84,7 +84,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
 "Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux'      " for syntax and a few feachers for .tmux.conf
-"Plug 'edkolev/promptline.vim'
+" Plug 'edkolev/promptline.vim'   " Create a plain .sh file to manage the prompt. The generated file can be sourced by the shell on login
 "Plug 'itchyny/calendar.vim'
 "Plug 'kien/ctrlp.vim_reserve'
 "Plug 'cstrahan/vim-eclim'   conflict with Gpush(fugitive)
@@ -169,10 +169,9 @@ endif
 " Auto-Pairs {{{
 
 if &runtimepath =~ 'Auto-Pairs'
-  "let g:AutoPairsFlyMode = 1 
-  let g:AutoPairsShortcutBackInsert = '<A-S-b>'
-  "let g:AutoPairsShortcutBackInsert = '<>'
-  let g:AutoPairsShortcutFastWrap = '<A-S-f>'
+  " let g:AutoPairsFlyMode = 1 
+  let g:AutoPairsShortcutBackInsert = ''
+  let g:AutoPairsShortcutFastWrap = '<M-F>'
   " let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`', '<':'>'}
 
   let autoPairsToIgnore = ['latex', 'plaintex', 'tex']
@@ -507,7 +506,7 @@ endif
 " Plugin 'sjl/gundo.vim/', {'on': 'GundoToggle'}
 "{{{
 if exists(":GundoToggle")
-  nnoremap <F6> :GundoToggle<CR>
+  nnoremap <F1> :GundoToggle<CR>
   "automatically rendering preview diffs as you move through the undo tree
   let g:gundo_preview_bottom=1
   let g:gundo_width = 20
@@ -519,7 +518,7 @@ endif
 
 " Plugin 'Chiel92/vim-autoformat'
 "{{{
-if &runtimepath =~ 'vim-autormat'
+if &runtimepath =~ 'vim-autoformat'
   nnoremap <F3> :Autoformat<CR>
   let g:autoformat_verbosemode=1
 endif
@@ -557,32 +556,26 @@ if &runtimepath =~ 'vim-latex'
 
   let g:tex_flavor='latex'
   let g:Tex_AdvancedMath=1
-
   set grepprg=grep\ -nH\ $*
-  set <C-M-b>=
-  " set <C-M-c>=
-  " set <C-M-l>=
-  " set <C-M-i>=	
+
+  set <M-C-B>=
+  set <M-C-C>=
+  set <M-C-L>=
+  set <M-C-I>=
   imap <M-j> <Plug>IMAP_JumpForward
-  imap <C-M-b> <Plug>Tex_MathBF
-  " imap <C-M-c> <Plug>Tex_MathCal
-  " imap <C-M-l> <Plug>Tex_LeftRight
-  " imap <C-M-i> <Plug>Tex_InsertItemOnThisLine
+  imap <M-C-B> <Plug>Tex_MathBF
+  imap <M-C-C> <Plug>Tex_MathCal
+  imap <M-C-L> <Plug>Tex_LeftRight
+  imap <M-C-I> <Plug>Tex_InsertItemOnThisLine
 
 
   augroup MyIMAPs
     au!
     au VimEnter * call IMAP('``$', '$$<++>$$<++>', 'tex')
     au VimEnter * call IMAP ('``date', "\<c-r>=strftime('%b %d %Y')\<cr>", '')
-    au FileType tex inoremap <M-L> <Esc>bguwea
-    au FileType tex inoremap <M-C> <Esc>b~ea
-    au FileType tex inoremap <C-U> <Esc>d0s
+    au FileType tex nnoremap <F1> :GundoToggle<CR>
   augroup END
 
-  " Fix problem with latex-vim suite and central european diacritics
-  " inoremap <S-F4>L <Plug>Tex_LeftRight
-  " inoremap <S-F4>I <Plug>Tex_InsertItem
-  " inoremap <M-l> <Plug>Tex_LeftRight
   " let g:Tex_CustomTemplateDirectory='~/.vim/ftplugin/latex-suite/templates/'
 endif
 
