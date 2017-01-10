@@ -10,8 +10,6 @@ PATH+=:/cygdrive/c/Users/ADMIN/AppData/Roaming/ACEStream/player:/cygdrive/c/'Pro
 # disable freeze terminal after pressing Ctrl-s(without it unfreeze - Ctrl-q)
 stty stop ''
 
-# export PYTHONSTARTUP=$HOME/.config/python/pythonStartUp.py
-# export PYTHONPATH="${PYTHONPATH}:$HOME/.config/python"
 
 # ~/.bash_aliases, instead of adding alias here directly.{{{
 if [ -f ~/.bash_aliases ]; then
@@ -49,6 +47,16 @@ export MARKER_KEY_NEXT_PLACEHOLDER='\ew'
 #bind -m vi-insert '"\"" "\C-v\"\C-v\"\ei"'
 #bind -m vi-insert '"\047" "\C-v\047\C-v\047\ei"'
 #bind -m vi-insert '"\`" "\C-v\`\C-v\`\ei"'
+#}}}
+
+# GIT {{{
+# to consider only that directory as repository and underling not.
+# export GIT_CEILING_DIRECTORIES=$HOME/dotfiles
+#}}}
+
+# Python {{{
+# export PYTHONSTARTUP=$HOME/.config/python/pythonStartUp.py
+# export PYTHONPATH="${PYTHONPATH}:$HOME/.config/python"
 #}}}
 
 # Variables {{{
