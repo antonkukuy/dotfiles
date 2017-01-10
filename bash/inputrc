@@ -4,6 +4,8 @@ set editing-mode vi
 # duration readline will wait for a character
 # set keyseq-timeout 600
 
+# To avoid stty mappings
+set bind-tty-special-chars off
 #
 # for vim
 #set convert-meta on   # russian input don't work
@@ -269,6 +271,7 @@ set keymap vi-insert
 
 # Emacs style within vi mode {{{
 
+# add some keyseq to apps that do not recognase ones
 $if bash
     "\eF": shell-forward-word
     "\eB": shell-backward-word
@@ -288,6 +291,7 @@ $else
     "\eC": capitalize-word
     "\eu": "\C-obgUwa"
     "\e\C-u": "\C-ogUU"
+    "\eu\e": "\C-a\C-ogUU"
     "\eu2": "\C-o2b2gUwa"
     "\eu3": "\C-o3b3gUwa"
     "\eu4": "\C-o4b4gUwa"
@@ -297,7 +301,8 @@ $else
     "\eu8": "\C-o8b8gUwa"
     "\eu9": "\C-o9b9gUwa"
     "\el": "\C-obguwa"
-    "\e\C-l": "\C-oguu"
+    "\e\C-l": "\C-a\C-oguu"
+    "\el\e": "\\C-oguu"
     "\el2": "\C-o2b2guwa"
     "\el3": "\C-o3b3guwa"
     "\el4": "\C-o4b4guwa"
@@ -387,8 +392,10 @@ $endif
 "\eU": upcase-word
 "\eL": downcase-word
 "\eC": capitalize-word
-"\eu": "\C-obgUwa"
+# "\eu": "\C-obgUwa"
+"\eu": "\C-oF gUU"
 "\e\C-u": "\C-ogUU"
+"\eu\e": "\C-a\C-ogUU"
 "\eu2": "\C-o2b2gUwa"
 "\eu3": "\C-o3b3gUwa"
 "\eu4": "\C-o4b4gUwa"
@@ -397,8 +404,10 @@ $endif
 "\eu7": "\C-o7b7gUwa"
 "\eu8": "\C-o8b8gUwa"
 "\eu9": "\C-o9b9gUwa"
-"\el": "\C-obguwa"
+# "\el": "\C-obguwa"
+"\el": "\C-oF guu"
 "\e\C-l": "\C-oguu"
+"\el\e": "\C-a\C-oguu"
 "\el2": "\C-o2b2guwa"
 "\el3": "\C-o3b3guwa"
 "\el4": "\C-o4b4guwa"
@@ -667,9 +676,10 @@ $endif
 "\C-x\C-u": undo
 "\C-_": undo
 # universal-argument (not bound)
-# unix-filename-rubout (not bound)
+"\C-w": unix-filename-rubout
+"\e\C-w": unix-word-rubout
+"\C-x\C-w": vi-unix-word-rubout
 "\C-u": unix-line-discard
-"\C-w": unix-word-rubout
 "\eU": upcase-word
 "\C-y": yank
 "\e>": insert-last-argument
