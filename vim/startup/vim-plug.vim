@@ -278,6 +278,8 @@ if &runtimepath =~ 'vim-surround'
   autocmd FileType sh let b:surround_102 = "#{{{ \r #}}}"
   autocmd FileType readline let b:surround_102 = "#{{{ \r #}}}"
   autocmd FileType tmux let b:surround_102 = "#{{{ \r #}}}"
+  autocmd FileType muttrc let b:surround_102 = "#{{{ \r #}}}"
+  autocmd FileType mailcap let b:surround_102 = "#{{{ \r #}}}"
   autocmd FileType python let b:surround_102 = "'''\r '''"
   " {visual}SF
   autocmd FileType vim let b:surround_70 = "if &runtimepath =~ '' \r endif"
