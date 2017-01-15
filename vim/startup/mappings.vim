@@ -39,7 +39,7 @@ imap <C-j> <C-e><CR>
     menu Encoding.Write.KOI8-R<TAB><F8> :set fenc=koi8-r<CR>
     menu Encoding.Write.CP1251<TAB><F8> :set fenc=cp1251<CR>
     menu Encoding.Write.CP866<TAB><F8> :set fenc=cp866<CR>
-    map <F8> :emenu Encoding.Write.
+    map <F8> :emenu Encoding.Write.<TAB>
     "}}}
 "}}}
 
