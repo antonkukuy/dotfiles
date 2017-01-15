@@ -525,7 +525,6 @@ $endif
 "\e$": complete-variable
 "\ey": copy-backward-word
 "\eY": copy-forward-word
-# copy-region-as-kill (not bound)
 # dabbrev-expand (not bound)
 "\C-d": delete-char
 "\e[3~": delete-char
@@ -624,7 +623,8 @@ $endif
 "\e#": insert-comment
 "\e*": insert-completions
 "\ek": kill-line
-# kill-region (not bound)
+"\C-xw": copy-region-as-kill
+"\C-xW": kill-region
 # kill-whole-line (not bound)
 # kill-word (not bound)
 # magic-space (not bound)
