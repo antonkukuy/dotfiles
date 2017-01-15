@@ -393,8 +393,8 @@ $endif
 "\eL": downcase-word
 "\eC": capitalize-word
 # "\eu": "\C-obgUwa"
-"\eu": "\C-oF gUU"
-"\e\C-u": "\C-ogUU"
+"\eu": "\C-oF gUwi"
+"\e\C-u": "\C-oF gUU"
 "\eu\e": "\C-a\C-ogUU"
 "\eu2": "\C-o2b2gUwa"
 "\eu3": "\C-o3b3gUwa"
@@ -405,8 +405,8 @@ $endif
 "\eu8": "\C-o8b8gUwa"
 "\eu9": "\C-o9b9gUwa"
 # "\el": "\C-obguwa"
-"\el": "\C-oF guu"
-"\e\C-l": "\C-oguu"
+"\el": "\C-oF guwi"
+"\e\C-l": "\C-oF guu"
 "\el\e": "\C-a\C-oguu"
 "\el2": "\C-o2b2guwa"
 "\el3": "\C-o3b3guwa"
