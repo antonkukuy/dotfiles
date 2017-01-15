@@ -70,6 +70,11 @@ alias ahk='cd d:/AutoHotKey/'
 #}}}
 
 # Various command {{{
+alias sfr='surfraw -browser=$BROWSERCLI'  # surfraw cli broser
+alias surfraw='surfraw -browser=$BROWSER'  # surfraw gui broser
+alias ffm='ffmpeg -hide_banner'
+alias ffp='ffplay -hide_banner'
+alias mplayer='~/.local/mplayer/mplayer.exe'
 alias pdflatex_mik='/c/Program\ Files/MiKTeX\ 2.9/miktex/bin/x64/pdflatex.exe'
 alias cd='cd -P'  # phisical change directory
 alias -- -='cd -'
@@ -82,6 +87,7 @@ alias rm='rm -i'
 alias dirs='dirs -v'
 alias rmd='rm -id'
 # alias open='xdg-open'
+alias openas='cygstart --action=runas'  # run as administrator
 alias open='cygstart'
 alias chrome='c:/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe'
 alias vless=/usr/share/vim/vim74/macros/less.sh
