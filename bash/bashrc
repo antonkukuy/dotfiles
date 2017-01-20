@@ -1,6 +1,6 @@
 # User dependent .bashrc file
 #PATH+=:/cygdrive/c/home/Anton/bin:/cygdrive/c/Far\ Manager:/cygdrive/c/home/Anton/c_program:/cygdrive/c/home/Anton/.local/mplayer
-PATH=/cygdrive/c/PROGRA~2/'FastStone Image Viewer'/:/cygdrive/c/'Program Files (x86)/Adobe/Acrobat 11.0/'Acrobat/:/cygdrive/c/Users/ADMIN/AppData/Roaming/ACEStream/player:/cygdrive/c/'Program Files (x86)'/VideoLAN/VLC:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/xpdf/bin64:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/Python27:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs:$PATH
+PATH=/cygdrive/c/PROGRA~2/FASTST~2/:/cygdrive/c/'Program Files (x86)/Adobe/Acrobat 11.0/'Acrobat/:/cygdrive/c/Users/ADMIN/AppData/Roaming/ACEStream/player:/cygdrive/c/'Program Files (x86)'/VideoLAN/VLC:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/xpdf/bin64:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs:$PATH
 
 #PATH+=:/home/Anton/bin:/Far\ Manager:/home/Anton/c_program:/home/Anton/.local/mplayer
 
@@ -78,7 +78,7 @@ shopt -s histverify
 
 
 # save multi-line commands as one command
-# shopt -s cmdhist
+shopt -s cmdhist
 
 # no need to type cd (works for .. but not -, although alias -- -='cd -' fixes it)
 # shopt -s autocd 2>/dev/null
