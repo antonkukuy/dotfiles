@@ -133,7 +133,7 @@ set history=10000    " remember more commands
 set iminsert=0
 set imsearch=0
 
-set fileencodings=utf-8,cp1251,cp866,koi8-r
+set fileencodings=utf-8,koi8-r,cp1251,cp866,koi8-u
 set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
@@ -199,3 +199,20 @@ highlight PmenuSbar ctermbg=0 ctermfg=154
   au BufReadPost * nested call MyFollowSymlink(expand('%'))
 
 " }}}
+
+" Make :help appear in a full-screen tab, instead of a window {{{
+
+"Only apply to .txt files...
+augroup HelpInTabs
+  autocmd!
+  autocmd BufEnter  *.txt   call HelpInNewTab()
+augroup END
+
+"Only apply to help files...
+function! HelpInNewTab ()
+  if &buftype == 'help'
+    "Convert the help window to a tab...
+    execute "normal \<C-W>T"
+  endif
+endfunction
+"}}}
