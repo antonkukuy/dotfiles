@@ -281,6 +281,30 @@ if &runtimepath =~ 'vim-surround'
   autocmd FileType muttrc let b:surround_102 = "#{{{ \r #}}}"
   autocmd FileType mailcap let b:surround_102 = "#{{{ \r #}}}"
   autocmd FileType python let b:surround_102 = "'''\r '''"
+  " dsl files(Lingvo){{{
+  autocmd FileType dsl let b:surround_102 = "{{ \r }}"
+  autocmd FileType dsl let b:surround_99 = "[c]\r[/c]"
+  " {visual}Sb
+  autocmd FileType dsl let b:surround_98 = "[b]\r[/b]"
+  " {visual}SC
+  autocmd FileType dsl let b:surround_67 = "[com]\r[/com]"
+  " {visual}Su
+  autocmd FileType dsl let b:surround_117 = "[u]\r[/u]"
+  " {visual}S@
+  autocmd FileType dsl let b:surround_65 = "@ \r @"
+  " {visual}SU
+  autocmd FileType dsl let b:surround_85 = "[url]\r[/url]"
+  " {visual}Si
+  autocmd FileType dsl let b:surround_105 = "[i]\r[/i]"
+  " {visual}Sm
+  autocmd FileType dsl let b:surround_109 = "[m1]\r[/m]"
+  " {visual}SM
+  autocmd FileType dsl let b:surround_77 = "[m2]\r[/m]"
+  " {visual}St
+  autocmd FileType dsl let b:surround_116 = "[trn]\r[/trn]"
+  " {visual}Sp
+  autocmd FileType dsl let b:surround_112 = "[p]\r[/p]"
+  "}}}
   " {visual}SF
   autocmd FileType vim let b:surround_70 = "if &runtimepath =~ '' \r endif"
 endif
