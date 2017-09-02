@@ -65,7 +65,7 @@ if has("autocmd")
   " Customisations based on house-style (arbitrary)
   autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+  autocmd FileType javascript,dsl,text setlocal ts=4 sts=4 sw=4 noexpandtab
   autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType tex setlocal ts=2 sts=2 sw=2 expandtab
 
@@ -133,7 +133,7 @@ set history=10000    " remember more commands
 set iminsert=0
 set imsearch=0
 
-set fileencodings=utf-8,koi8-r,cp1251,cp866,koi8-u
+set fileencodings=utf-8,ucs-bom,koi8-r,cp1251,cp866,koi8-u
 set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
