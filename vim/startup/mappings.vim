@@ -9,7 +9,7 @@
 let mapleader = ","    "Leader
 noremap ;; ;
 noremap ,, ,
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 map <C-z> <Nop>
 imap <C-j> <C-e><CR>
@@ -28,8 +28,11 @@ imap <C-j> <C-e><CR>
     "{{{
     menu Encoding.Read.UTF8<TAB><F7> :e ++enc=utf8 <CR>
     menu Encoding.Read.KOI8-R<TAB><F7> :e ++enc=koi8-r<CR>
+    menu Encoding.Read.KOI8-U<TAB><F7> :e ++enc=koi8-u<CR>
     menu Encoding.Read.CP1251<TAB><F7> :e ++enc=cp1251<CR>
     menu Encoding.Read.CP866<TAB><F7> :e ++enc=cp866<CR>
+    menu Encoding.Read.UCS-2le<TAB><F7> :e ++enc=ucs2-le<CR>
+    menu Encoding.Read.UCS2<TAB><F7> :e ++enc=ucs2<CR>
     map <F7> :emenu Encoding.Read.<TAB>
     "}}}
 
@@ -37,8 +40,11 @@ imap <C-j> <C-e><CR>
     "{{{
     menu Encoding.Write.UTF8<TAB><F8> :set fenc=utf8 <CR>
     menu Encoding.Write.KOI8-R<TAB><F8> :set fenc=koi8-r<CR>
+    menu Encoding.Write.KOI8-U<TAB><F8> :set fenc=koi8-u<CR>
     menu Encoding.Write.CP1251<TAB><F8> :set fenc=cp1251<CR>
     menu Encoding.Write.CP866<TAB><F8> :set fenc=cp866<CR>
+    menu Encoding.Read.UCS-2le<TAB><F7> :e fenc=ucs2-le<CR>
+    menu Encoding.Read.UCS2<TAB><F7> :e fenc=ucs2<CR>
     map <F8> :emenu Encoding.Write.<TAB>
     "}}}
 "}}}
