@@ -904,7 +904,7 @@ endfunction
 
 "" for testing -- foo bar baz quux
 
-inoremap <C-t> <Left><C-o>x<C-o>p
+inoremap <C-t> <Left><Left><C-o>x<C-o>p
 " M-t behaviour is not exactly the same as Emacs; live with it or send me
 " a patch :)  (Personally, I find Emacs's M-t behaviour not very
 " Do-What-I-Mean'ish anyway)
