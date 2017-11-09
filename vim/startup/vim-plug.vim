@@ -7,6 +7,8 @@ call plug#begin('~/.vim/bundle')
 
 "Plug '~/.vim/bundle/vimacs-0.93'
 
+Plug 'lyokha/vim-xkbswitch' 
+
 Plug 'mattn/emmet-vim' 
 
 " Group dependencies, vim-snippets depends on ultisnips
@@ -20,7 +22,7 @@ Plug 'vim-scripts/Auto-Pairs'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-Plug 'Shougo/neocomplete.vim' 
+Plug 'Shougo/neocomplete.vim', { 'on': 'NeoCompleteEnable' }
 Plug 'Shougo/context_filetype.vim' 
 
 Plug 'tpope/vim-surround' 
@@ -39,6 +41,7 @@ Plug 'easymotion/vim-easymotion'
 "Plug 'severin-lemaignan/vim-minimap'
 "let g:minimap_highlight='Visual'
 
+" Plug 'JamshedVesuna/vim-markdown-preview'
 
 Plug 'rking/ag.vim'   "SEARCH
 Plug 'Chun-Yang/vim-action-ag'    "SEARCH
@@ -607,3 +610,56 @@ endif
 
 "}}}
 
+" Plugin 'JamshedVesuna/vim-markdown-preview'
+"{{{
+if &runtimepath =~ 'vim-markdown-preview'
+    let vim_markdown_preview_hotkey='<C-m>'
+    let vim_markdown_preview_github=1
+    " let vim_markdown_preview_browser='Google Chrome'
+    " let vim_markdown_preview_pandoc=1
+    " let vim_markdown_preview_use_xdg_open=1
+endif
+"}}}
+
+" Plug 'lyokha/vim-xkbswitch' 
+"{{{
+" do not work with runtimepath such as g:XkbSwitchLib load wrong path and
+" others variables do the same
+" if &runtimepath =~ 'lyokha/vim-xkbswitch'
+
+let g:XkbSwitchLib = $HOME.'/dotfiles/vim/startup/libxkbswitch64.dll'
+
+" ---- Automatic keyboard layout switching upon entering/leaving insert mode
+" ---- using xkb-switch utility and plugin xkbswitch
+" ----
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchIMappings = ['ru']
+let g:XkbSwitchNLayout = 'us'
+let g:XkbSwitchILayout = 'us'
+" loading xkbswitch on BufRead when bufhidden=delete will clash xkbswitch
+" function imappings_load() and plugin EnhancedJumps as soon as both will do
+" redir simultaneously!
+let g:XkbSwitchLoadOnBufRead = 0
+" let g:XkbSwitchSkipIMappings =
+"             \ {'c'   : ['.', '>', ':', '{<CR>', '/*', '/*<CR>'],
+"             \  'cpp' : ['.', '>', ':', '{<CR>', '/*', '/*<CR>']}
+" let g:XkbSwitchSkipFt = [ 'conque_term' ]
+let g:XkbSwitchAssistNKeymap = 1    " for commands r and f
+let g:XkbSwitchAssistSKeymap = 1    " for search lines
+let g:XkbSwitchDynamicKeymap = 1
+" let g:XkbSwitchKeymapNames = {'ru' : 'russian-jcukenwin'}
+
+" e chaned to у russian othewise it prints e english instead of proper value
+" and some others also changed almost the same reasons
+let g:XkbSwitchIMappingsTr = {
+          \ 'ru':
+          \ {'<': 'qwуrtyuiopхъasdfghоkl;эzxcvbnm,.`/'.
+          \       'QWERTYUIOPХЪASDFGHJKL:ЭZXCVBNM<>?~@#;^&',
+          \  '>': 'йцукенгшщзхъфывапролджэячсмитьбюё.'.
+          \       'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,Ё"№;:?'},
+          \ 'de':
+          \ {'<': 'yz-[];''/YZ{}:"<>?~@#^&*_\',
+          \  '>': 'zyßü+öä-ZYÜ*ÖÄ;:_°"§&/(?#'},
+          \ }
+" endif
+"}}}
