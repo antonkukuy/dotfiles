@@ -6,6 +6,7 @@ export LESS=" -R "
 
 #alias ls='ls --color=auto'
  alias lsh='ls -hF --color=tty'                 # classify files in colour
+ alias lsc='ls --color=tty'                 # in colour
  alias dir='ls -hF --color=tty --format=vertical'
  alias vdir='ls -hF --color=tty --format=long'
  alias ll='ls -slihF --color=tty'                              # long list
@@ -24,6 +25,7 @@ export LESS=" -R "
 alias trans='trans -play -speak'
 alias etr='trans {en=ru} -play -speak -shell -history'
 alias etrr='trans {en=ru} -play -speak -shell'
+alias etrn='trans_new {en=ru} -play -speak -shell -history'
 alias rtr='trans {ru=en} -play -speak -shell'
 alias yrtr='trans {ru=en} -play -speak -shell -engine yandex'
 alias yetr='trans {en=ru} -play -speak -shell -engine yandex'
@@ -70,6 +72,7 @@ alias ahk='cd d:/AutoHotKey/'
 #}}}
 
 # Various command {{{
+alias sudo='cygstart --action=runas'
 alias sfr='surfraw -browser=$BROWSERCLI'  # surfraw cli broser
 alias surfraw='surfraw -browser=$BROWSER'  # surfraw gui broser
 alias ffm='ffmpeg -hide_banner'
