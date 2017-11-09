@@ -1,6 +1,6 @@
 # User dependent .bashrc file
 #PATH+=:/cygdrive/c/home/Anton/bin:/cygdrive/c/Far\ Manager:/cygdrive/c/home/Anton/c_program:/cygdrive/c/home/Anton/.local/mplayer
-PATH=/cygdrive/c/PROGRA~2/FASTST~2/:/cygdrive/c/'Program Files (x86)/Adobe/Acrobat 11.0/'Acrobat/:/cygdrive/c/Users/ADMIN/AppData/Roaming/ACEStream/player:/cygdrive/c/'Program Files (x86)'/VideoLAN/VLC:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/xpdf/bin64:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs:$PATH
+PATH=/cygdrive/c/PROGRA~2/FASTST~2/:/cygdrive/c/'Program Files (x86)/Adobe/Acrobat 11.0/'Acrobat/:/cygdrive/c/Users/ADMIN/AppData/Roaming/ACEStream/player:/cygdrive/c/'Program Files (x86)'/VideoLAN/VLC:/cygdrive/c/cygwin64/home/Anton/bin:/cygdrive/c/cygwin64/home/Anton/xpdf/bin64:/cygdrive/c/cygwin64/home/Anton/c_program:/cygdrive/c/cygwin64/home/Anton/.local/mplayer:/cygdrive/c/cygwin64/home/Anton/.local/mupdf-1.11-windows:/cygdrive/c/'Program Files (x86)'/Google/Chrome/Application:/cygdrive/c/Users/ADMIN/AppData/Roaming/npm:/cygdrive/c/'Program Files'/nodejs:$PATH
 
 #PATH+=:/home/Anton/bin:/Far\ Manager:/home/Anton/c_program:/home/Anton/.local/mplayer
 
@@ -222,6 +222,12 @@ cmdfu() { curl "http://www.commandlinefu.com/commands/matching/$(echo "$@" \
 
 c() {
     open ~/language_C_help/Help/bcb6.hlp
+}
+
+# you need to install ffmpeg
+# download mp3 from youtube videos
+yt2mp3() {
+    youtube-dl -c --restrict-filenames --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" $@ ; 
 }
 
 #}}}
